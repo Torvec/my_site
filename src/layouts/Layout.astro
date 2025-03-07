@@ -1,12 +1,18 @@
 ---
-import BaseHead from "../components/base-head.astro"
+import BaseHead from "../components/base-head.astro";
 ---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead />
-	</head>
-	<body class="bg-stone-950 place-content-center min-h-screen">
-		<slot />
-	</body>
+  <head>
+    <BaseHead />
+  </head>
+  <body class="relative min-h-screen place-content-center bg-stone-950">
+    <div class="bg-grid-lines absolute inset-0 z-0 opacity-50"></div>
+    <div
+      class="absolute inset-0 z-1 bg-gradient-to-b from-stone-950 from-10% via-stone-900/0 to-stone-950 to-90%"
+    >
+    </div>
+    <slot />
+  </body>
 </html>
