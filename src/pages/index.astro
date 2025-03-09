@@ -1,9 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-import { Icon } from "astro-icon/components";
-
-const currentYear = new Date().getFullYear();
+import ProfilePic from "../components/profile-pic.astro";
+import IntroParagraph from "../components/intro-paragraph.astro";
+import AboutParagraph from "../components/about-paragraph.astro";
+import InterestsParagraph from "../components/interests-paragraph.astro";
 ---
 
 <Layout>
@@ -13,12 +13,14 @@ const currentYear = new Date().getFullYear();
     <section
       class="col-span-3 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-xs lg:row-span-3 lg:rounded-3xl"
     >
-      Intro
+      <IntroParagraph />
     </section>
     <section
-      class="col-span-3 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-xs lg:col-span-1 lg:row-span-7 lg:rounded-3xl"
+      class="col-span-3 space-y-6 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-xs lg:col-span-1 lg:row-span-7 lg:rounded-3xl"
     >
-      About
+      <ProfilePic />
+      <AboutParagraph />
+      <InterestsParagraph />
     </section>
     <section
       class="col-span-3 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-xs lg:col-span-1 lg:row-span-2 lg:rounded-3xl"
@@ -46,7 +48,7 @@ const currentYear = new Date().getFullYear();
       Now
     </section>
     <section
-      class="col-span-3 rounded-xl p-6 lg:col-span-1 lg:row-span-1 lg:rounded-3xl lg:border lg:border-stone-700 lg:bg-stone-900/30 lg:bg-radial-[at_10%_20%] lg:from-stone-700/30 lg:to-stone-700/0 lg:to-50% lg:backdrop-blur-xs"
+      class="col-span-3 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 lg:col-span-1 lg:row-span-1 lg:rounded-3xl lg:backdrop-blur-xs"
     >
       Footer
     </section>
