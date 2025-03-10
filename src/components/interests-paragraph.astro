@@ -1,38 +1,54 @@
 ---
-
+import ExtLink from "./ext-link.astro";
+const interest = {
+  running: {
+    href: "https://www.alltrails.com/members/edward-von-schondorf",
+    title: "View my running activity on AllTrails",
+    text: "running",
+  },
+  hiking: {
+    href: "https://www.alltrails.com/members/edward-von-schondorf",
+    title: "View my hiking activity on AllTrails",
+    text: "hiking",
+  },
+  pcGaming: {
+    href: "https://steamcommunity.com/id/torvec/",
+    title: "View my Steam profile",
+    text: "PC Gaming",
+  },
+  pcBuilding: {
+    href: "https://pcpartpicker.com/user/Torvec/builds/",
+    title: "View my PC builds on PCPartPicker",
+    text: "PC Building",
+  },
+};
 ---
 
 <div>
   <h3 class="mb-1.5 text-sm font-medium text-stone-500">Personal Interests</h3>
   <p class="text-sm font-medium text-stone-300">
-    Besides programming, I also enjoy <a
-      href="https://www.alltrails.com/members/edward-von-schondorf"
-      target="_blank"
-      rel="noopener noreferrer"
-      title="View my running activity on AllTrails"
-      aria-label="View my running activity on AllTrails"
-      class="text-white hover:text-orange-600 hover:underline">running</a
-    >, <a
-      href="https://www.alltrails.com/members/edward-von-schondorf"
-      target="_blank"
-      rel="noopener noreferrer"
-      title="View my hiking activity on AllTrails"
-      aria-label="View my hiking activity on AllTrails"
-      class="text-white hover:text-orange-600 hover:underline">hiking</a
-    >, traveling, <a
-      href="https://steamcommunity.com/id/torvec/"
-      target="_blank"
-      rel="noopener noreferrer"
-      title="View my Steam profile"
-      aria-label="View my Steam profile"
-      class="text-white hover:text-orange-600 hover:underline">PC Gaming</a
-    >, <a
-      href="https://pcpartpicker.com/user/Torvec/builds/"
-      target="_blank"
-      rel="noopener noreferrer"
-      title="View my PC builds on PCPartPicker"
-      aria-label="View my PC builds on PCPartPicker"
-      class="text-white hover:text-orange-600 hover:underline">PC Building</a
-    >, cooking, and watching movies and anime.
+    Besides programming, I also enjoy
+    <ExtLink
+      href={interest.running.href}
+      title={interest.running.title}
+      ariaLabel={interest.running.title}
+      text={interest.running.text}
+    />, <ExtLink
+      href={interest.hiking.href}
+      title={interest.hiking.title}
+      ariaLabel={interest.hiking.title}
+      text={interest.hiking.text}
+    />, traveling,
+    <ExtLink
+      href={interest.pcGaming.href}
+      title={interest.pcGaming.title}
+      ariaLabel={interest.pcGaming.title}
+      text={interest.pcGaming.text}
+    />, <ExtLink
+      href={interest.pcBuilding.href}
+      title={interest.pcBuilding.title}
+      ariaLabel={interest.pcBuilding.title}
+      text={interest.pcBuilding.text}
+    />, cooking, and watching movies and anime.
   </p>
 </div>
