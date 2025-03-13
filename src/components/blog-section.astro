@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import FormattedDate from "./formatted-date.astro";
+
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+---
+
+<div class="space-y-3">
+  <h2 class="font-medium text-stone-100">Blog</h2>
+  <ul class="space-y-1.5">
+    {
+      posts.map((post) => (
+        <li class="flex items-baseline gap-3">
+          <span class="block min-w-20 flex-shrink-0 text-xs text-stone-400">
+            <FormattedDate date={post.data.pubDate} />
+          </span>
+          <a
+            href={`/blog/${post.id}/`}
+            class="transition-color block flex-grow text-sm font-medium text-pretty duration-300 ease-in-out hover:text-orange-600"
+          >
+            {post.data.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <a href="/blog/" class="block text-center text-sm">More v</a>
+</div>

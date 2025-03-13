@@ -2,8 +2,8 @@
 import Layout from "../../layouts/blog-layout.astro";
 import { SITE_TITLE, ISSUE_TITLE, ISSUE_BODY } from "../../global-consts";
 import FormattedDate from "../../components/formatted-date.astro";
-import BackLink from "../components/back-link.vue";
-import IssuesLink from "../components/issues-link.vue";
+// import BackLink from "../components/back-link.vue";
+// import IssuesLink from "../components/issues-link.vue";
 import { type CollectionEntry, getCollection } from "astro:content";
 import { render } from "astro:content";
 
@@ -48,7 +48,7 @@ const { Content } = await render(post);
     </div>
   </article>
   <div class="text-muted flex justify-between py-4">
-    <BackLink />
-    <IssuesLink issueURL={issueURL} />
+    <!-- <BackLink />
+    <IssuesLink issueURL={issueURL} /> -->
   </div>
 </Layout>

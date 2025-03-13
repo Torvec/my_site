@@ -1,8 +1,8 @@
 ---
 import BaseHead from "../components/base-head.astro";
 import { SITE_TITLE, USERNAME, MY_LINKS } from "../global-consts";
-import Name from "./name.vue";
-import Theme from "./theme.vue";
+// import Name from "./name.vue";
+// import Theme from "./theme.vue";
 import { ClientRouter } from "astro:transitions";
 
 const { title, description, pathname } = Astro.props;
@@ -21,13 +21,13 @@ const { title, description, pathname } = Astro.props;
     <header
       class="container mx-auto flex max-w-2xl items-center justify-between px-2 pt-20 pb-12 lg:px-0"
     >
-      <Name
+      <!-- <Name
         pathname={pathname}
         name={SITE_TITLE}
         username={USERNAME}
         client:only="vue"
       />
-      <Theme client:only="vue" />
+      <Theme client:only="vue" /> -->
     </header>
 
     <!-- SITE CONTENT -->

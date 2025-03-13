@@ -1,54 +1,11 @@
 ---
-const techList = [
-  {
-    name: "JavaScript",
-    icon: "",
-  },
-  {
-    name: "TypeScript",
-    icon: "",
-  },
-  {
-    name: "Python",
-    icon: "",
-  },
-  {
-    name: "React",
-    icon: "",
-  },
-  {
-    name: "MySQL",
-    icon: "",
-  },
-  {
-    name: "MongoDB",
-    icon: "",
-  },
-  {
-    name: "Figma",
-    icon: "",
-  },
-  {
-    name: "Next",
-    icon: "",
-  },
-  {
-    name: "Astro",
-    icon: "",
-  },
-  {
-    name: "Node",
-    icon: "",
-  },
-  {
-    name: "Tailwind",
-    icon: "",
-  },
-];
+import { techList } from "../content/home/home-content";
 ---
 
+<!-- TODO: Get icons for each tech -->
+
 <div class="space-y-3">
-  <h2 class="text-base font-medium text-stone-100">Tech & Tools</h2>
+  <h2 class="font-medium text-stone-100">Tech & Tools</h2>
   <div class="flex flex-wrap justify-center gap-1.5">
     {
       techList.map((tech) => (

@@ -2,7 +2,11 @@
 import Layout from "../layouts/layout.astro";
 import IntroSection from "../components/intro-section.astro";
 import AboutSection from "../components/about-section.astro";
-import TechList from "../components/tech-list.astro";
+import TechSection from "../components/tech-section.astro";
+import ProjectsSection from "../components/projects-section.astro";
+import ArcadeSection from "../components/arcade-section.astro";
+import BlogSection from "../components/blog-section.astro";
+import NowSection from "../components/now-section.astro";
 import Footer from "../components/footer.astro";
 ---
 
@@ -23,27 +27,27 @@ import Footer from "../components/footer.astro";
     <section
       class="col-span-3 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-xs lg:col-span-1 lg:row-span-2 lg:rounded-3xl"
     >
-      <TechList />
+      <TechSection />
     </section>
     <section
       class="col-span-1 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-xs lg:col-span-2 lg:row-span-3 lg:rounded-3xl"
     >
-      Projects
+      <ProjectsSection />
     </section>
     <section
       class="col-span-1 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-xs lg:row-span-3 lg:rounded-3xl"
     >
-      Arcade
+      <ArcadeSection />
     </section>
     <section
       class="col-span-1 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-xs lg:row-span-2 lg:rounded-3xl"
     >
-      Blog
+      <BlogSection />
     </section>
     <section
       class="col-span-3 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-xs lg:col-span-1 lg:row-span-2 lg:rounded-3xl"
     >
-      Now
+      <NowSection />
     </section>
     <section
       class="col-span-3 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 lg:col-span-1 lg:row-span-1 lg:rounded-3xl lg:backdrop-blur-xs"
