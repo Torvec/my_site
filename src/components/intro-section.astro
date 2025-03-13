@@ -1,0 +1,40 @@
+---
+import ProfilePic from "./profile-pic.astro";
+import { socialLinks } from "../content/home/home-content";
+import ActionButton from "./action-button.astro";
+---
+
+<div class="block lg:hidden"><ProfilePic /></div>
+<div>
+  <h1 class="mb-3 text-center text-lg font-medium md:text-2xl lg:text-left">
+    👋Hey! I'm Edward Vonschondorf
+  </h1>
+  <p
+    class="text-center text-sm font-medium text-stone-300 md:text-xl lg:text-left lg:text-pretty"
+  >
+    I'm a full-stack web developer who lives for solving complex problems,
+    optimizing performance, and continuously learning to build better, more
+    scalable applications. Check out my work, and let's connect!
+  </p>
+</div>
+<div class="space-y-6 md:flex md:items-center md:justify-between md:space-y-0">
+  <div class="flex justify-between md:gap-6">
+    {
+      socialLinks.map((link) => (
+        <a
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block size-9 place-content-center rounded-xl border border-stone-700 bg-stone-800/50 transition-transform duration-300 ease-in-out hover:scale-120"
+        >
+          {/* {link.icon} */}
+          {/* <img src={link.icon} alt={link.name} class="size-6" /> */}
+          <span class="mx-auto block size-5 rounded-full bg-white/50" />
+        </a>
+      ))
+    }
+  </div>
+  <div>
+    <ActionButton>Contact Me</ActionButton>
+  </div>
+</div>

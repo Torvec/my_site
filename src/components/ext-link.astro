@@ -1,5 +1,5 @@
 ---
-const { href, target, rel, title, ariaLabel, text } = Astro.props;
+const { href, target, rel, title, ariaLabel } = Astro.props;
 ---
 
 <a
@@ -8,5 +8,5 @@ const { href, target, rel, title, ariaLabel, text } = Astro.props;
   rel={rel}
   title={title}
   aria-label={ariaLabel}
-  class="text-white hover:text-orange-600 hover:underline">{text}</a
+  class="text-white hover:text-orange-600 hover:underline"><slot /></a
 >

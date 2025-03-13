@@ -1,0 +1,54 @@
+---
+import Layout from "../../layouts/blog-layout.astro";
+import { SITE_TITLE, ISSUE_TITLE, ISSUE_BODY } from "../../global-consts";
+import FormattedDate from "../../components/formatted-date.astro";
+import BackLink from "../components/back-link.vue";
+import IssuesLink from "../components/issues-link.vue";
+import { type CollectionEntry, getCollection } from "astro:content";
+import { render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: post,
+  }));
+}
+
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { title, description, pubDate, updatedDate } = post.data;
+
+const issueTitle = `${title} ${ISSUE_TITLE}`;
+const encodedTitle = encodeURIComponent(issueTitle);
+const encodedBody = encodeURIComponent(ISSUE_BODY);
+const issueURL = `https://github.com/Torvec/blog/issues/new?title=${encodedTitle}&body=${encodedBody}`;
+
+const { Content } = await render(post);
+---
+
+<Layout title={title + " | " + SITE_TITLE} description={description}>
+  <article class="pb-8">
+    <div class="mb-12 space-y-1">
+      <h1 class="font-medium">{title}</h1>
+      <div class="flex justify-between text-xs uppercase opacity-75">
+        <FormattedDate date={pubDate} />
+        {
+          updatedDate && (
+            <div>
+              Updated: <FormattedDate date={updatedDate} />
+            </div>
+          )
+        }
+      </div>
+    </div>
+    <div class="prose prose-sm md:prose-base">
+      <Content />
+    </div>
+  </article>
+  <div class="text-muted flex justify-between py-4">
+    <BackLink />
+    <IssuesLink issueURL={issueURL} />
+  </div>
+</Layout>

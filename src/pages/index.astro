@@ -1,13 +1,7 @@
 ---
 import Layout from "../layouts/layout.astro";
-import ProfilePic from "../components/profile-pic.astro";
-import LocAvailShare from "../components/loc-avail-share.astro";
-import IntroParagraph from "../components/intro-paragraph.astro";
-import ContactButton from "../components/contact-button.astro";
-import Socials from "../components/socials.astro";
-import AboutParagraph from "../components/about-paragraph.astro";
-import InterestsParagraph from "../components/interests-paragraph.astro";
-import ResumeButton from "../components/resume-button.astro";
+import IntroSection from "../components/intro-section.astro";
+import AboutSection from "../components/about-section.astro";
 import TechList from "../components/tech-list.astro";
 import Footer from "../components/footer.astro";
 ---
@@ -19,23 +13,12 @@ import Footer from "../components/footer.astro";
     <section
       class="col-span-3 flex flex-col justify-between gap-6 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-xs lg:row-span-3 lg:rounded-3xl"
     >
-      <div class="block lg:hidden"><ProfilePic /></div>
-      <IntroParagraph />
-      <div
-        class="space-y-6 md:flex md:items-center md:justify-between md:space-y-0"
-      >
-        <Socials />
-        <ContactButton />
-      </div>
+      <IntroSection />
     </section>
     <section
       class="col-span-3 space-y-6 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-xs lg:col-span-1 lg:row-span-7 lg:rounded-3xl"
     >
-      <div class="hidden lg:block"><ProfilePic /></div>
-      <LocAvailShare />
-      <AboutParagraph />
-      <InterestsParagraph />
-      <ResumeButton />
+      <AboutSection />
     </section>
     <section
       class="col-span-3 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-xs lg:col-span-1 lg:row-span-2 lg:rounded-3xl"
