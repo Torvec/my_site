@@ -1,3 +1,33 @@
-<!-- THE NOW PAGE WITH CURRENT AND PREVIOUS ENTRIES -->
- ---
- ---
+---
+import Layout from "../../layouts/layout.astro";
+import { getCollection, render } from "astro:content";
+import FormattedDate from "../../components/formatted-date.astro";
+
+const now = (await getCollection("now")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+)[0];
+
+const posts = (await getCollection("now"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(1);
+
+const { Content } = await render(now);
+---
+
+<Layout>
+  <div class="bg-white text-center">
+    <h1>Now</h1>
+    <p><FormattedDate date={now.data.pubDate} /><Content /></p>
+
+    <h2>Then</h2>
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <FormattedDate date={post.data.pubDate} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Layout>

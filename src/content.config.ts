@@ -1,4 +1,4 @@
-import { file, glob } from "astro/loaders";
+import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
 const projects = defineCollection({
@@ -38,10 +38,9 @@ const arcade = defineCollection({
 });
 
 const now = defineCollection({
-  loader: file("./src/content/now.json"),
+  loader: glob({ base: "./src/content/now", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     pubDate: z.coerce.date(),
-    content: z.string(),
   }),
 });
 
