@@ -25,7 +25,7 @@ const pagePathname = Astro.url.pathname;
             <FormattedDate date={post.data.pubDate} />
           </span>
           <a
-            href={`/${post.id}/`}
+            href={`/blog/${post.id}/`}
             class="transition-color hover:text-accent block flex-grow duration-300 ease-in-out"
           >
             <span class="font-medium text-pretty">{post.data.title}</span>

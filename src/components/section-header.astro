@@ -1,0 +1,18 @@
+---
+const { href, icon } = Astro.props;
+---
+
+<h2 class="flex items-baseline justify-between">
+  <div class="flex items-center gap-1.5">
+    <span class="block size-3 bg-white">{icon}</span>
+    <span class="font-medium text-stone-100">
+        <slot />
+    </span>
+  </div>
+  <a
+    href={href}
+    class="text-xs text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600"
+  >
+    More &gt;</a
+  >
+</h2>
