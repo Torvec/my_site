@@ -1,1 +1,27 @@
-<!-- PROJECTS -->
+---
+import Layout from "../../layouts/layout.astro";
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout>
+  <div class="relative z-2 container mx-auto max-w-7xl text-white">
+    <h2>Projects</h2>
+    {
+      projects.map((project) => (
+        <div>
+          <h3>{project.data.title}</h3>
+          <p>{project.data.description}</p>
+          <ul class="flex gap-3">
+            {project.data.tech_stack.map((tech) => (
+              <li>{tech}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</Layout>

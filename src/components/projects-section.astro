@@ -1,10 +1,22 @@
 ---
-import SectionHeader from "./section-header.astro"
+import { getCollection } from "astro:content";
+
+import SectionHeader from "./section-header.astro";
+
+const project = (await getCollection("projects")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+)[0];
 ---
 
-<!-- TODO: Load featured project (image, title, text, link to specific page) -->
- 
 <div class="space-y-3">
   <SectionHeader href="/projects/">Projects</SectionHeader>
-  <span class="block h-48 w-64 rounded-xl bg-white/50"></span>
+  <div class="flex gap-3">
+    <span class="block min-h-48 min-w-64 rounded-xl bg-white/50"></span>
+    <div class="space-y-3">
+      <h3 class="font-medium text-stone-100">{project.data.title}</h3>
+      <p class="text-sm font-medium text-stone-300">
+        {project.data.description}
+      </p>
+    </div>
+  </div>
 </div>

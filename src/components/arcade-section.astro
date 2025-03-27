@@ -1,5 +1,11 @@
 ---
+import { getCollection } from "astro:content";
+
 import SectionHeader from "./section-header.astro";
+
+const game = (await getCollection("arcade")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+)[2];
 ---
 
 <!-- TODO: Load featured game image with link to the specific page for it -->
@@ -10,7 +16,7 @@ import SectionHeader from "./section-header.astro";
     <span class="block h-36 rounded-xl bg-white/50"></span>
     <span
       class="block text-center font-medium text-stone-300 group-hover:text-orange-600"
-      >Play</span
+      >{game.data.title}</span
     >
   </a>
 </div>

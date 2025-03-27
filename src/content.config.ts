@@ -30,10 +30,11 @@ const arcade = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    howToPlay: z.string(),
+    how_to_play: z.string(),
     images: z.array(z.string()),
     play_url: z.string(),
     repo_url: z.string(),
+    pubDate: z.coerce.date(),
   }),
 });
 
