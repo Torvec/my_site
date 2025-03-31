@@ -8,7 +8,7 @@ const games = (await getCollection("arcade")).sort(
 ---
 
 <Layout>
-  <div class="relative z-2 container mx-auto max-w-7xl text-white">
+  <article class="relative z-2 container mx-auto max-w-7xl text-white">
     <h2>Games</h2>
     {
       games.map((game) => (
@@ -16,8 +16,9 @@ const games = (await getCollection("arcade")).sort(
           <h3>{game.data.title}</h3>
           <p>{game.data.description}</p>
           <p>{game.data.how_to_play}</p>
+          <a href={`/arcade/${game.id}`}>Link</a>
         </div>
       ))
     }
-  </div>
+  </article>
 </Layout>

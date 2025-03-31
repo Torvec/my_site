@@ -1,3 +1,33 @@
 ---
+import Layout from "../../layouts/layout.astro";
+import { type CollectionEntry, getCollection } from "astro:content";
+import { render } from "astro:content";
 
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { project: project.id },
+    props: project,
+  }));
+}
+
+type Props = CollectionEntry<"projects">;
+
+const project = Astro.props;
+
+const { title, description, images, deploy_url, repo_url, pubDate } =
+  project.data;
+
+const { Content } = await render(project);
 ---
+
+<Layout>
+  <article class="relative z-2 container mx-auto max-w-7xl text-white">
+    <h1>{title}</h1>
+    <span>{pubDate}</span>
+    <p>{description}</p>
+    <a href={deploy_url}>Deployment</a>
+    <a href={repo_url}>Repository</a>
+    <Content />
+  </article>
+</Layout>

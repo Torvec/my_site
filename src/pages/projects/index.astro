@@ -15,6 +15,7 @@ const projects = (await getCollection("projects")).sort(
         <div>
           <h3>{project.data.title}</h3>
           <p>{project.data.description}</p>
+          <a href={`/projects/${project.id}`}>Link</a>
           <ul class="flex gap-3">
             {project.data.tech_stack.map((tech) => (
               <li>{tech}</li>
