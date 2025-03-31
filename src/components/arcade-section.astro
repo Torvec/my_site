@@ -13,9 +13,9 @@ const game = (await getCollection("arcade")).sort(
 <div class="space-y-3">
   <SectionHeader href="/arcade/">Arcade</SectionHeader>
   <a href="/" class="group space-y-3">
-    <span class="block h-36 rounded-xl bg-white/50"></span>
+    <span class="hidden lg:block lg:h-36 lg:rounded-xl lg:bg-white/50"></span>
     <span
-      class="block text-center font-medium text-stone-300 group-hover:text-orange-600"
+      class="hidden lg:block text-center font-medium text-stone-300 group-hover:text-orange-600"
       >{game.data.title}</span
     >
   </a>

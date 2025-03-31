@@ -1,17 +1,17 @@
 ---
 import SectionHeader from "./section-header.astro";
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 
 const now = (await getCollection("now")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 )[0];
 
-const { Content } = await render(now);
+const nowPost = now.data.content;
 ---
 
 <div class="space-y-3">
   <SectionHeader href="/now/">Now</SectionHeader>
-  <div class="space-y-1.5 text-sm text-pretty text-stone-300">
-    <Content />
+  <div class="hidden space-y-1.5 text-sm text-pretty text-stone-300 lg:block">
+    {nowPost.map((post) => <span class="block">{post}</span>)}
   </div>
 </div>

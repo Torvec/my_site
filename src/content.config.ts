@@ -42,6 +42,7 @@ const now = defineCollection({
   loader: glob({ base: "./src/content/now", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     pubDate: z.coerce.date(),
+    content: z.array(z.string()),
   }),
 });
 
