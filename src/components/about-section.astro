@@ -21,14 +21,14 @@ import { about, interest } from "../content/home/home-content";
   </button>
 </div>
 
-<div>
-  <h3 class="mb-1.5 text-sm font-medium text-stone-500">{about.header}</h3>
-  <p class="text-sm font-medium text-stone-300">{about.content}</p>
+<div class="text-sm font-medium">
+  <h3 class="mb-1.5 text-stone-500">{about.header}</h3>
+  <p class="text-stone-300">{about.content}</p>
 </div>
 
-<div>
-  <h2 class="mb-1.5 text-sm font-medium text-stone-500">{interest.header}</h2>
-  <p class="text-sm font-medium text-stone-300">
+<div class="text-sm font-medium">
+  <h2 class="mb-1.5 text-stone-500">{interest.header}</h2>
+  <p class="text-stone-300">
     Besides programming, I also enjoy
     <ExtLink
       href={interest.running.href}
