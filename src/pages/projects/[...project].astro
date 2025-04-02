@@ -1,7 +1,9 @@
 ---
 import Layout from "../../layouts/layout.astro";
+
+import ActionButton from "../../components/action-button.astro";
+
 import { type CollectionEntry, getCollection } from "astro:content";
-import { render } from "astro:content";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -15,19 +17,54 @@ type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
 
-const { title, description, images, deploy_url, repo_url, pubDate } =
-  project.data;
-
-const { Content } = await render(project);
+const {
+  title,
+  description,
+  development,
+  images,
+  deploy_url,
+  repo_url,
+  tech_stack,
+} = project.data;
 ---
 
 <Layout>
-  <article class="relative z-2 container mx-auto max-w-7xl text-white">
-    <h1>{title}</h1>
-    <span>{pubDate}</span>
-    <p>{description}</p>
-    <a href={deploy_url}>Deployment</a>
-    <a href={repo_url}>Repository</a>
-    <Content />
+  <article
+    class="relative z-2 container mx-auto flex max-w-5xl gap-6 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs lg:rounded-3xl"
+  >
+    <section class="w-1/2 space-y-3">
+      <span class="block h-64 w-full bg-stone-500"></span>
+      <span class="block h-64 w-full bg-stone-500"></span>
+    </section>
+    <section class="flex w-1/2 flex-col justify-between gap-6">
+      <div class="space-y-3">
+        <h1 class="text-xl font-bold text-stone-100">{title}</h1>
+        <p class="font-medium text-stone-300">{description}</p>
+        <h2 class="font-bold text-stone-100">Development</h2>
+        <p class="font-medium text-stone-300">{development}</p>
+        <h2 class="font-bold text-stone-100">Tech Stack</h2>
+        <ul class="flex flex-wrap gap-3">
+          {
+            tech_stack.map((tech) => (
+              <li class="rounded-xl border px-3 py-1 text-sm font-medium text-stone-500">
+                {tech}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="flex gap-3">
+        <ActionButton>
+          <a href={deploy_url} target="_blank" rel="noopener noreferrer">
+            Deployment
+          </a>
+        </ActionButton>
+        <ActionButton>
+          <a href={repo_url} target="_blank" rel="noopener noreferrer">
+            Repository
+          </a>
+        </ActionButton>
+      </div>
+    </section>
   </article>
 </Layout>

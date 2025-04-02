@@ -1,6 +1,7 @@
 ---
 title: "Wedloc"
 description: "A social media app for wedding photographers to share their work and allow clients to interact with guests. This was the third UC Berkeley group project where I worked on the front-end design, React components, and Tailwind + Material UI implementation."
+development: "Development Story Here"
 images: []
 repo_url: "https://github.com/Torvec/wedloc"
 deploy_url: "https://wedloc-84c89e3ae29d.herokuapp.com/"
