@@ -1,7 +1,9 @@
 ---
 import Layout from "../../layouts/layout.astro";
+
+import ActionButton from "../../components/action-button.astro";
+
 import { type CollectionEntry, getCollection } from "astro:content";
-import { render } from "astro:content";
 
 export async function getStaticPaths() {
   const games = await getCollection("arcade");
@@ -15,20 +17,33 @@ type Props = CollectionEntry<"arcade">;
 
 const game = Astro.props;
 
-const { title, description, how_to_play, images, play_url, repo_url, pubDate } =
+const { title, description, how_to_play, images, play_url, repo_url } =
   game.data;
-
-const { Content } = await render(game);
 ---
 
 <Layout>
-  <article class="relative z-2 container mx-auto max-w-7xl text-white">
-    <h1>{title}</h1>
-    <span>{pubDate}</span>
-    <p>{description}</p>
-    <p>{how_to_play}</p>
-    <a href={play_url}>Play</a>
-    <a href={repo_url}>Repository</a>
-    <Content />
+  <article
+    class="relative z-2 container mx-auto max-w-5xl rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs lg:rounded-3xl space-y-6"
+  >
+    <h1 class="text-xl font-bold text-stone-100">{title}</h1>
+    <span class="block h-64 w-full bg-stone-500"></span>
+    <div class="flex gap-6">
+      <div class="w-3/4 space-y-3">
+        <p class="font-medium text-stone-300">{description}</p>
+        <h2 class="font-bold text-stone-100">How To Play</h2>
+        <p class="font-medium text-stone-300">{how_to_play}</p>
+      </div>
+      <div class="w-1/4 space-y-3">
+        <ActionButton>
+          <a href={play_url}>Play</a>
+        </ActionButton>
+        <a
+          href={repo_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block text-center text-stone-300">Repository</a
+        >
+      </div>
+    </div>
   </article>
 </Layout>

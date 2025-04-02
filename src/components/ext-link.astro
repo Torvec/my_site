@@ -8,5 +8,7 @@ const { href, target, rel, title, ariaLabel } = Astro.props;
   rel={rel}
   title={title}
   aria-label={ariaLabel}
-  class="text-white hover:text-orange-600 hover:underline"><slot /></a
+  class="text-white hover:text-orange-600 hover:underline"
 >
+  <slot />
+</a>
