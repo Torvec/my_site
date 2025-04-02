@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/layout.astro";
-import { getCollection, render } from "astro:content";
+
+import { getCollection } from "astro:content";
+
 import FormattedDate from "../../components/formatted-date.astro";
 
 const posts = (await getCollection("now")).sort(
@@ -13,12 +15,46 @@ const then = posts.slice(1);
 ---
 
 <Layout>
-  <div class="text-white">
-    <h2>Now</h2>
-    <p>{now.data.content}</p>
-    <h2>Then</h2>
-    <p>
-      {then.map((post) => post.data.content)}
-    </p>
-  </div>
+  <article
+    class="relative z-2 container mx-auto max-w-3xl space-y-3 px-1.5 font-medium lg:px-3 xl:px-0"
+  >
+    <h1 class="mb-6 text-center text-xl font-bold text-stone-100">Now</h1>
+    <section
+      class="rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs lg:rounded-3xl"
+    >
+      <div class="flex gap-6">
+        <span class="block text-stone-500">
+          <FormattedDate date={now.data.pubDate} />
+        </span>
+        <p class="font-medium text-stone-300">
+          {
+            now.data.content.map((content) => (
+              <span class="block">{content}</span>
+            ))
+          }
+        </p>
+      </div>
+    </section>
+    <h2 class="mb-6 text-center text-lg font-medium text-stone-100">Then</h2>
+    <section
+      class="rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-xs lg:rounded-3xl"
+    >
+      <div class="space-y-3">
+        {
+          then.map((post) => (
+            <div class="flex gap-6">
+              <span class="block text-stone-500">
+                <FormattedDate date={post.data.pubDate} />
+              </span>
+              <p class="font-medium text-stone-300">
+                {post.data.content.map((content) => (
+                  <span class="block">{content}</span>
+                ))}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </article>
 </Layout>
