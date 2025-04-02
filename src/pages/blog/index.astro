@@ -1,37 +1,39 @@
 ---
-import Layout from "../../layouts/blog-layout.astro";
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_INTRO } from "../../global-consts";
+import Layout from "../../layouts/layout.astro";
+
 import { getCollection } from "astro:content";
+
 import FormattedDate from "../../components/formatted-date.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-
-const pagePathname = Astro.url.pathname;
 ---
 
-<Layout
-  title={"Blog | " + SITE_TITLE}
-  description={SITE_DESCRIPTION}
-  pathname={pagePathname}
->
-  <p class="mb-12 text-sm">{SITE_INTRO}</p>
-  <ul class="space-y-2">
-    {
-      posts.map((post) => (
-        <li class="flex items-baseline gap-4">
-          <span class="text-muted block min-w-20 flex-shrink-0 text-xs uppercase">
-            <FormattedDate date={post.data.pubDate} />
-          </span>
-          <a
-            href={`/blog/${post.id}/`}
-            class="transition-color hover:text-accent block flex-grow duration-300 ease-in-out"
-          >
-            <span class="font-medium text-pretty">{post.data.title}</span>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+<Layout>
+  <article
+    class="relative z-2 container mx-auto max-w-3xl space-y-3 px-1.5 font-medium lg:px-3 xl:px-0"
+  >
+    <section
+      class="rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-xs lg:rounded-3xl"
+    >
+      <ul class="space-y-3">
+        {
+          posts.map((post) => (
+            <li class="flex items-baseline gap-6">
+              <span class="block min-w-20 flex-shrink-0 text-xs text-stone-500 uppercase">
+                <FormattedDate date={post.data.pubDate} />
+              </span>
+              <a
+                href={`/blog/${post.id}/`}
+                class="transition-color block flex-grow text-stone-300 duration-300 ease-in-out hover:text-orange-600"
+              >
+                <span class="font-medium text-pretty">{post.data.title}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </article>
 </Layout>
