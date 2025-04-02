@@ -5,5 +5,5 @@ images: []
 repo_url: "https://github.com/Torvec/Loot-Vault"
 deploy_url: "https://torvec.github.io/Loot-Vault/"
 tech_stack: ["HTML", "Bulma CSS", "JavaScript", "Fetch API"]
-pubDate: "19 Oct 2023"
+pubDate: "20 Jun 2023"
 ---

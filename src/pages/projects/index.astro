@@ -8,21 +8,24 @@ const projects = (await getCollection("projects")).sort(
 ---
 
 <Layout>
-  <div class="relative z-2 container mx-auto max-w-7xl text-white">
-    <h2>Projects</h2>
+  <h1 class="relative z-2 text-center text-stone-100 mb-6 font-bold text-xl">Projects</h1>
+  <article
+    class="relative z-2 container mx-auto flex max-w-5xl flex-wrap gap-6 px-1.5 font-medium lg:px-3 xl:px-0"
+  >
     {
       projects.map((project) => (
-        <div>
-          <h3>{project.data.title}</h3>
-          <p>{project.data.description}</p>
-          <a href={`/projects/${project.id}`}>Link</a>
-          <ul class="flex gap-3">
-            {project.data.tech_stack.map((tech) => (
-              <li>{tech}</li>
-            ))}
-          </ul>
-        </div>
+        <section class="space-y-3 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs lg:w-[calc(50%-0.75rem)] lg:rounded-3xl">
+          <span class="block h-80 w-full rounded-xl bg-stone-500" />
+          <h2 class="text-stone-100">{project.data.title}</h2>
+          <p class="text-sm text-stone-300">{project.data.description}</p>
+          <a
+            href={`/projects/${project.id}`}
+            class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600"
+          >
+            More &gt;
+          </a>
+        </section>
       ))
     }
-  </div>
+  </article>
 </Layout>

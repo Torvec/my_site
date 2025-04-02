@@ -3,19 +3,20 @@ import { getCollection } from "astro:content";
 
 import SectionHeader from "./section-header.astro";
 
-const game = (await getCollection("arcade")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-)[2];
+const featuredGameName = "the-running-dog";
+
+const games = await getCollection("arcade");
+
+const featuredGame = games.find((game) => game.id === featuredGameName);
 ---
 
-<!-- TODO: Load featured game image with link to the specific page for it --><!--TODO: View shows up when you hover over image link, title of the game will be below image -->
 <div class="space-y-3">
   <SectionHeader href="/arcade/">Arcade</SectionHeader>
-  <a href={`/arcade/${game.id}`} class="group space-y-3">
+  <a href={`/arcade/${featuredGame?.id}`} class="group space-y-3">
     <span class="hidden lg:block lg:h-36 lg:rounded-xl lg:bg-white/50"></span>
     <span
       class="hidden text-center font-medium text-stone-300 group-hover:text-orange-600 lg:block"
-      >{game.data.title}</span
+      >{featuredGame?.data.title}</span
     >
   </a>
 </div>
