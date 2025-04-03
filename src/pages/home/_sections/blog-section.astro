@@ -1,7 +1,7 @@
 ---
-import SectionHeader from "./section-header.astro";
+import SectionHeader from "@components/section-header.astro";
 import { getCollection } from "astro:content";
-import FormattedDate from "./formatted-date.astro";
+import FormattedDate from "@components/formatted-date.astro";
 
 const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())

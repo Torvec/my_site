@@ -2,7 +2,10 @@ import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
 const projects = defineCollection({
-  loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
+  loader: glob({
+    base: "./src/pages/projects/_content",
+    pattern: "**/*.{md,mdx}",
+  }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -16,7 +19,7 @@ const projects = defineCollection({
 });
 
 const blog = defineCollection({
-  loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" }),
+  loader: glob({ base: "./src/pages/blog/_content", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -27,7 +30,10 @@ const blog = defineCollection({
 });
 
 const arcade = defineCollection({
-  loader: glob({ base: "./src/content/arcade", pattern: "**/*.{md,mdx}" }),
+  loader: glob({
+    base: "./src/pages/arcade/_content",
+    pattern: "**/*.{md,mdx}",
+  }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -40,7 +46,7 @@ const arcade = defineCollection({
 });
 
 const now = defineCollection({
-  loader: glob({ base: "./src/content/now", pattern: "**/*.{md,mdx}" }),
+  loader: glob({ base: "./src/pages/now/_content", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     pubDate: z.coerce.date(),
     content: z.array(z.string()),

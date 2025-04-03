@@ -1,8 +1,8 @@
-import GitHub from "../../assets/github.svg";
-import LinkedIn from "../../assets/linkedin.svg";
-import Bluesky from "../../assets/bluesky.svg";
-import Mastodon from "../../assets/mastodon.svg";
-import YouTube from "../../assets/youtube.svg";
+import GitHub from "@assets/github.svg";
+import LinkedIn from "@assets/linkedin.svg";
+import Bluesky from "@assets/bluesky.svg";
+import Mastodon from "@assets/mastodon.svg";
+import YouTube from "@assets/youtube.svg";
 
 export const socialLinks = [
   {
