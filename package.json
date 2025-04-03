@@ -33,7 +33,7 @@
     "*.{md,mdx}": [
       "prettier --write --ignore-unknown"
     ],
-    "*.{astro}": [
+    "*.astro": [
       "prettier --write --ignore-unknown"
     ],
     "*.{json,html}": [
