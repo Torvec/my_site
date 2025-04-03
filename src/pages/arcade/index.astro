@@ -4,7 +4,7 @@ import Layout from "../../layouts/layout.astro";
 import { getCollection } from "astro:content";
 
 const games = (await getCollection("arcade")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
 const featuredGameName = "the-running-dog";
@@ -19,12 +19,12 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
     class="relative z-2 container mx-auto grid max-w-5xl gap-6 px-1.5 font-medium sm:grid-cols-2 lg:grid-cols-3 lg:px-3 xl:px-0"
   >
     <section
-      class="space-y-3 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs md:flex md:gap-6 md:space-y-0 sm:col-span-2 lg:col-span-3 lg:rounded-3xl"
+      class="space-y-3 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs sm:col-span-2 md:flex md:gap-6 md:space-y-0 lg:col-span-3 lg:rounded-3xl"
     >
-      <span class="block h-80 w-full bg-stone-500 md:w-1/2 rounded-xl"></span>
+      <span class="block h-80 w-full rounded-xl bg-stone-500 md:w-1/2"></span>
       <div class="space-y-3 md:w-1/2">
         <h2 class="text-stone-100">{featured?.data.title}</h2>
-        <p class="text-stone-300 text-sm">{featured?.data.description}</p>
+        <p class="text-sm text-stone-300">{featured?.data.description}</p>
         <a
           href={`/arcade/${featured?.id}`}
           class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600"
@@ -38,7 +38,7 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
         <section class="space-y-3 rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-xs lg:rounded-3xl">
           <span class="block h-48 w-full bg-stone-500" />
           <h3 class="text-stone-100">{game.data.title}</h3>
-          <p class="text-stone-300 text-sm">{game.data.description}</p>
+          <p class="text-sm text-stone-300">{game.data.description}</p>
           <a
             href={`/arcade/${game.id}`}
             class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600"

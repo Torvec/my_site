@@ -7,4 +7,3 @@ play_url: "https://tic-tac-toe-ultimate.pages.dev/"
 how_to_play: "Text"
 pubDate: "14 Oct 2024"
 ---
-

@@ -4,12 +4,14 @@ import Layout from "../../layouts/layout.astro";
 import { getCollection } from "astro:content";
 
 const projects = (await getCollection("projects")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
 <Layout>
-  <h1 class="relative z-2 text-center text-stone-100 mb-6 font-bold text-xl">Projects</h1>
+  <h1 class="relative z-2 mb-6 text-center text-xl font-bold text-stone-100">
+    Projects
+  </h1>
   <article
     class="relative z-2 container mx-auto flex max-w-5xl flex-wrap gap-6 px-1.5 font-medium lg:px-3 xl:px-0"
   >

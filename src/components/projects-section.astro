@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import SectionHeader from "./section-header.astro";
 
 const project = (await getCollection("projects")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 )[0];
 ---
 

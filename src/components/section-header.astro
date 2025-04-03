@@ -2,7 +2,7 @@
 const { href, icon } = Astro.props;
 ---
 
-<h2 class="flex flex-col md:flex-row lg:items-baseline justify-between">
+<h2 class="flex flex-col justify-between md:flex-row lg:items-baseline">
   <div class="flex flex-col gap-1.5 lg:flex-row lg:items-center">
     <span class="block size-3 bg-white">{icon}</span>
     <span class="font-medium text-stone-100">
@@ -13,7 +13,7 @@ const { href, icon } = Astro.props;
     href={href}
     class="text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600"
   >
-    <span class="hidden lg:block text-xs">More &gt;</span>
-    <span class="block lg:hidden text-xl font-bold">&gt;</span>
+    <span class="hidden text-xs lg:block">More &gt;</span>
+    <span class="block text-xl font-bold lg:hidden">&gt;</span>
   </a>
 </h2>

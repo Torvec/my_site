@@ -8,4 +8,3 @@ deploy_url: "https://next-level-loot.vercel.app/"
 tech_stack: ["Next.js", "React", "Tailwind CSS", "shadcn/ui", "TypeScript"]
 pubDate: "19 Dec 2024"
 ---
-

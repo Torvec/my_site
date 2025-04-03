@@ -3,7 +3,7 @@ import SectionHeader from "./section-header.astro";
 import { getCollection } from "astro:content";
 
 const now = (await getCollection("now")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 )[0];
 
 const nowPost = now.data.content;

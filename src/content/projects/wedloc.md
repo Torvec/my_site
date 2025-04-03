@@ -5,6 +5,17 @@ development: "Development Story Here"
 images: []
 repo_url: "https://github.com/Torvec/wedloc"
 deploy_url: "https://wedloc-84c89e3ae29d.herokuapp.com/"
-tech_stack: ["React", "Tailwind", "Material UI", "Node", "Express", "MongoDB", "Mongoose", "GraphQL", "Apollo Server"]
+tech_stack:
+  [
+    "React",
+    "Tailwind",
+    "Material UI",
+    "Node",
+    "Express",
+    "MongoDB",
+    "Mongoose",
+    "GraphQL",
+    "Apollo Server",
+  ]
 pubDate: "19 Oct 2023"
 ---
