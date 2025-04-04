@@ -20,6 +20,10 @@
   }
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 .prose {
   color: var(--stone-300);
 }

@@ -24,7 +24,7 @@ const { title, description, pubDate, updatedDate } = post.data;
 const { Content } = await render(post);
 ---
 
-<Layout>
+<Layout title={title + " | Edward Vonschondorf"} description={description}>
   <article
     class="relative z-2 container mx-auto max-w-3xl space-y-3 px-1.5 font-medium lg:px-3 xl:px-0"
   >

@@ -1,11 +1,13 @@
 ---
 import BaseHead from "@components/base-head.astro";
+
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead />
+    <BaseHead title={title} description={description} />
   </head>
   <body
     class="relative min-h-screen place-content-center bg-stone-950 py-1.5 antialiased lg:py-0"

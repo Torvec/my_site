@@ -14,7 +14,10 @@ const featured = games.find((game) => game.id === featuredGameName);
 const filteredGames = games.filter((game) => game.id !== featuredGameName);
 ---
 
-<Layout>
+<Layout
+  title="Arcade | Edward Vonschondorf"
+  description="My game development projects that I've released."
+>
   <article
     class="relative z-2 container mx-auto grid max-w-5xl gap-6 px-1.5 font-medium sm:grid-cols-2 lg:grid-cols-3 lg:px-3 xl:px-0"
   >

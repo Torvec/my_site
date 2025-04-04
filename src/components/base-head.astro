@@ -1,9 +1,66 @@
 ---
 import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image = "/favicon.svg" } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
-<title>Front-end, Back-end, Full Stack Developer | Edward Vonschondorf</title>
+
+<link rel="canonical" href={canonicalURL} />
+
+<title>{title}</title>
+<meta name="title" content="" />
+<meta name="description" content="" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={title}
+  href={new URL("/blog/rss.xml", Astro.site)}
+/>
+
+<script type="application/ld+json" is:inline>
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Edward Vonschondorf",
+    "jobTitle": "Full Stack Web Developer",
+    "url": "https://edward-vonschondorf.dev",
+    "image": "/favicon.svg",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Freelance"
+    },
+    "sameAs": [
+      "https://github.com/Torvec",
+      "https://www.linkedin.com/in/edward-vonschondorf/",
+      "https://bsky.app/profile/edward-vonschondorf.dev",
+      "https://mastodon.social/@edvonschondorf",
+      "https://www.youtube.com/@edward-vonschondorf-dev"
+    ],
+    "email": "me@edward-vonschondorf.dev"
+  }
+</script>
