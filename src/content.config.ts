@@ -2,6 +2,13 @@ import { glob } from "astro/loaders";
 
 import { defineCollection, z } from "astro:content";
 
+const home = defineCollection({
+  loader: glob({ base: "./src/pages/home/_content", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    section: z.string(),
+  }),
+});
+
 const projects = defineCollection({
   loader: glob({
     base: "./src/pages/projects/_content",
@@ -54,4 +61,4 @@ const now = defineCollection({
   }),
 });
 
-export const collections = { projects, blog, arcade, now };
+export const collections = { home, projects, blog, arcade, now };

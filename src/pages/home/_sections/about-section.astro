@@ -1,11 +1,13 @@
 ---
-import ActionButton from "@/components/action-button.astro";
+import { getEntry, render } from "astro:content";
 
-import ExtLink from "@/components/ext-link.astro";
+import ActionButton from "@/components/action-button.astro";
 
 import ProfilePic from "@/components/profile-pic.astro";
 
-import { about, interest } from "@/pages/home/_content/home-content";
+const about = await getEntry("home", "about");
+
+const { Content } = about ? await render(about) : { Content: () => null };
 
 const resume = "placeholder";
 ---
@@ -26,34 +28,8 @@ const resume = "placeholder";
   </button>
 </div>
 
-<div class="text-sm font-medium">
-  <h3 class="mb-1.5 text-stone-500">{about.header}</h3>
-  <p class="text-stone-300">{about.content}</p>
-</div>
-
-<div class="text-sm font-medium">
-  <h2 class="mb-1.5 text-stone-500">{interest.header}</h2>
-  <p class="text-stone-300">
-    Besides programming, I also enjoy
-    <ExtLink
-      href={interest.running.href}
-      title={interest.running.title}
-      ariaLabel={interest.running.title}>{interest.running.text}</ExtLink
-    >, <ExtLink
-      href={interest.hiking.href}
-      title={interest.hiking.title}
-      ariaLabel={interest.hiking.title}>{interest.hiking.text}</ExtLink
-    >, traveling,
-    <ExtLink
-      href={interest.pcGaming.href}
-      title={interest.pcGaming.title}
-      ariaLabel={interest.pcGaming.title}>{interest.pcGaming.text}</ExtLink
-    >, <ExtLink
-      href={interest.pcBuilding.href}
-      title={interest.pcBuilding.title}
-      ariaLabel={interest.pcBuilding.title}>{interest.pcBuilding.text}</ExtLink
-    >, cooking, and watching movies and anime.
-  </p>
+<div class="about">
+  <Content />
 </div>
 
 <ActionButton href={resume}>My Resume</ActionButton>

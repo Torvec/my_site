@@ -1,23 +1,20 @@
 ---
+import { getEntry, render } from "astro:content";
+
 import ProfilePic from "@/components/profile-pic.astro";
 
 import { socialLinks } from "@/pages/home/_content/home-content";
 
 import ActionButton from "@/components/action-button.astro";
+
+const intro = await getEntry("home", "intro");
+
+const { Content } = intro ? await render(intro) : { Content: () => null };
 ---
 
 <div class="block lg:hidden"><ProfilePic /></div>
-<div>
-  <h1 class="mb-3 text-center text-lg font-medium md:text-2xl lg:text-left">
-    👋Hey! I'm Edward Vonschondorf
-  </h1>
-  <p
-    class="text-center text-sm font-medium text-stone-300 md:text-xl lg:text-left lg:text-pretty"
-  >
-    I'm a full-stack web developer who lives for solving complex problems,
-    optimizing performance, and continuously learning to build better, more
-    scalable applications. Check out my work, and let's connect!
-  </p>
+<div class="intro">
+  <Content />
 </div>
 <div class="space-y-6 md:flex md:items-center md:justify-between md:space-y-0">
   <div class="flex justify-between md:gap-6">
@@ -36,7 +33,7 @@ import ActionButton from "@/components/action-button.astro";
       ))
     }
   </div>
-  <ActionButton href="mailto:me@edward-vonschondorf.dev"
-    >Contact Me</ActionButton
-  >
+  <ActionButton href="mailto:me@edward-vonschondorf.dev">
+    Contact Me
+  </ActionButton>
 </div>
