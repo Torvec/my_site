@@ -1,23 +1,12 @@
 @import "tailwindcss";
+
 @plugin "@tailwindcss/typography";
 
 .bg-grid-lines {
   background-image:
-    linear-gradient(oklch(0.268 0.007 34.298) 1px, transparent 1px),
-    linear-gradient(to right, oklch(0.268 0.007 34.298) 1px, transparent 1px);
-  background-size: 36px 36px;
-  background-color: oklch(0.147 0.004 49.25);
-}
-
-@layer theme {
-  :root {
-    --stone-100: oklch(97% 0.001 106.424);
-    --stone-300: oklch(86.9% 0.005 56.366);
-    --stone-500: oklch(55.3% 0.013 58.071);
-    --stone-900: oklch(21.6% 0.006 56.043);
-    --orange-500: oklch(70.5% 0.213 47.604);
-    --orange-600: oklch(64.6% 0.222 41.116);
-  }
+    linear-gradient(var(--color-stone-800) 1px, transparent 1px),
+    linear-gradient(to right, var(--color-stone-800) 1px, transparent 1px);
+  @apply bg-stone-950 bg-size-[36px_36px];
 }
 
 html {
@@ -25,17 +14,15 @@ html {
 }
 
 .prose {
-  color: var(--stone-300);
+  @apply text-stone-300;
 }
 
 .prose a {
-  color: var(--orange-500);
-  text-decoration: none;
+  @apply text-orange-500 no-underline;
 }
 
 .prose a:hover {
-  color: var(--stone-100);
-  text-decoration: underline;
+  @apply text-stone-100 underline;
 }
 
 .prose h1,
@@ -44,39 +31,33 @@ html {
 .prose h4,
 .prose h5,
 .prose h6 {
-  color: var(--stone-100);
+  @apply text-stone-100;
 }
 
 .prose code {
-  color: var(--stone-500);
-  background-color: var(--stone-300);
-  font-family: monospace;
-  padding: 0.15em 0.3em;
-  border-radius: 0.5em;
+  @apply rounded bg-stone-300 p-1 font-mono text-stone-500;
 }
 
 .prose pre {
-  font-family: monospace;
-  background-color: var(--stone-900);
+  @apply font-mono text-stone-900;
 }
 
 .prose pre code {
-  background-color: transparent;
+  @apply bg-transparent;
 }
 
 .prose blockquote {
-  color: var(--stone-300);
+  @apply text-stone-300;
 }
 
 .prose kbd {
-  color: var(--stone-500);
-  background-color: var(--stone-300);
+  @apply bg-stone-300 text-stone-500;
 }
 
 .prose th {
-  color: var(--stone-300);
+  @apply text-stone-300;
 }
 
 .prose strong {
-  color: var(--stone-300);
+  @apply text-stone-300;
 }
