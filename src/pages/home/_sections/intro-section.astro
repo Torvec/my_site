@@ -1,7 +1,9 @@
 ---
-import ProfilePic from "./profile-pic.astro";
-import { socialLinks } from "../_content/home-content";
-import ActionButton from "@components/action-button.astro";
+import ProfilePic from "@/pages/home/_sections/profile-pic.astro";
+
+import { socialLinks } from "@/pages/home/_content/home-content";
+
+import ActionButton from "@/components/action-button.astro";
 ---
 
 <div class="block lg:hidden"><ProfilePic /></div>
@@ -34,5 +36,7 @@ import ActionButton from "@components/action-button.astro";
       ))
     }
   </div>
-  <ActionButton>Contact Me</ActionButton>
+  <ActionButton href="mailto:me@edward-vonschondorf.dev"
+    >Contact Me</ActionButton
+  >
 </div>

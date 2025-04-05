@@ -1,9 +1,10 @@
 ---
-
+const Tag = Astro.props.href ? "a" : "button";
 ---
 
-<button
-  class="text-medium mx-auto block w-full max-w-72 cursor-pointer rounded-md border border-orange-500 bg-radial from-orange-500/0 to-orange-500/40 px-9 py-1.5 text-sm text-stone-200 transition duration-200 ease-in-out hover:border-orange-600 hover:from-orange-500/10 hover:to-orange-500/50 hover:text-white active:scale-90 md:mx-0"
+<Tag
+  href={Astro.props.href}
+  class="text-medium mx-auto block w-full max-w-72 cursor-pointer rounded-md border border-orange-500 bg-radial from-orange-500/0 to-orange-500/40 px-9 py-1.5 text-center text-sm text-stone-200 transition duration-200 ease-in-out hover:border-orange-600 hover:from-orange-500/10 hover:to-orange-500/50 hover:text-white active:scale-90 md:mx-0"
 >
   <slot />
-</button>
+</Tag>

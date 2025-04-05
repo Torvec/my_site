@@ -1,8 +1,13 @@
 ---
-import ActionButton from "@components/action-button.astro";
-import ProfilePic from "./profile-pic.astro";
-import ExtLink from "@components/ext-link.astro";
-import { about, interest } from "../_content/home-content";
+import ActionButton from "@/components/action-button.astro";
+
+import ExtLink from "@/components/ext-link.astro";
+
+import ProfilePic from "@/pages/home/_sections/profile-pic.astro";
+
+import { about, interest } from "@/pages/home/_content/home-content";
+
+const resume = "placeholder";
 ---
 
 <div class="hidden lg:block"><ProfilePic /></div>
@@ -51,4 +56,4 @@ import { about, interest } from "../_content/home-content";
   </p>
 </div>
 
-<ActionButton>My Resume</ActionButton>
+<ActionButton href={resume}>My Resume</ActionButton>
