@@ -3,7 +3,10 @@ import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
 const home = defineCollection({
-  loader: glob({ base: "./src/pages/home/_content", pattern: "**/*.{md,mdx}" }),
+  loader: glob({
+    base: "./src/pages/home/_content",
+    pattern: "**/*.{md,mdx}",
+  }),
   schema: z.object({
     section: z.string(),
   }),
@@ -12,7 +15,7 @@ const home = defineCollection({
 const projects = defineCollection({
   loader: glob({
     base: "./src/pages/projects/_content",
-    pattern: "**/*.{md,mdx}",
+    pattern: "**/index.{md,mdx}",
   }),
   schema: z.object({
     title: z.string(),
@@ -27,7 +30,10 @@ const projects = defineCollection({
 });
 
 const blog = defineCollection({
-  loader: glob({ base: "./src/pages/blog/_content", pattern: "**/*.{md,mdx}" }),
+  loader: glob({
+    base: "./src/pages/blog/_content",
+    pattern: "**/index.{md,mdx}",
+  }),
   schema: z.object({
     title: z.string(),
     slug: z.string(),
@@ -41,7 +47,7 @@ const blog = defineCollection({
 const arcade = defineCollection({
   loader: glob({
     base: "./src/pages/arcade/_content",
-    pattern: "**/*.{md,mdx}",
+    pattern: "**/index.{md,mdx}",
   }),
   schema: z.object({
     title: z.string(),
@@ -55,7 +61,10 @@ const arcade = defineCollection({
 });
 
 const now = defineCollection({
-  loader: glob({ base: "./src/pages/now/_content", pattern: "**/*.{md,mdx}" }),
+  loader: glob({
+    base: "./src/pages/now/_content",
+    pattern: "**/*.{md,mdx}",
+  }),
   schema: z.object({
     pubDate: z.date(),
     content: z.array(z.string()),

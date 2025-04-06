@@ -25,7 +25,7 @@ const projects = (await getCollection("projects")).sort(
           <h2 class="text-stone-100">{project.data.title}</h2>
           <p class="text-sm text-stone-300">{project.data.description}</p>
           <a
-            href={`/projects/${project.id}`}
+            href={`/projects/${project.id}/`}
             class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600"
           >
             More &gt;
