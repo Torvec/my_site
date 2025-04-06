@@ -1,26 +1,40 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
+import SiteHeader from "@/components/site-header.astro";
+import SectionHeader from "@/components/section-header.astro";
 
 const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <Layout title="Projects | Edward Vonschondorf" description="My web development projects.">
-  <h1 class="relative z-2 mb-6 text-center text-xl font-bold text-stone-100">Projects</h1>
-  <article class="relative z-2 container mx-auto flex max-w-5xl flex-wrap gap-6 px-1.5 font-medium lg:px-3 xl:px-0">
-    {
-      projects.map((project) => (
-        <section class="space-y-3 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs lg:w-[calc(50%-0.75rem)] lg:rounded-3xl">
-          <span class="block h-80 w-full rounded-xl bg-stone-500" />
-          <h2 class="text-stone-100">{project.data.title}</h2>
-          <p class="text-sm text-stone-300">{project.data.description}</p>
-          <a
-            href={`/projects/${project.id}/`}
-            class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
-            More &gt;
-          </a>
-        </section>
-      ))
-    }
+  <SiteHeader />
+  <article class="relative z-2 container mx-auto max-w-3xl space-y-3 px-1.5 font-medium">
+    <!-- INTRO -->
+    <section
+      class="space-y-3 rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
+      <SectionHeader>Projects</SectionHeader>
+      <p class="text-stone-300">
+        All of my web development related projects are listed here. Feel free to try them out and look at the source
+        code!
+      </p>
+    </section>
+    <!-- PROJECTS LIST -->
+    <section class="flex flex-wrap gap-3">
+      {
+        projects.map((project) => (
+          <div class="space-y-3 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-[2px] lg:w-[calc(50%-0.5rem)] lg:rounded-3xl">
+            <span class="block h-80 w-full rounded-xl bg-stone-500" />
+            <h2 class="text-stone-100">{project.data.title}</h2>
+            <p class="text-sm text-stone-300">{project.data.description}</p>
+            <a
+              href={`/projects/${project.id}/`}
+              class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
+              More &gt;
+            </a>
+          </div>
+        ))
+      }
+    </section>
   </article>
 </Layout>
