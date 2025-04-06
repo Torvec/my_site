@@ -1,7 +1,11 @@
 ---
+import { getCollection } from "astro:content";
+
 import Layout from "@/layouts/layout.astro";
 
-import { getCollection } from "astro:content";
+import SiteHeader from "@/components/site-header.astro";
+
+import SectionHeader from "@/components/section-header.astro";
 
 const games = (await getCollection("arcade")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -13,10 +17,20 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
 ---
 
 <Layout title="Arcade | Edward Vonschondorf" description="My game development projects that I've released.">
-  <article
-    class="relative z-2 container mx-auto grid max-w-5xl gap-6 px-1.5 font-medium sm:grid-cols-2 lg:grid-cols-3 lg:px-3 xl:px-0">
+  <SiteHeader />
+  <article class="relative z-2 container mx-auto max-w-3xl space-y-3 px-1.5 font-medium">
+    <!-- INTRO -->
     <section
-      class="space-y-3 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs sm:col-span-2 md:flex md:gap-6 md:space-y-0 lg:col-span-3 lg:rounded-3xl">
+      class="space-y-3 rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
+      <SectionHeader>Arcade</SectionHeader>
+      <p class="text-stone-300">
+        At the arcade you can play/download the latest games I have developed for fun. Feel free to check out the source
+        code and make your own games too!
+      </p>
+    </section>
+    <!-- FEATURED GAME -->
+    <section
+      class="space-y-3 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-[2px] md:flex md:gap-6 md:space-y-0 lg:rounded-3xl">
       <span class="block h-80 w-full rounded-xl bg-stone-500 md:w-1/2"></span>
       <div class="space-y-3 md:w-1/2">
         <h2 class="text-stone-100">{featured?.data.title}</h2>
@@ -28,19 +42,22 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
         </a>
       </div>
     </section>
-    {
-      filteredGames.map((game) => (
-        <section class="space-y-3 rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-xs lg:rounded-3xl">
-          <span class="block h-48 w-full bg-stone-500" />
-          <h3 class="text-stone-100">{game.data.title}</h3>
-          <p class="text-sm text-stone-300">{game.data.description}</p>
-          <a
-            href={`/arcade/${game.id}`}
-            class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
-            More &gt;
-          </a>
-        </section>
-      ))
-    }
+    <!-- ALL OTHER GAMES -->
+    <section class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:px-3 xl:px-0">
+      {
+        filteredGames.map((game) => (
+          <div class="space-y-3 rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
+            <span class="block h-48 w-full rounded-xl bg-stone-500" />
+            <h3 class="text-stone-100">{game.data.title}</h3>
+            <p class="text-sm text-stone-300">{game.data.description}</p>
+            <a
+              href={`/arcade/${game.id}`}
+              class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
+              More &gt;
+            </a>
+          </div>
+        ))
+      }
+    </section>
   </article>
 </Layout>
