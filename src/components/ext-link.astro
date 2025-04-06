@@ -1,11 +1,11 @@
 ---
-const { href, target, rel, title, ariaLabel } = Astro.props;
+const { href, title, ariaLabel } = Astro.props;
 ---
 
 <a
   href={href}
-  target={target}
-  rel={rel}
+  target="_blank"
+  rel="noopener noreferrer external"
   title={title}
   aria-label={ariaLabel}
   class="text-white hover:text-orange-600 hover:underline">
