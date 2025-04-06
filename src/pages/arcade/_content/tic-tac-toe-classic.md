@@ -5,5 +5,5 @@ images: []
 repo_url: "https://github.com/Torvec/tic-tac-toe-classic"
 play_url: "https://tic-tac-toe-classic.pages.dev/"
 how_to_play: "Text"
-pubDate: "14 Oct 2024"
+pubDate: 2024-10-14
 ---

@@ -16,7 +16,7 @@ const posts = (await getCollection("blog"))
     {
       posts.map((post) => (
         <li class="flex flex-col items-baseline gap-1.5 xl:flex-row xl:gap-3">
-          <span class="block min-w-20 text-xs text-stone-400">
+          <span class="block min-w-20 text-xs text-stone-400 uppercase">
             <FormattedDate date={post.data.pubDate} />
           </span>
           <a

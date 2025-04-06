@@ -6,5 +6,5 @@ images: []
 repo_url: "https://github.com/Torvec/next-level-loot"
 deploy_url: "https://next-level-loot.vercel.app/"
 tech_stack: ["Next.js", "React", "Tailwind CSS", "shadcn/ui", "TypeScript"]
-pubDate: "19 Dec 2024"
+pubDate: 2024-12-19
 ---

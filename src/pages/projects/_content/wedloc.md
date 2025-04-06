@@ -17,5 +17,5 @@ tech_stack:
     "GraphQL",
     "Apollo Server",
   ]
-pubDate: "19 Oct 2023"
+pubDate: 2023-10-19
 ---

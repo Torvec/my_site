@@ -5,5 +5,5 @@ images: []
 repo_url: "https://github.com/Torvec/dog-runner-game"
 play_url: "https://dog-runner-game.pages.dev/"
 how_to_play: "How To Play Text Here"
-pubDate: "29 Sep 2024"
+pubDate: 2024-09-29
 ---

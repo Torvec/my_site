@@ -22,7 +22,7 @@ const projects = defineCollection({
     repo_url: z.string(),
     deploy_url: z.string().optional(),
     tech_stack: z.array(z.string()),
-    pubDate: z.coerce.date(),
+    pubDate: z.date(),
   }),
 });
 
@@ -30,9 +30,10 @@ const blog = defineCollection({
   loader: glob({ base: "./src/pages/blog/_content", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
+    slug: z.string(),
     description: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
+    pubDate: z.date(),
+    updatedDate: z.date().optional(),
     heroImage: z.string().optional(),
   }),
 });
@@ -49,14 +50,14 @@ const arcade = defineCollection({
     images: z.array(z.string()),
     play_url: z.string(),
     repo_url: z.string(),
-    pubDate: z.coerce.date(),
+    pubDate: z.date(),
   }),
 });
 
 const now = defineCollection({
   loader: glob({ base: "./src/pages/now/_content", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
-    pubDate: z.coerce.date(),
+    pubDate: z.date(),
     content: z.array(z.string()),
   }),
 });

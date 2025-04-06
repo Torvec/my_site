@@ -1,7 +1,8 @@
 ---
 title: "Hello World"
+slug: "hello-world"
 description: "The first post on my blog"
-pubDate: "26 Dec 2024"
+pubDate: 2024-12-26
 # updatedDate: ""
 # heroImage: ""
 ---
