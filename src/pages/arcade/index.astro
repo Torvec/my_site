@@ -1,10 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-
 import Layout from "@/layouts/layout.astro";
-
 import SiteHeader from "@/components/site-header.astro";
-
 import SectionHeader from "@/components/section-header.astro";
 
 const games = (await getCollection("arcade")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());

@@ -1,14 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-
 import Layout from "@/layouts/layout.astro";
-
 import SiteHeader from "@/components/site-header.astro";
-
 import SectionHeader from "@/components/section-header.astro";
-
 import ExtLink from "@/components/ext-link.astro";
-
 import FormattedDate from "@/components/formatted-date.astro";
 
 const posts = (await getCollection("now")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());

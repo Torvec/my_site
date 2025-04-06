@@ -1,7 +1,6 @@
 ---
-import Layout from "@/layouts/layout.astro";
-
 import { getCollection } from "astro:content";
+import Layout from "@/layouts/layout.astro";
 
 const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
