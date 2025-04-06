@@ -11,8 +11,7 @@ const project = (await getCollection("projects")).sort(
 <div class="space-y-3">
   <SectionHeader href="/projects/">Projects</SectionHeader>
   <div class="flex gap-3">
-    <span class="hidden min-h-48 min-w-64 rounded-xl bg-white/50 lg:block"
-    ></span>
+    <span class="hidden min-h-48 min-w-64 rounded-xl bg-white/50 lg:block"></span>
     <div class="hidden space-y-3 lg:block">
       <h3 class="font-medium text-stone-100">{project.data.title}</h3>
       <p class="text-sm font-medium text-stone-300">
@@ -20,8 +19,7 @@ const project = (await getCollection("projects")).sort(
       </p>
       <a
         href={`/projects/${project.id}/`}
-        class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600"
-      >
+        class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
         Details
       </a>
     </div>

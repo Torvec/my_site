@@ -4,8 +4,8 @@
 
 .bg-grid-lines {
   background-image:
-    linear-gradient(var(--color-stone-800) 1px, transparent 1px),
-    linear-gradient(to right, var(--color-stone-800) 1px, transparent 1px);
+    linear-gradient(var(--color-stone-700) 1px, transparent 1px),
+    linear-gradient(to right, var(--color-stone-700) 1px, transparent 1px);
   @apply bg-stone-950 bg-size-[36px_36px];
 }
 

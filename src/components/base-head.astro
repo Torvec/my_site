@@ -35,12 +35,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<link
-  rel="alternate"
-  type="application/rss+xml"
-  title={title}
-  href={new URL("/blog/rss.xml", Astro.site)}
-/>
+<link rel="alternate" type="application/rss+xml" title={title} href={new URL("/blog/rss.xml", Astro.site)} />
 
 <script type="application/ld+json" is:inline>
   {

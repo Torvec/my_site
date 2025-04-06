@@ -21,8 +21,7 @@ const posts = (await getCollection("blog"))
           </span>
           <a
             href={`/blog/${post.id}/`}
-            class="transition-color block w-full text-sm font-medium text-pretty text-stone-200 duration-300 ease-in-out hover:text-orange-600"
-          >
+            class="transition-color block w-full text-sm font-medium text-pretty text-stone-200 duration-300 ease-in-out hover:text-orange-600">
             {post.data.title}
           </a>
         </li>

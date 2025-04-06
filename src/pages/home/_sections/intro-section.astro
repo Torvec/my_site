@@ -24,8 +24,7 @@ const { Content } = intro ? await render(intro) : { Content: () => null };
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          class="block size-9 place-content-center rounded-xl border border-stone-700 bg-stone-800/50 transition-transform duration-300 ease-in-out hover:scale-120"
-        >
+          class="block size-9 place-content-center rounded-xl border border-stone-700 bg-stone-800/50 transition-transform duration-300 ease-in-out hover:scale-120">
           {/* {link.icon} */}
           {/* <img src={link.icon} alt={link.name} class="size-6" /> */}
           <span class="mx-auto block size-5 rounded-full bg-white/50" />
@@ -33,7 +32,5 @@ const { Content } = intro ? await render(intro) : { Content: () => null };
       ))
     }
   </div>
-  <ActionButton href="mailto:me@edward-vonschondorf.dev">
-    Contact Me
-  </ActionButton>
+  <ActionButton href="mailto:me@edward-vonschondorf.dev"> Contact Me </ActionButton>
 </div>

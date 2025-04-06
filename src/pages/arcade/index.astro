@@ -3,9 +3,7 @@ import Layout from "@/layouts/layout.astro";
 
 import { getCollection } from "astro:content";
 
-const games = (await getCollection("arcade")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const games = (await getCollection("arcade")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const featuredGameName = "the-running-dog";
 
@@ -14,24 +12,18 @@ const featured = games.find((game) => game.id === featuredGameName);
 const filteredGames = games.filter((game) => game.id !== featuredGameName);
 ---
 
-<Layout
-  title="Arcade | Edward Vonschondorf"
-  description="My game development projects that I've released."
->
+<Layout title="Arcade | Edward Vonschondorf" description="My game development projects that I've released.">
   <article
-    class="relative z-2 container mx-auto grid max-w-5xl gap-6 px-1.5 font-medium sm:grid-cols-2 lg:grid-cols-3 lg:px-3 xl:px-0"
-  >
+    class="relative z-2 container mx-auto grid max-w-5xl gap-6 px-1.5 font-medium sm:grid-cols-2 lg:grid-cols-3 lg:px-3 xl:px-0">
     <section
-      class="space-y-3 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs sm:col-span-2 md:flex md:gap-6 md:space-y-0 lg:col-span-3 lg:rounded-3xl"
-    >
+      class="space-y-3 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs sm:col-span-2 md:flex md:gap-6 md:space-y-0 lg:col-span-3 lg:rounded-3xl">
       <span class="block h-80 w-full rounded-xl bg-stone-500 md:w-1/2"></span>
       <div class="space-y-3 md:w-1/2">
         <h2 class="text-stone-100">{featured?.data.title}</h2>
         <p class="text-sm text-stone-300">{featured?.data.description}</p>
         <a
           href={`/arcade/${featured?.id}/`}
-          class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600"
-        >
+          class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
           More &gt;
         </a>
       </div>
@@ -44,8 +36,7 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
           <p class="text-sm text-stone-300">{game.data.description}</p>
           <a
             href={`/arcade/${game.id}`}
-            class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600"
-          >
+            class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
             More &gt;
           </a>
         </section>

@@ -17,21 +17,12 @@ type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
 
-const {
-  title,
-  description,
-  development,
-  images,
-  deploy_url,
-  repo_url,
-  tech_stack,
-} = project.data;
+const { title, description, development, images, deploy_url, repo_url, tech_stack } = project.data;
 ---
 
 <Layout title={title + " | Edward Vonschondorf"} description={description}>
   <article
-    class="relative z-2 container mx-auto flex max-w-5xl gap-6 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs lg:rounded-3xl"
-  >
+    class="relative z-2 container mx-auto flex max-w-5xl gap-6 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs lg:rounded-3xl">
     <section class="w-1/2 space-y-3">
       <span class="block h-64 w-full bg-stone-500"></span>
       <span class="block h-64 w-full bg-stone-500"></span>
@@ -46,23 +37,17 @@ const {
         <ul class="flex flex-wrap gap-3">
           {
             tech_stack.map((tech) => (
-              <li class="rounded-xl border px-3 py-1 text-sm font-medium text-stone-500">
-                {tech}
-              </li>
+              <li class="rounded-xl border px-3 py-1 text-sm font-medium text-stone-500">{tech}</li>
             ))
           }
         </ul>
       </div>
       <div class="flex gap-3">
         <ActionButton>
-          <a href={deploy_url} target="_blank" rel="noopener noreferrer">
-            Deployment
-          </a>
+          <a href={deploy_url} target="_blank" rel="noopener noreferrer">Deployment</a>
         </ActionButton>
         <ActionButton>
-          <a href={repo_url} target="_blank" rel="noopener noreferrer">
-            Repository
-          </a>
+          <a href={repo_url} target="_blank" rel="noopener noreferrer">Repository</a>
         </ActionButton>
       </div>
     </section>

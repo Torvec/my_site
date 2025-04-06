@@ -5,9 +5,7 @@ import { getCollection } from "astro:content";
 
 import FormattedDate from "@/components/formatted-date.astro";
 
-const posts = (await getCollection("now")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = (await getCollection("now")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const now = posts[0];
 
@@ -15,30 +13,20 @@ const then = posts.slice(1);
 ---
 
 <Layout title="Now | Edward Vonschondorf" description="What I'm doing now.">
-  <article
-    class="relative z-2 container mx-auto max-w-3xl space-y-3 px-1.5 font-medium lg:px-3 xl:px-0"
-  >
+  <article class="relative z-2 container mx-auto max-w-3xl space-y-3 px-1.5 font-medium lg:px-3 xl:px-0">
     <h1 class="mb-6 text-center text-xl font-bold text-stone-100">Now</h1>
-    <section
-      class="rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs lg:rounded-3xl"
-    >
+    <section class="rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-xs lg:rounded-3xl">
       <div class="flex gap-6">
         <span class="block text-stone-500">
           <FormattedDate date={now.data.pubDate} />
         </span>
         <p class="font-medium text-stone-300">
-          {
-            now.data.content.map((content) => (
-              <span class="block">{content}</span>
-            ))
-          }
+          {now.data.content.map((content) => <span class="block">{content}</span>)}
         </p>
       </div>
     </section>
     <h2 class="mb-6 text-center text-lg font-medium text-stone-100">Then</h2>
-    <section
-      class="rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-xs lg:rounded-3xl"
-    >
+    <section class="rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-xs lg:rounded-3xl">
       <div class="space-y-3">
         {
           then.map((post) => (

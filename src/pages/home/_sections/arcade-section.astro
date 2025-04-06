@@ -14,9 +14,8 @@ const featuredGame = games.find((game) => game.id === featuredGameName);
   <SectionHeader href="/arcade/">Arcade</SectionHeader>
   <a href={`/arcade/${featuredGame?.id}/`} class="group space-y-3">
     <span class="hidden lg:block lg:h-36 lg:rounded-xl lg:bg-white/50"></span>
-    <span
-      class="hidden text-center font-medium text-stone-300 group-hover:text-orange-600 lg:block"
-      >{featuredGame?.data.title}</span
-    >
+    <span class="hidden text-center font-medium text-stone-300 group-hover:text-orange-600 lg:block">
+      {featuredGame?.data.title}
+    </span>
   </a>
 </div>
