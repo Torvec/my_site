@@ -1,11 +1,13 @@
 ---
-import Layout from "@/layouts/layout.astro";
-
-import FormattedDate from "@/components/formatted-date.astro";
-
 import { type CollectionEntry, getCollection } from "astro:content";
 
 import { render } from "astro:content";
+
+import Layout from "@/layouts/layout.astro";
+
+import SiteHeader from "@/components/site-header.astro";
+
+import FormattedDate from "@/components/formatted-date.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -25,10 +27,12 @@ const { Content } = await render(post);
 ---
 
 <Layout title={title + " | Edward Vonschondorf"} description={description}>
-  <article class="relative z-2 container mx-auto max-w-3xl space-y-3 px-1.5 font-medium lg:px-3 xl:px-0">
+  <SiteHeader />
+  <article
+    class="relative z-2 container mx-auto max-w-3xl space-y-6 rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
     <div class="mb-12 space-y-1">
-      <h1 class="font-medium text-stone-100">{title}</h1>
-      <div class="flex justify-between text-xs text-stone-500 uppercase">
+      <h1 class="font-medium text-stone-100 lg:text-lg xl:text-xl">{title}</h1>
+      <div class="flex justify-between text-xs text-stone-500 uppercase lg:text-sm xl:text-base">
         <span>
           <FormattedDate date={pubDate} />
         </span>
@@ -41,8 +45,12 @@ const { Content } = await render(post);
         }
       </div>
     </div>
-    <div class="prose prose-sm prose-stone md:prose-base">
+    <div class="prose prose-sm prose-stone md:prose-base lg:prose-lg xl:prose-xl">
       <Content />
     </div>
   </article>
+  <section class="relative z-2 container mx-auto flex max-w-3xl items-center justify-between px-3 py-12">
+    <a href="/blog/" class="block text-stone-300">&lt; Back</a>
+    <a href="/" class="block text-stone-300">Issues?</a>
+  </section>
 </Layout>

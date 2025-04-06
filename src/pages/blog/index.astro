@@ -1,7 +1,11 @@
 ---
+import { getCollection } from "astro:content";
+
 import Layout from "@/layouts/layout.astro";
 
-import { getCollection } from "astro:content";
+import SiteHeader from "@/components/site-header.astro";
+
+import SectionHeader from "@/components/section-header.astro";
 
 import FormattedDate from "@/components/formatted-date.astro";
 
@@ -9,8 +13,17 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
 ---
 
 <Layout title="Blog | Edward Vonschondorf" description="A place to share my work and the journey it took to get there.">
-  <article class="relative z-2 container mx-auto max-w-3xl space-y-3 px-1.5 font-medium lg:px-3 xl:px-0">
-    <section class="rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-xs lg:rounded-3xl">
+  <SiteHeader />
+  <article
+    class="relative z-2 container mx-auto max-w-3xl space-y-6 rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
+    <SectionHeader>Blog</SectionHeader>
+    <section>
+      <p class="text-stone-300">
+        Welcome to the blog section of my site where I share my insights, experiences, and lessons from my ongoing
+        journey as a developer.
+      </p>
+    </section>
+    <section>
       <ul class="space-y-3">
         {
           posts.map((post) => (
@@ -18,10 +31,13 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
               <span class="block min-w-20 flex-shrink-0 text-xs text-stone-500 uppercase">
                 <FormattedDate date={post.data.pubDate} />
               </span>
-              <a
-                href={`/blog/${post.id}/`}
-                class="transition-color block flex-grow text-stone-300 duration-300 ease-in-out hover:text-orange-600">
-                <span class="font-medium text-pretty">{post.data.title}</span>
+              <a href={`/blog/${post.id}/`} class="group flex w-full justify-between">
+                <span class="transition-color font-medium text-pretty text-stone-300 duration-300 ease-in-out group-hover:text-orange-600">
+                  {post.data.title}
+                </span>
+                <span class="transition-color text-xs text-stone-500 duration-300 ease-in-out group-hover:text-orange-600">
+                  Read &gt;
+                </span>
               </a>
             </li>
           ))

@@ -9,8 +9,12 @@ const { href, icon } = Astro.props;
       <slot />
     </span>
   </div>
-  <a href={href} class="text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
-    <span class="hidden text-xs lg:block">More &gt;</span>
-    <span class="block text-xl font-bold lg:hidden">&gt;</span>
-  </a>
+  {
+    href && (
+      <a href={href} class="text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
+        <span class="hidden text-xs lg:block">More &gt;</span>
+        <span class="block text-xl font-bold lg:hidden">&gt;</span>
+      </a>
+    )
+  }
 </h2>
