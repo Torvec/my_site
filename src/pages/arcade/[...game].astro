@@ -1,7 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
-import SiteHeader from "@/components/site-header.astro";
 import ActionButton from "@/components/action-button.astro";
 
 export async function getStaticPaths() {
@@ -20,7 +19,6 @@ const { title, description, how_to_play, images, play_url, repo_url } = game.dat
 ---
 
 <Layout title={title + " | Edward Vonschondorf"} description={description}>
-  <SiteHeader />
   <article
     class="relative z-2 container mx-auto max-w-3xl space-y-6 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
     <h1 class="text-xl font-bold text-stone-100">{title}</h1>

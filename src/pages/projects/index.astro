@@ -1,14 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
-import SiteHeader from "@/components/site-header.astro";
 import SectionHeader from "@/components/section-header.astro";
 
 const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <Layout title="Projects | Edward Vonschondorf" description="My web development projects.">
-  <SiteHeader />
   <article class="relative z-2 container mx-auto max-w-3xl space-y-3 px-1.5 font-medium">
     <!-- INTRO -->
     <section

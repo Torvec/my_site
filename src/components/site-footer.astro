@@ -1,0 +1,29 @@
+---
+import { socialLinks } from "@/pages/home/_content/home-content";
+
+import ExtLink from "@/components/ext-link.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="relative z-2 container mx-auto flex max-w-7xl justify-between px-1.5 py-12 font-medium lg:px-3">
+  <ul class="flex gap-6">
+    {
+      socialLinks.map((link) => (
+        <li>
+          <ExtLink href={link.url} title={link.name} ariaLabel={link.name}>
+            {link.name}
+          </ExtLink>
+        </li>
+      ))
+    }
+  </ul>
+  <span class="block text-stone-500">
+    &copy; {year} Made with <ExtLink
+      href={"https://astro.build/"}
+      title={"Visit Astro's website"}
+      ariaLabel={"Visit Astro's website"}>
+      Astro
+    </ExtLink>
+  </span>
+</footer>

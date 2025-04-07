@@ -1,7 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
-import SiteHeader from "@/components/site-header.astro";
 import ActionButton from "@/components/action-button.astro";
 
 export async function getStaticPaths() {
@@ -20,7 +19,6 @@ const { title, description, development, images, deploy_url, repo_url, tech_stac
 ---
 
 <Layout title={title + " | Edward Vonschondorf"} description={description}>
-  <SiteHeader />
   <article
     class="relative z-2 container mx-auto flex max-w-3xl gap-6 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
     <section class="w-1/2 space-y-3">

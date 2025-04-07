@@ -1,5 +1,7 @@
 ---
 import BaseHead from "@/components/base-head.astro";
+import SiteHeader from "@/components/site-header.astro";
+import SiteFooter from "@/components/site-footer.astro";
 
 const { title, description } = Astro.props;
 ---
@@ -9,10 +11,14 @@ const { title, description } = Astro.props;
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body class="relative min-h-screen place-content-center bg-stone-950 py-1.5 antialiased lg:py-0">
+  <body class="relative flex min-h-screen flex-col bg-stone-950 py-1.5 antialiased lg:py-0">
     <div class="bg-grid-lines fixed inset-0 z-0 opacity-60"></div>
     <div class="fixed inset-0 z-1 bg-gradient-to-b from-stone-950 via-stone-900/0 to-stone-950 md:from-10% md:to-90%">
     </div>
-    <slot />
+    <SiteHeader />
+    <main class="flex-grow place-content-center">
+      <slot />
+    </main>
+    <SiteFooter />
   </body>
 </html>
