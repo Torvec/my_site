@@ -6,8 +6,9 @@ import ExtLink from "@/components/ext-link.astro";
 const year = new Date().getFullYear();
 ---
 
-<footer class="relative z-2 container mx-auto flex max-w-7xl justify-between px-1.5 py-12 font-medium lg:px-3">
-  <ul class="flex gap-6">
+<footer
+  class="relative z-2 container mx-auto flex max-w-7xl flex-col justify-between px-1.5 pt-12 pb-3 text-center font-medium md:flex-row md:text-left lg:px-3">
+  <ul class="flex flex-wrap justify-between md:gap-6">
     {
       socialLinks.map((link) => (
         <li>

@@ -1,8 +1,6 @@
 ---
 import { getEntry, render } from "astro:content";
-
 import ActionButton from "@/components/action-button.astro";
-
 import ProfilePic from "@/components/profile-pic.astro";
 
 const about = await getEntry("home", "about");
@@ -12,12 +10,15 @@ const { Content } = about ? await render(about) : { Content: () => null };
 const resume = "placeholder";
 ---
 
-<div class="hidden lg:block">
-  <ProfilePic />
-</div>
+<div class="flex h-full flex-col justify-between">
+  <div class="space-y-3">
+    <div class="hidden lg:block">
+      <ProfilePic />
+    </div>
+    <div class="about">
+      <Content />
+    </div>
+  </div>
 
-<div class="about">
-  <Content />
+  <ActionButton href={resume}>My Resume</ActionButton>
 </div>
-
-<ActionButton href={resume}>My Resume</ActionButton>

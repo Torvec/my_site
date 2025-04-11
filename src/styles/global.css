@@ -9,9 +9,9 @@
   @apply bg-stone-950 bg-size-[36px_36px];
 }
 
-html {
+/* html {
   scrollbar-gutter: stable;
-}
+} */
 
 /* STYLES FOR RENDERED BLOG POSTS */
 
