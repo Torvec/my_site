@@ -13,7 +13,7 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
 ---
 
 <Layout title="Arcade | Edward Vonschondorf" description="My game development projects that I've released.">
-  <article class="relative z-2 container mx-auto max-w-3xl space-y-3 px-1.5 font-medium">
+  <article class="relative z-2 container mx-auto max-w-3xl space-y-1.5 px-1.5 font-medium lg:space-y-3">
     <!-- INTRO -->
     <section
       class="space-y-3 rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
@@ -38,7 +38,7 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
       </div>
     </section>
     <!-- ALL OTHER GAMES -->
-    <section class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:px-3 xl:px-0">
+    <section class="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3 lg:px-0">
       {
         filteredGames.map((game) => (
           <div class="space-y-3 rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">

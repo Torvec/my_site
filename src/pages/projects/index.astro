@@ -7,7 +7,7 @@ const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate
 ---
 
 <Layout title="Projects | Edward Vonschondorf" description="My web development projects.">
-  <article class="relative z-2 container mx-auto max-w-3xl space-y-3 px-1.5 font-medium">
+  <article class="relative z-2 container mx-auto max-w-3xl space-y-1.5 px-1.5 font-medium lg:space-y-3">
     <!-- INTRO -->
     <section
       class="space-y-3 rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
@@ -18,7 +18,8 @@ const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate
       </p>
     </section>
     <!-- PROJECTS LIST -->
-    <section class="flex flex-wrap gap-3">
+    <section class="flex flex-wrap gap-1.5 lg:gap-3">
+      {projects.length === 0 ? <p class="text-stone-300">No projects found.</p> : null}
       {
         projects.map((project) => (
           <div class="space-y-3 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-[2px] lg:w-[calc(50%-0.5rem)] lg:rounded-3xl">
