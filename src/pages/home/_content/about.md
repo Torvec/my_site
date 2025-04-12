@@ -11,3 +11,5 @@ I specialize in JavaScript and TypeScript for both front-end and back-end develo
 ## Personal Interests
 
 Besides programming, I also enjoy running, hiking, traveling, pc gaming, pc building, cooking, and watching movies and anime.
+
+## Socials

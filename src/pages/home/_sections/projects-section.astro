@@ -9,13 +9,20 @@ const project = (await getCollection("projects")).sort(
 
 <div class="space-y-3">
   <SectionHeader href="/projects/">Projects</SectionHeader>
-  <div class="flex gap-3">
-    <span class="hidden min-h-48 min-w-64 rounded-xl bg-white/50 lg:block"></span>
-    <div class="hidden space-y-3 lg:block">
-      <a href={`/projects/${project.id}/`} class="block font-medium text-stone-100">{project.data.title}</a>
-      <p class="text-sm text-stone-300">
-        {project.data.description}
-      </p>
-    </div>
+  <div>
+    <a href={`/projects/${project.id}/`} class="group flex gap-3">
+      <span
+        class="hidden min-h-48 min-w-64 rounded-xl bg-white/50 transition-opacity duration-150 ease-in-out group-hover:opacity-80 lg:block"
+      ></span>
+      <div class="hidden space-y-3 lg:block">
+        <span
+          class="block font-medium text-stone-100 transition-colors duration-150 ease-in-out group-hover:text-orange-600"
+          >{project.data.title}</span
+        >
+        <p class="text-sm text-stone-300 transition-colors duration-150 ease-in-out group-hover:text-stone-300/80">
+          {project.data.description}
+        </p>
+      </div>
+    </a>
   </div>
 </div>
