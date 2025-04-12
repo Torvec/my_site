@@ -42,12 +42,8 @@ const { title, description, development, images, deploy_url, repo_url, tech_stac
           </ul>
         </div>
         <div class="flex flex-col gap-3 md:flex-row">
-          <ActionButton>
-            <a href={deploy_url} target="_blank" rel="noopener noreferrer">Deployment</a>
-          </ActionButton>
-          <ActionButton>
-            <a href={repo_url} target="_blank" rel="noopener noreferrer">Repository</a>
-          </ActionButton>
+          <ActionButton href={deploy_url} external> Deployment </ActionButton>
+          <ActionButton href={repo_url} external> Repository </ActionButton>
         </div>
       </section>
     </div>
