@@ -1,36 +1,40 @@
 ---
 import { getEntry, render } from "astro:content";
-
 import ProfilePic from "@/components/profile-pic.astro";
-
+import ActionButton from "@/components/action-button.astro";
 import { socialLinks } from "@/pages/home/_content/home-content";
 
-import ActionButton from "@/components/action-button.astro";
+const emailLink = socialLinks[0].url;
 
 const intro = await getEntry("home", "intro");
 
 const { Content } = intro ? await render(intro) : { Content: () => null };
 ---
 
-<div class="block lg:hidden"><ProfilePic /></div>
+<div class="block lg:hidden">
+  <ProfilePic />
+</div>
 <div class="intro">
   <Content />
 </div>
 <div class="space-y-6 md:flex md:items-center md:justify-between md:space-y-0">
   <div class="flex justify-between md:gap-6">
     {
-      socialLinks.map((link) => (
-        <a
-          href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block size-9 place-content-center rounded-xl border border-stone-700 bg-stone-800/50 transition-transform duration-300 ease-in-out hover:scale-120">
-          {/* {link.icon} */}
-          {/* <img src={link.icon} alt={link.name} class="size-6" /> */}
-          <span class="mx-auto block size-5 rounded-full bg-white/50" />
-        </a>
-      ))
+      socialLinks
+        .map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block size-9 place-content-center rounded-xl border border-stone-700 bg-stone-800/50 transition-transform duration-300 ease-in-out hover:scale-120">
+            {/* {link.icon} */}
+            {/* <img src={link.icon} alt={link.name} class="size-6" /> */}
+            <span class="mx-auto block size-5 rounded-full bg-white/50" />
+          </a>
+        ))
+        // exclude the email link
+        .slice(1)
     }
   </div>
-  <ActionButton href="mailto:me@edward-vonschondorf.dev"> Contact Me </ActionButton>
+  <ActionButton href={emailLink}>Contact Me</ActionButton>
 </div>

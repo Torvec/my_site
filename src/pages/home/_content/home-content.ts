@@ -6,6 +6,11 @@ import YouTube from "@/assets/youtube.svg";
 
 export const socialLinks = [
   {
+    name: "Email",
+    url: "mailto:me@edward-vonschondorf.dev",
+    icon: null,
+  },
+  {
     name: "GitHub",
     url: "https://github.com/Torvec",
     icon: GitHub,
