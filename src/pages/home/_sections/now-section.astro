@@ -10,10 +10,13 @@ const nowPost = now.data.content;
 
 <div class="space-y-3">
   <SectionHeader href="/now/">Now</SectionHeader>
-  <div class="hidden space-y-1.5 text-sm text-pretty text-stone-300 lg:block">
+  <div
+    class="hidden text-pretty text-stone-300 lg:flex lg:flex-col lg:gap-1.5 xl:flex-row xl:items-baseline xl:justify-between">
     <span class="block text-xs text-stone-400 uppercase">
       <FormattedDate date={now.data.pubDate} />
     </span>
-    {nowPost.map((post) => <span class="block">{post}</span>)}
+    <div class="space-y-1.5 text-sm">
+      {nowPost.map((post) => <span class="block">{post}</span>)}
+    </div>
   </div>
 </div>

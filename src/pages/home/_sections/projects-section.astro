@@ -12,15 +12,10 @@ const project = (await getCollection("projects")).sort(
   <div class="flex gap-3">
     <span class="hidden min-h-48 min-w-64 rounded-xl bg-white/50 lg:block"></span>
     <div class="hidden space-y-3 lg:block">
-      <h3 class="font-medium text-stone-100">{project.data.title}</h3>
-      <p class="text-sm font-medium text-stone-300">
+      <a href={`/projects/${project.id}/`} class="block font-medium text-stone-100">{project.data.title}</a>
+      <p class="text-sm text-stone-300">
         {project.data.description}
       </p>
-      <a
-        href={`/projects/${project.id}/`}
-        class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
-        Details
-      </a>
     </div>
   </div>
 </div>

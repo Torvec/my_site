@@ -79,5 +79,5 @@ html {
 }
 
 .about p {
-  @apply mb-3 text-sm font-medium text-stone-300;
+  @apply mb-3 text-sm text-stone-300;
 }

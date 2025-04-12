@@ -2,7 +2,7 @@
 section: "About"
 ---
 
-## About
+## About Me
 
 I'm currently located in the San Francisco Bay Area of California.
 
