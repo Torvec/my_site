@@ -1,46 +1,63 @@
+import Astro from "@/assets/astro.svg";
+import Figma from "@/assets/figma.svg";
+import Golang from "@/assets/golang.svg";
+import Javascript from "@/assets/js.svg";
+import Mongodb from "@/assets/mongodb.svg";
+import Mysql from "@/assets/mysql.svg";
+import Next from "@/assets/next.svg";
+import Node from "@/assets/node.svg";
+import Python from "@/assets/python.svg";
+import React from "@/assets/react.svg";
+import Tailwind from "@/assets/tailwind.svg";
+import Typescript from "@/assets/ts.svg";
+
 export const techList = [
   {
     name: "JavaScript",
-    icon: "",
+    icon: Javascript,
   },
   {
     name: "TypeScript",
-    icon: "",
+    icon: Typescript,
   },
   {
     name: "Python",
-    icon: "",
+    icon: Python,
+  },
+  {
+    name: "Golang",
+    icon: Golang,
   },
   {
     name: "React",
-    icon: "",
+    icon: React,
   },
   {
     name: "MySQL",
-    icon: "",
+    icon: Mysql,
   },
   {
     name: "MongoDB",
-    icon: "",
+    icon: Mongodb,
   },
   {
     name: "Figma",
-    icon: "",
+    icon: Figma,
   },
   {
     name: "Next",
-    icon: "",
+    icon: Next,
   },
   {
     name: "Astro",
-    icon: "",
+    icon: Astro,
   },
   {
     name: "Node",
-    icon: "",
+    icon: Node,
   },
   {
     name: "Tailwind",
-    icon: "",
+    icon: Tailwind,
   },
 ];

@@ -14,12 +14,7 @@ const currentPage = Astro.url.pathname;
 ---
 
 <header
-  class="relative z-10 container mx-auto mt-6 mb-12 flex max-w-3xl items-center gap-3 rounded-xl p-3 md:border md:border-stone-900 md:bg-stone-900/30">
-  <a
-    href="/"
-    class="flex size-8 -rotate-45 items-center justify-center rounded-full bg-stone-900 text-center text-xl font-bold text-orange-600 shadow-md shadow-stone-50/20">
-    E
-  </a>
+  class="relative z-10 container mx-auto mt-6 mb-12 flex max-w-2xl items-center gap-3 rounded-xl p-3 md:border md:border-stone-800 md:bg-stone-800/40">
   <HorizontalMenu siteLinks={siteLinks} currentPage={currentPage} />
   <DropdownMenu siteLinks={siteLinks} />
 </header>
