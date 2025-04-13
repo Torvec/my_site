@@ -1,4 +1,6 @@
 ---
+import DropdownMenu from "./dropdown-menu.astro";
+
 const siteLinks = [
   { name: "Home", href: "/" },
   { name: "Projects", href: "/projects" },
@@ -6,64 +8,36 @@ const siteLinks = [
   { name: "Blog", href: "/blog" },
   { name: "Now", href: "/now" },
 ];
+
+const currentPage = Astro.url.pathname;
 ---
 
-<header class="relative z-10 container mx-auto flex max-w-7xl items-center justify-between px-1.5 pt-3 pb-12 lg:px-3">
+<header
+  class="relative z-10 container mx-auto mt-6 mb-12 flex max-w-3xl items-center gap-3 rounded-xl p-3 md:border md:border-stone-900 md:bg-stone-900/30">
   <a
     href="/"
     class="flex size-8 -rotate-45 items-center justify-center rounded-full bg-stone-900 text-center text-xl font-bold text-orange-600 shadow-md shadow-stone-50/20">
     E
   </a>
-  <nav class="relative">
-    <button
-      id="menu-toggle"
-      class="group flex cursor-pointer flex-col items-end justify-center gap-1 rounded-md border border-stone-700 px-1 py-1.5 shadow-sm shadow-stone-50/20 transition-colors duration-150 ease-in-out hover:border-stone-500 hover:bg-stone-900 hover:shadow-md hover:shadow-stone-50/40"
-      aria-label="Toggle Menu">
-      <span
-        class="block h-0.5 w-6 rounded-full bg-stone-700 transition-all duration-150 ease-in-out group-hover:w-4 group-hover:bg-stone-500"
-      ></span>
-      <span
-        class="block h-0.5 w-5 rounded-full bg-stone-700 transition-all duration-150 ease-in-out group-hover:w-5 group-hover:bg-stone-500"
-      ></span>
-      <span
-        class="block h-0.5 w-4 rounded-full bg-stone-700 transition-all duration-150 ease-in-out group-hover:w-6 group-hover:bg-stone-500"
-      ></span>
-    </button>
-    <div
-      id="menu"
-      class="background-blue-xl absolute top-10 right-0 hidden rounded-xl border border-stone-700 bg-stone-900 p-3 shadow-md shadow-stone-50/20">
-      <ul class="flex flex-col font-medium uppercase">
-        {
-          siteLinks.map((link) => (
-            <li>
-              <a
-                href={link.href}
-                class="group block min-w-32 rounded py-1.5 pl-3 text-sm text-stone-300 transition-colors duration-150 ease-in-out hover:bg-stone-800 hover:text-orange-600">
-                <span class="text-stone-700 transition-colors duration-150 group-hover:text-white">/</span> {link.name}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </nav>
-  <script is:inline>
-    const menuToggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-
-    // Toggle menu visibility
-    menuToggle.addEventListener("click", (event) => {
-      event.stopPropagation();
-      menu.classList.toggle("hidden");
-      menu.classList.toggle("block");
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener("click", (event) => {
-      if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
-        menu.classList.add("hidden");
-        menu.classList.remove("block");
+  <nav class="w-full">
+    <ul class="hidden font-medium uppercase md:flex">
+      {
+        siteLinks.map((link) => (
+          <li class="flex-grow">
+            <a
+              href={link.href}
+              class={`group block rounded-md py-1.5 pl-3 text-sm transition-colors duration-150 ease-in-out hover:bg-stone-800 hover:text-orange-600 ${currentPage === link.href ? "text-orange-600" : "text-stone-300"}`}>
+              <span
+                class={`transition-colors duration-150 group-hover:text-white ${currentPage === link.href ? "text-white" : "text-stone-700"}`}>
+                /
+              </span>
+              {link.name}
+            </a>
+          </li>
+        ))
       }
-    });
-  </script>
+    </ul>
+  </nav>
+  <!-- ONLY VISIBLE AT SMALLER BREAK POINTS -->
+  <DropdownMenu siteLinks={siteLinks} />
 </header>
