@@ -1,4 +1,5 @@
 ---
+import HorizontalMenu from "./horizontal-menu.astro";
 import DropdownMenu from "./dropdown-menu.astro";
 
 const siteLinks = [
@@ -19,25 +20,6 @@ const currentPage = Astro.url.pathname;
     class="flex size-8 -rotate-45 items-center justify-center rounded-full bg-stone-900 text-center text-xl font-bold text-orange-600 shadow-md shadow-stone-50/20">
     E
   </a>
-  <nav class="w-full">
-    <ul class="hidden font-medium uppercase md:flex">
-      {
-        siteLinks.map((link) => (
-          <li class="flex-grow">
-            <a
-              href={link.href}
-              class={`group block rounded-md py-1.5 pl-3 text-sm transition-colors duration-150 ease-in-out hover:bg-stone-800 hover:text-orange-600 ${currentPage === link.href ? "text-orange-600" : "text-stone-300"}`}>
-              <span
-                class={`transition-colors duration-150 group-hover:text-white ${currentPage === link.href ? "text-white" : "text-stone-700"}`}>
-                /
-              </span>
-              {link.name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
-  <!-- ONLY VISIBLE AT SMALLER BREAK POINTS -->
+  <HorizontalMenu siteLinks={siteLinks} currentPage={currentPage} />
   <DropdownMenu siteLinks={siteLinks} />
 </header>
