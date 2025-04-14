@@ -26,13 +26,14 @@ const { Content } = about ? await render(about) : { Content: () => null };
                 <Image
                   src={link.icon}
                   alt={link.name}
+                  title={link.name}
                   class="size-6 transition-transform duration-300 ease-in-out hover:scale-125"
                 />
               )}
             </a>
           ))
-          // exclude the email link
-          .slice(1)
+          // exclude the email and rss link
+          .slice(1, -1)
       }
     </div>
   </div>
