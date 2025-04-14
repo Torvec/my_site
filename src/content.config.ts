@@ -17,16 +17,18 @@ const projects = defineCollection({
     base: "./src/pages/projects/_content",
     pattern: "**/index.{md,mdx}",
   }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    development: z.string(),
-    images: z.array(z.string()).optional(),
-    repo_url: z.string(),
-    deploy_url: z.string().optional(),
-    tech_stack: z.array(z.string()),
-    pubDate: z.date(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      development: z.string(),
+      thumbnail: image(),
+      images: z.array(image()),
+      repo_url: z.string(),
+      deploy_url: z.string().optional(),
+      tech_stack: z.array(z.string()),
+      pubDate: z.date(),
+    }),
 });
 
 const blog = defineCollection({
@@ -49,15 +51,17 @@ const arcade = defineCollection({
     base: "./src/pages/arcade/_content",
     pattern: "**/index.{md,mdx}",
   }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    how_to_play: z.string(),
-    images: z.array(z.string()),
-    play_url: z.string(),
-    repo_url: z.string(),
-    pubDate: z.date(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      how_to_play: z.string(),
+      thumbnail: image(),
+      images: z.array(image()),
+      play_url: z.string(),
+      repo_url: z.string(),
+      pubDate: z.date(),
+    }),
 });
 
 const now = defineCollection({

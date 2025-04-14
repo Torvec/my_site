@@ -1,6 +1,7 @@
 ---
 title: "Asteroids"
 description: "The classic Asteroids game made in Python using PyGame."
+thumbnail: ""
 images: []
 repo_url: "https://github.com/Torvec/asteroids"
 play_url: "https://github.com/Torvec/asteroids"
