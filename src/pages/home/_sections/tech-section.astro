@@ -4,17 +4,20 @@ import SectionHeader from "@/components/section-header.astro";
 import { techList } from "@/pages/home/_content/home-content";
 ---
 
-<div class="space-y-6">
+<div class="space-y-3">
   <SectionHeader>Tech & Tools</SectionHeader>
-  <div class="flex flex-wrap justify-between gap-3">
+  <div class="flex flex-wrap justify-between gap-1.5">
     {
       techList.map((tech) => (
-        <Image
-          src={tech.icon}
-          alt={tech.name}
-          title={tech.name}
-          class="h-6 w-auto transition-transform duration-300 ease-in-out hover:scale-125"
-        />
+        <span
+          class="group flex size-9 items-center justify-center rounded-xl border border-stone-600 p-1.5 transition-colors duration-300 ease-in-out hover:border-stone-500 hover:bg-stone-800"
+          title={tech.name}>
+          <Image
+            src={tech.icon}
+            alt={tech.name}
+            class="transition-transform duration-300 ease-in-out group-hover:scale-120"
+          />
+        </span>
       ))
     }
   </div>
