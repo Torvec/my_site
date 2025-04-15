@@ -4,22 +4,24 @@ import ProfilePic from "@/components/profile-pic.astro";
 import ActionButton from "@/components/action-button.astro";
 import { socialLinks } from "@/global-consts";
 
-const intro = await getEntry("home", "intro");
+const intro = await getEntry("home", "intro")!;
 
-const { Content } = intro ? await render(intro) : { Content: () => null };
+const { Content } = await render(intro);
 
 const emailLink = socialLinks[0].url;
 
 const resume = "placeholder";
 ---
 
-<div class="block lg:hidden">
-  <ProfilePic />
-</div>
-<div class="intro">
-  <Content />
-</div>
-<div class="space-y-3 sm:flex sm:gap-3 sm:space-y-0 md:justify-center md:gap-6 lg:justify-start">
-  <ActionButton href={emailLink} title={emailLink}>Contact Me</ActionButton>
-  <ActionButton href={resume}>My Resume</ActionButton>
+<div class="flex flex-col justify-between gap-6">
+  <div class="block lg:hidden">
+    <ProfilePic />
+  </div>
+  <div class="intro">
+    <Content />
+  </div>
+  <div class="space-y-3 sm:flex sm:gap-3 sm:space-y-0 md:justify-center md:gap-6 lg:justify-start">
+    <ActionButton href={emailLink} title={emailLink}>Contact Me</ActionButton>
+    <ActionButton href={resume}>My Resume</ActionButton>
+  </div>
 </div>

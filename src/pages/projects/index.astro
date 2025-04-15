@@ -1,39 +1,55 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
-import SectionHeader from "@/components/section-header.astro";
+import PageHeader from "@/components/page-header.astro";
+import GridCell from "@/components/grid-cell.astro";
 
 const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const evenProjects = projects.filter((_, index) => index % 2 === 0);
+const oddProjects = projects.filter((_, index) => index % 2 !== 0);
 ---
 
 <Layout title="Projects | Edward Vonschondorf" description="My web development projects.">
-  <article class="relative z-2 container mx-auto max-w-3xl space-y-1.5 px-1.5 font-medium lg:space-y-3">
-    <!-- INTRO -->
-    <section
-      class="space-y-3 rounded-xl border border-stone-700 bg-stone-900/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
-      <SectionHeader>Projects</SectionHeader>
-      <p class="text-stone-300">
-        All of my web development related projects are listed here. Feel free to try them out and look at the source
-        code!
-      </p>
-    </section>
+  <article class="relative z-2 container mx-auto max-w-3xl space-y-1.5 px-1.5 lg:space-y-3">
+    <PageHeader header="Projects">
+      All of my web development related projects are listed here. Feel free to try them out and look at the source code!
+    </PageHeader>
     <!-- PROJECTS LIST -->
-    <section class="flex flex-wrap gap-1.5 lg:gap-3">
-      {projects.length === 0 ? <p class="text-stone-300">No projects found.</p> : null}
-      {
-        projects.map((project) => (
-          <div class="space-y-3 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-[2px] lg:w-[calc(50%-0.5rem)] lg:rounded-3xl">
-            <span class="block h-80 w-full rounded-xl bg-stone-500" />
-            <h2 class="text-stone-100">{project.data.title}</h2>
-            <p class="text-sm text-stone-300">{project.data.description}</p>
-            <a
-              href={`/projects/${project.id}/`}
-              class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
-              More &gt;
-            </a>
-          </div>
-        ))
-      }
+    <section class="flex flex-col gap-1.5 sm:flex-row lg:gap-3">
+      <!-- Even Indexed Projects -->
+      <div class="space-y-1.5 md:w-1/2 lg:space-y-3">
+        {
+          evenProjects.map((project) => (
+            <GridCell twc="space-y-3">
+              <span class="block h-80 w-full rounded-xl bg-stone-500" />
+              <h2 class="font-medium text-stone-100">{project.data.title}</h2>
+              <p class="text-sm text-stone-300">{project.data.description}</p>
+              <a
+                href={`/projects/${project.id}/`}
+                class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
+                More &gt;
+              </a>
+            </GridCell>
+          ))
+        }
+      </div>
+      <!-- Odd Indexed Projects -->
+      <div class="space-y-1.5 md:w-1/2 lg:space-y-3">
+        {
+          oddProjects.map((project) => (
+            <GridCell twc="space-y-3">
+              <span class="block h-80 w-full rounded-xl bg-stone-500" />
+              <h2 class="font-medium text-stone-100">{project.data.title}</h2>
+              <p class="text-sm text-stone-300">{project.data.description}</p>
+              <a
+                href={`/projects/${project.id}/`}
+                class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
+                More &gt;
+              </a>
+            </GridCell>
+          ))
+        }
+      </div>
     </section>
   </article>
 </Layout>

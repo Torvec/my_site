@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/layout.astro";
+import GridCell from "@/components/grid-cell.astro";
 import IntroSection from "@/pages/home/_sections/intro-section.astro";
 import AboutSection from "@/pages/home/_sections/about-section.astro";
 import TechSection from "@/pages/home/_sections/tech-section.astro";
@@ -14,38 +15,30 @@ import AvailabilitySection from "@/pages/home/_sections/availability-section.ast
   title="Front-end, Back-end, Full-stack Developer | Edward Vonschondorf"
   description="Welcome to my little corner of the internet!">
   <article
-    class="relative z-2 container mx-auto grid max-w-7xl grid-cols-6 gap-1.5 px-1.5 text-white lg:grid-cols-4 lg:grid-rows-8 lg:gap-3 lg:px-3 xl:px-0">
-    <section
-      class="col-span-6 flex flex-col justify-between gap-6 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 lg:col-span-3 lg:row-span-3 lg:rounded-3xl">
+    class="relative z-2 container mx-auto grid max-w-7xl grid-cols-6 gap-1.5 px-1.5 lg:grid-cols-4 lg:grid-rows-8 lg:gap-3 lg:px-3 xl:px-0">
+    <GridCell twc="col-span-6 lg:col-span-3 lg:row-span-3">
       <IntroSection />
-    </section>
-    <section
-      class="col-span-6 space-y-6 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 lg:col-span-1 lg:row-span-7 lg:rounded-3xl">
+    </GridCell>
+    <GridCell twc="col-span-6 lg:col-span-1 lg:row-span-7">
       <AboutSection />
-    </section>
-    <section
-      class="col-span-6 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 lg:col-span-1 lg:row-span-2 lg:rounded-3xl">
+    </GridCell>
+    <GridCell twc="col-span-6 lg:col-span-1 lg:row-span-2">
       <TechSection />
-    </section>
-    <section
-      class="col-span-2 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 lg:col-span-2 lg:row-span-3 lg:rounded-3xl">
+    </GridCell>
+    <GridCell twc="col-span-2 lg:col-span-2 lg:row-span-3">
       <ProjectsSection />
-    </section>
-    <section
-      class="col-span-2 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 lg:col-span-1 lg:row-span-3 lg:rounded-3xl">
+    </GridCell>
+    <GridCell twc="col-span-2 lg:col-span-1 lg:row-span-3">
       <ArcadeSection />
-    </section>
-    <section
-      class="col-span-2 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 lg:col-span-1 lg:row-span-2 lg:rounded-3xl">
+    </GridCell>
+    <GridCell twc="col-span-2 lg:col-span-1 lg:row-span-2">
       <BlogSection />
-    </section>
-    <section
-      class="col-span-3 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 lg:col-span-1 lg:row-span-2 lg:rounded-3xl">
+    </GridCell>
+    <GridCell twc="col-span-3 lg:col-span-1 lg:row-span-2">
       <NowSection />
-    </section>
-    <section
-      class="col-span-3 rounded-xl border border-stone-700 bg-stone-900/30 bg-radial-[at_10%_20%] from-stone-700/30 to-stone-700/0 to-50% p-6 transition-colors duration-300 ease-in-out hover:border-orange-800 lg:col-span-1 lg:row-span-1 lg:rounded-3xl lg:backdrop-blur-[2px]">
+    </GridCell>
+    <GridCell twc="col-span-3 lg:col-span-1 lg:row-span-1">
       <AvailabilitySection />
-    </section>
+    </GridCell>
   </article>
 </Layout>

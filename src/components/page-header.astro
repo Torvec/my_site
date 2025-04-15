@@ -1,0 +1,12 @@
+---
+const { icon, header } = Astro.props;
+---
+
+<div class="mx-auto mt-12 mb-12 max-w-xl space-y-3 text-center">
+  <h1
+    class="mx-auto flex w-max items-center gap-1.5 rounded-xl border border-stone-700 px-3 py-1 font-medium text-stone-100">
+    <span class="block size-4 rounded-sm bg-stone-100">{icon}</span>
+    <span class="block">{header}</span>
+  </h1>
+  <p class="text-sm font-medium text-balance text-stone-300"><slot /></p>
+</div>
