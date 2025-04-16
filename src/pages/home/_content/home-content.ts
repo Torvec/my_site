@@ -14,50 +14,50 @@ import Typescript from "@/assets/ts.svg";
 export const techList = [
   {
     name: "JavaScript",
-    icon: Javascript,
+    Component: Javascript,
   },
   {
     name: "TypeScript",
-    icon: Typescript,
+    Component: Typescript,
   },
   {
     name: "Python",
-    icon: Python,
+    Component: Python,
   },
   {
     name: "Golang",
-    icon: Golang,
+    Component: Golang,
   },
   {
     name: "React",
-    icon: React,
+    Component: React,
   },
   {
     name: "MySQL",
-    icon: Mysql,
+    Component: Mysql,
   },
   {
     name: "MongoDB",
-    icon: Mongodb,
+    Component: Mongodb,
   },
   {
     name: "Figma",
-    icon: Figma,
+    Component: Figma,
   },
   {
     name: "Next",
-    icon: Next,
+    Component: Next,
   },
   {
     name: "Astro",
-    icon: Astro,
+    Component: Astro,
   },
   {
     name: "Node",
-    icon: Node,
+    Component: Node,
   },
   {
     name: "Tailwind",
-    icon: Tailwind,
+    Component: Tailwind,
   },
 ];

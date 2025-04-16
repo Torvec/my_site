@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import SectionHeader from "@/components/section-header.astro";
 import { techList } from "@/pages/home/_content/home-content";
 ---
@@ -8,15 +7,11 @@ import { techList } from "@/pages/home/_content/home-content";
   <SectionHeader>Tech & Tools</SectionHeader>
   <div class="flex flex-wrap justify-between gap-1.5">
     {
-      techList.map((tech) => (
+      techList.map(({ name, Component }) => (
         <span
           class="group flex size-9 items-center justify-center rounded-xl border border-stone-600 p-1.5 transition-colors duration-300 ease-in-out hover:border-stone-500 hover:bg-stone-800"
-          title={tech.name}>
-          <Image
-            src={tech.icon}
-            alt={tech.name}
-            class="transition-transform duration-300 ease-in-out group-hover:scale-120"
-          />
+          title={name}>
+          <Component class="transition-transform duration-300 ease-in-out group-hover:scale-120" aria-label={name} />
         </span>
       ))
     }

@@ -8,37 +8,37 @@ export const socialLinks = [
   {
     name: "Email",
     url: "mailto:me@edward-vonschondorf.dev",
-    icon: null,
+    Component: null,
   },
   {
     name: "GitHub",
     url: "https://github.com/Torvec",
-    icon: GitHub,
+    Component: GitHub,
   },
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/edward-vonschondorf/",
-    icon: LinkedIn,
+    Component: LinkedIn,
   },
   {
     name: "Bluesky",
     url: "https://bsky.app/profile/edward-vonschondorf.dev",
-    icon: Bluesky,
+    Component: Bluesky,
   },
   {
     name: "Mastodon",
     url: "https://mastodon.social/@edvonschondorf",
-    icon: Mastodon,
+    Component: Mastodon,
   },
   {
     name: "YouTube",
     url: "https://www.youtube.com/@edward-vonschondorf-dev",
-    icon: YouTube,
+    Component: YouTube,
   },
   {
     name: "RSS",
     url: "/blog/rss.xml",
-    icon: null,
+    Component: null,
   },
 ];
 

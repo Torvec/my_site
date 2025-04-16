@@ -20,18 +20,16 @@ const { Content } = about ? await render(about) : { Content: () => null };
     <div class="flex flex-wrap justify-between gap-1.5">
       {
         socialLinks
-          .map((link) => (
+          .map(({ name, url, Component }) => (
             <a
-              href={link.url}
+              href={url}
               target="_blank"
               rel="noopener noreferrer external"
               class="group rounded-xl border border-stone-600 p-1.5 transition-colors duration-300 ease-in-out hover:border-stone-500 hover:bg-stone-800">
-              {link.icon && (
-                <Image
-                  src={link.icon}
-                  alt={link.name}
-                  title={link.name}
+              {Component && (
+                <Component
                   class="size-6 transition-transform duration-300 ease-in-out group-hover:scale-120"
+                  aria-label={name}
                 />
               )}
             </a>
