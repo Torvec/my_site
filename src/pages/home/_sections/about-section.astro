@@ -3,9 +3,9 @@ import { getEntry, render } from "astro:content";
 import ProfilePic from "@/components/profile-pic.astro";
 import { socialLinks } from "@/global-consts";
 
-const about = await getEntry("home", "about");
+const about = await getEntry("home", "about")!;
 
-const { Content } = about ? await render(about) : { Content: () => null };
+const { Content } = await render(about);
 ---
 
 <div class="flex h-full flex-col justify-between">
@@ -24,6 +24,7 @@ const { Content } = about ? await render(about) : { Content: () => null };
               href={url}
               target="_blank"
               rel="noopener noreferrer external"
+              title={name}
               class="group rounded-xl border border-stone-600 p-1.5 transition-colors duration-300 ease-in-out hover:border-stone-500 hover:bg-stone-800">
               {Component && (
                 <Component
