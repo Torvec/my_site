@@ -1,0 +1,31 @@
+---
+const { items, currentIndex, basePath, contentType } = Astro.props;
+
+// Used to determine the previous and next items in the collection and have it wrap around to the first or last item if the end or beginning of the items array is reached
+const total = items.length;
+const prevItem = items[(currentIndex - 1 + total) % total];
+const nextItem = items[(currentIndex + 1) % total];
+---
+
+<nav
+  aria-label={`${contentType} navigation`}
+  class="relative z-2 container mx-auto flex max-w-5xl flex-col items-center justify-between gap-1.5 px-3 py-12 sm:flex-row sm:gap-3">
+  <a
+    href={`/${basePath}/${prevItem.id}/`}
+    aria-label={`Go to: ${prevItem.data.title}`}
+    class="block w-full rounded-md border border-stone-700 bg-stone-900/40 px-3 py-1.5 text-stone-300 transition-colors duration-300 ease-in-out hover:border-orange-600 hover:text-orange-600">
+    &lt; {prevItem.data.title}
+  </a>
+  <a
+    href={`/${basePath}/`}
+    aria-label={`View all ${contentType}`}
+    class="block w-full rounded-md border border-stone-700 bg-stone-900/40 px-3 py-1.5 text-center text-stone-300 transition-colors duration-300 ease-in-out hover:border-orange-600 hover:text-orange-600">
+    All {contentType}
+  </a>
+  <a
+    href={`/${basePath}/${nextItem.id}/`}
+    aria-label={`Go to: ${nextItem.data.title}`}
+    class="block w-full rounded-md border border-stone-700 bg-stone-900/40 px-3 py-1.5 text-right text-stone-300 transition-colors duration-300 ease-in-out hover:border-orange-600 hover:text-orange-600">
+    {nextItem.data.title} &gt;
+  </a>
+</nav>

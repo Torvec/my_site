@@ -2,31 +2,24 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
 import ActionButton from "@/components/action-button.astro";
+import ContentNavigator from "@/components/content-navigator.astro";
 
 export async function getStaticPaths() {
   const games = await getCollection("arcade");
 
   return games.map((game, index) => ({
     params: { game: game.id },
-    props: {
-      game,
-      index,
-      total: games.length,
-      games,
-    },
+    props: { game, index, games },
   }));
 }
 
-const { game, index, total, games } = Astro.props;
+const { game, index, games } = Astro.props;
 const { title, description, how_to_play, images, play_url, repo_url } = game.data;
-
-const prevGame = games[(index - 1 + total) % total];
-const nextGame = games[(index + 1) % total];
 ---
 
 <Layout title={title + " | Edward Vonschondorf"} description={description}>
   <article
-    class="relative z-2 container mx-auto max-w-3xl space-y-6 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
+    class="relative z-2 container mx-auto max-w-5xl space-y-6 rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
     <h1 class="text-xl font-bold text-stone-100">{title}</h1>
     <span class="block h-64 w-full bg-stone-500"></span>
     <div class="flex gap-6">
@@ -36,19 +29,16 @@ const nextGame = games[(index + 1) % total];
         <p class="font-medium text-stone-300">{how_to_play}</p>
       </div>
       <div class="w-1/4 space-y-3">
-        <ActionButton href={play_url}> Play </ActionButton>
-        <a href={repo_url} target="_blank" rel="noopener noreferrer" class="block text-center text-stone-300">
+        <ActionButton href={play_url} external>Play</ActionButton>
+        <a
+          href={repo_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block text-center text-stone-300 transition-colors duration-300 ease-in-out hover:text-orange-600">
           Repository
         </a>
       </div>
     </div>
   </article>
-  <section class="relative z-2 container mx-auto flex max-w-3xl items-center justify-between px-3 py-12">
-    <a href={`/arcade/${prevGame.id}/`} class="block text-stone-300">
-      &lt; {prevGame.data.title}
-    </a>
-    <a href={`/arcade/${nextGame.id}/`} class="block text-stone-300">
-      {nextGame.data.title} &gt;
-    </a>
-  </section>
+  <ContentNavigator items={games} currentIndex={index} basePath="arcade" contentType="Games" />
 </Layout>

@@ -1,20 +1,19 @@
 ---
-import { type CollectionEntry, getCollection, render } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/layout.astro";
 import FormattedDate from "@/components/formatted-date.astro";
+import ContentNavigator from "@/components/content-navigator.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
-  return posts.map((post) => ({
+
+  return posts.map((post, index) => ({
     params: { post: post.id },
-    props: post,
+    props: { post, index, posts },
   }));
 }
 
-type Props = CollectionEntry<"blog">;
-
-const post = Astro.props;
-
+const { post, index, posts } = Astro.props;
 const { title, description, pubDate, updatedDate } = post.data;
 
 const { Content } = await render(post);
@@ -42,8 +41,5 @@ const { Content } = await render(post);
       <Content />
     </div>
   </article>
-  <section class="relative z-2 container mx-auto flex max-w-3xl items-center justify-between px-3 py-12">
-    <a href="/blog/" class="block text-stone-300">&lt; Back</a>
-    <a href="/" class="block text-stone-300">Issues?</a>
-  </section>
+  <ContentNavigator items={posts} currentIndex={index} basePath="blog" contentType="Posts" />
 </Layout>

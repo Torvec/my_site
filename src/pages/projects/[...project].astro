@@ -2,26 +2,19 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
 import ActionButton from "@/components/action-button.astro";
+import ContentNavigator from "@/components/content-navigator.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
 
   return projects.map((project, index) => ({
     params: { project: project.id },
-    props: {
-      project,
-      index,
-      total: projects.length,
-      projects,
-    },
+    props: { project, index, projects },
   }));
 }
 
-const { project, index, total, projects } = Astro.props;
+const { project, index, projects } = Astro.props;
 const { title, description, development, images, deploy_url, repo_url, tech_stack } = project.data;
-
-const prevProject = projects[(index - 1 + total) % total];
-const nextProject = projects[(index + 1) % total];
 ---
 
 <Layout title={title + " | Edward Vonschondorf"} description={description}>
@@ -54,12 +47,5 @@ const nextProject = projects[(index + 1) % total];
       </section>
     </div>
   </article>
-  <section class="relative z-2 container mx-auto flex max-w-3xl items-center justify-between px-3 py-12">
-    <a href={`/projects/${prevProject.id}/`} class="block text-stone-300">
-      &lt; {prevProject.data.title}
-    </a>
-    <a href={`/projects/${nextProject.id}/`} class="block text-stone-300">
-      {nextProject.data.title} &gt;
-    </a>
-  </section>
+  <ContentNavigator items={projects} currentIndex={index} basePath="projects" contentType="Projects" />
 </Layout>
