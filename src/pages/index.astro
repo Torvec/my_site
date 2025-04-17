@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/layout.astro";
-import GridCell from "@/components/grid-cell.astro";
+import Card from "@/components/card.astro";
 import IntroSection from "@/pages/home/_sections/intro-section.astro";
 import AboutSection from "@/pages/home/_sections/about-section.astro";
 import TechSection from "@/pages/home/_sections/tech-section.astro";
@@ -16,29 +16,29 @@ import AvailabilitySection from "@/pages/home/_sections/availability-section.ast
   description="Welcome to my little corner of the internet!">
   <article
     class="relative z-2 container mx-auto grid max-w-7xl grid-cols-6 gap-1.5 px-1.5 lg:grid-cols-4 lg:grid-rows-8 lg:gap-3 lg:px-3 xl:px-0">
-    <GridCell twc="col-span-6 lg:col-span-3 lg:row-span-3">
+    <Card twc="col-span-6 lg:col-span-3 lg:row-span-3">
       <IntroSection />
-    </GridCell>
-    <GridCell twc="col-span-6 lg:col-span-1 lg:row-span-7">
+    </Card>
+    <Card twc="col-span-6 lg:col-span-1 lg:row-span-7">
       <AboutSection />
-    </GridCell>
-    <GridCell twc="col-span-6 lg:col-span-1 lg:row-span-2">
+    </Card>
+    <Card twc="col-span-6 lg:col-span-1 lg:row-span-2">
       <TechSection />
-    </GridCell>
-    <GridCell twc="col-span-2 lg:col-span-2 lg:row-span-3">
+    </Card>
+    <Card twc="col-span-2 lg:col-span-2 lg:row-span-3">
       <ProjectsSection />
-    </GridCell>
-    <GridCell twc="col-span-2 lg:col-span-1 lg:row-span-3">
+    </Card>
+    <Card twc="col-span-2 lg:col-span-1 lg:row-span-3">
       <ArcadeSection />
-    </GridCell>
-    <GridCell twc="col-span-2 lg:col-span-1 lg:row-span-2">
+    </Card>
+    <Card twc="col-span-2 lg:col-span-1 lg:row-span-2">
       <BlogSection />
-    </GridCell>
-    <GridCell twc="col-span-3 lg:col-span-1 lg:row-span-2">
+    </Card>
+    <Card twc="col-span-3 lg:col-span-1 lg:row-span-2">
       <NowSection />
-    </GridCell>
-    <GridCell twc="col-span-3 lg:col-span-1 lg:row-span-1">
+    </Card>
+    <Card twc="col-span-3 lg:col-span-1 lg:row-span-1">
       <AvailabilitySection />
-    </GridCell>
+    </Card>
   </article>
 </Layout>

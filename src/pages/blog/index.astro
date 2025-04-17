@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
 import PageHeader from "@/components/page-header.astro";
-import GridCell from "@/components/grid-cell.astro";
+import Card from "@/components/card.astro";
 import FormattedDate from "@/components/formatted-date.astro";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -14,7 +14,7 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
       Welcome to the blog section of my site where I share my insights, experiences, and lessons from my ongoing journey
       as a developer.
     </PageHeader>
-    <GridCell>
+    <Card>
       <ul class="space-y-3">
         {
           posts.map((post) => (
@@ -34,6 +34,6 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
           ))
         }
       </ul>
-    </GridCell>
+    </Card>
   </article>
 </Layout>

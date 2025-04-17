@@ -1,7 +1,20 @@
 ---
 import BaseHead from "@/components/base-head.astro";
-import SiteHeader from "@/components/site-header.astro";
-import SiteFooter from "@/components/site-footer.astro";
+import HorizontalMenu from "@/components/horizontal-menu.astro";
+import DropdownMenu from "@/components/dropdown-menu.astro";
+import { socialLinks } from "@/global-consts";
+
+const siteLinks = [
+  { name: "Home", href: "/" },
+  { name: "Projects", href: "/projects" },
+  { name: "Arcade", href: "/arcade" },
+  { name: "Blog", href: "/blog" },
+  { name: "Now", href: "/now" },
+];
+
+const currentPage = Astro.url.pathname;
+
+const year = new Date().getFullYear();
 
 const { title, description } = Astro.props;
 ---
@@ -15,10 +28,39 @@ const { title, description } = Astro.props;
     <div class="bg-grid-lines fixed inset-0 z-0 opacity-60"></div>
     <div class="fixed inset-0 z-1 bg-gradient-to-b from-stone-950 via-stone-900/0 to-stone-950 md:from-10% md:to-90%">
     </div>
-    <SiteHeader />
+    <header
+      class="relative z-10 container mx-auto flex max-w-2xl items-center gap-3 rounded-xl p-3 md:mt-6 md:mb-12 md:border md:border-stone-800/60 md:bg-stone-800/30">
+      <HorizontalMenu siteLinks={siteLinks} currentPage={currentPage} />
+      <DropdownMenu siteLinks={siteLinks} />
+    </header>
     <main class="flex flex-grow flex-col items-center justify-center">
       <slot />
     </main>
-    <SiteFooter />
+    <footer
+      class="relative z-2 container mx-auto flex max-w-7xl flex-col justify-between gap-3 px-1.5 pt-24 pb-6 text-center text-sm md:flex-row md:gap-0 md:text-left lg:px-3">
+      <ul class="flex flex-wrap justify-center gap-3 md:gap-6">
+        {
+          socialLinks.map((link) => (
+            <li>
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer external"
+                class="text-stone-300 hover:text-orange-600">
+                {link.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <span class="block text-stone-500"
+        >&copy; {year} Made for fun, with <a
+          href="https://astro.build/"
+          target="_blank"
+          rel="noopener noreferrer external"
+          class="text-stone-300 hover:text-orange-600">Astro</a
+        >!
+      </span>
+    </footer>
   </body>
 </html>
