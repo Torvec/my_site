@@ -1,21 +1,27 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
 import ActionButton from "@/components/action-button.astro";
 
 export async function getStaticPaths() {
   const games = await getCollection("arcade");
-  return games.map((game) => ({
+
+  return games.map((game, index) => ({
     params: { game: game.id },
-    props: game,
+    props: {
+      game,
+      index,
+      total: games.length,
+      games,
+    },
   }));
 }
 
-type Props = CollectionEntry<"arcade">;
-
-const game = Astro.props;
-
+const { game, index, total, games } = Astro.props;
 const { title, description, how_to_play, images, play_url, repo_url } = game.data;
+
+const prevGame = games[(index - 1 + total) % total];
+const nextGame = games[(index + 1) % total];
 ---
 
 <Layout title={title + " | Edward Vonschondorf"} description={description}>
@@ -38,7 +44,11 @@ const { title, description, how_to_play, images, play_url, repo_url } = game.dat
     </div>
   </article>
   <section class="relative z-2 container mx-auto flex max-w-3xl items-center justify-between px-3 py-12">
-    <a href="/arcade/" class="block text-stone-300">&lt; Back</a>
-    <a href="/" class="block text-stone-300">Issues?</a>
+    <a href={`/arcade/${prevGame.id}/`} class="block text-stone-300">
+      &lt; {prevGame.data.title}
+    </a>
+    <a href={`/arcade/${nextGame.id}/`} class="block text-stone-300">
+      {nextGame.data.title} &gt;
+    </a>
   </section>
 </Layout>

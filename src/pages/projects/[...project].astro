@@ -1,21 +1,27 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
 import ActionButton from "@/components/action-button.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
-  return projects.map((project) => ({
+
+  return projects.map((project, index) => ({
     params: { project: project.id },
-    props: project,
+    props: {
+      project,
+      index,
+      total: projects.length,
+      projects,
+    },
   }));
 }
 
-type Props = CollectionEntry<"projects">;
-
-const project = Astro.props;
-
+const { project, index, total, projects } = Astro.props;
 const { title, description, development, images, deploy_url, repo_url, tech_stack } = project.data;
+
+const prevProject = projects[(index - 1 + total) % total];
+const nextProject = projects[(index + 1) % total];
 ---
 
 <Layout title={title + " | Edward Vonschondorf"} description={description}>
@@ -49,6 +55,11 @@ const { title, description, development, images, deploy_url, repo_url, tech_stac
     </div>
   </article>
   <section class="relative z-2 container mx-auto flex max-w-3xl items-center justify-between px-3 py-12">
-    <a href="/projects/" class="block text-stone-300">&lt; Back</a>
+    <a href={`/projects/${prevProject.id}/`} class="block text-stone-300">
+      &lt; {prevProject.data.title}
+    </a>
+    <a href={`/projects/${nextProject.id}/`} class="block text-stone-300">
+      {nextProject.data.title} &gt;
+    </a>
   </section>
 </Layout>
