@@ -36,8 +36,15 @@ const { title, description } = Astro.props;
     <main class="flex flex-grow flex-col items-center justify-center">
       <slot />
     </main>
-    <footer
-      class="relative z-2 container mx-auto flex max-w-7xl flex-col justify-between gap-3 px-1.5 pt-24 pb-6 text-center text-sm md:flex-row md:gap-0 md:text-left lg:px-3">
+    <footer class="relative z-2 container mx-auto space-y-3 px-1.5 pt-6 pb-6 text-center text-sm md:pt-12 lg:px-3">
+      <span class="block text-stone-500"
+        >&copy; {year} Made for fun, with <a
+          href="https://astro.build/"
+          target="_blank"
+          rel="noopener noreferrer external"
+          class="text-stone-300 hover:text-orange-600">Astro</a
+        >!
+      </span>
       <ul class="flex flex-wrap justify-center gap-3 md:gap-6">
         {
           socialLinks.map((link) => (
@@ -53,14 +60,6 @@ const { title, description } = Astro.props;
           ))
         }
       </ul>
-      <span class="block text-stone-500"
-        >&copy; {year} Made for fun, with <a
-          href="https://astro.build/"
-          target="_blank"
-          rel="noopener noreferrer external"
-          class="text-stone-300 hover:text-orange-600">Astro</a
-        >!
-      </span>
     </footer>
   </body>
 </html>
