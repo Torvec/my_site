@@ -55,7 +55,6 @@ const arcade = defineCollection({
     z.object({
       title: z.string(),
       description: z.string(),
-      how_to_play: z.string(),
       thumbnail: image(),
       images: z.array(image()),
       play_url: z.string(),

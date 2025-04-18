@@ -9,7 +9,7 @@ const nextItem = items[(currentIndex + 1) % total];
 
 <nav
   aria-label={`${contentType} navigation`}
-  class="relative z-2 container mx-auto flex max-w-5xl flex-col items-center justify-between gap-1.5 px-3 py-12 sm:flex-row sm:gap-3">
+  class="relative z-2 container mx-auto flex max-w-4xl flex-col items-center justify-between gap-1.5 px-3 py-12 sm:flex-row sm:gap-3">
   <a
     href={`/${basePath}/${prevItem.id}/`}
     aria-label={`Go to: ${prevItem.data.title}`}
