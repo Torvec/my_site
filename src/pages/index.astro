@@ -8,37 +8,34 @@ import ProjectsSection from "@/pages/home/_sections/projects-section.astro";
 import ArcadeSection from "@/pages/home/_sections/arcade-section.astro";
 import BlogSection from "@/pages/home/_sections/blog-section.astro";
 import NowSection from "@/pages/home/_sections/now-section.astro";
-import AvailabilitySection from "@/pages/home/_sections/availability-section.astro";
 ---
 
 <Layout
   title="Front-end, Back-end, Full-stack Developer | Edward Vonschondorf"
   description="Welcome to my little corner of the internet!">
-  <article
-    class="relative z-2 container mx-auto grid max-w-7xl grid-cols-6 gap-1.5 px-1.5 lg:grid-cols-4 lg:grid-rows-8 lg:gap-3 lg:px-3 xl:px-0">
-    <Card twc="col-span-6 lg:col-span-3 lg:row-span-3">
+  <article class="relative z-2 container mx-auto max-w-4xl space-y-1.5 px-1.5 xl:space-y-3 xl:px-3 2xl:px-0">
+    <Card>
       <IntroSection />
     </Card>
-    <Card twc="col-span-6 lg:col-span-1 lg:row-span-7">
-      <AboutSection />
-    </Card>
-    <Card twc="col-span-6 lg:col-span-1 lg:row-span-2">
+    <Card>
       <TechSection />
     </Card>
-    <Card twc="col-span-2 lg:col-span-2 lg:row-span-3">
-      <ProjectsSection />
-    </Card>
-    <Card twc="col-span-2 lg:col-span-1 lg:row-span-3">
-      <ArcadeSection />
-    </Card>
-    <Card twc="col-span-2 lg:col-span-1 lg:row-span-2">
-      <BlogSection />
-    </Card>
-    <Card twc="col-span-3 lg:col-span-1 lg:row-span-2">
-      <NowSection />
-    </Card>
-    <Card twc="col-span-3 lg:col-span-1 lg:row-span-1">
-      <AvailabilitySection />
-    </Card>
+    <div class="grid grid-cols-2 gap-1.5 lg:grid-cols-3 xl:gap-3">
+      <Card twc="col-span-2 lg:col-span-1 lg:row-span-2">
+        <AboutSection />
+      </Card>
+      <Card twc="col-span-1 lg:col-span-1 lg:row-span-1">
+        <ProjectsSection />
+      </Card>
+      <Card twc="col-span-1 lg:col-span-1 lg:row-span-1">
+        <ArcadeSection />
+      </Card>
+      <Card twc="col-span-1 lg:col-span-1 lg:row-span-1">
+        <BlogSection />
+      </Card>
+      <Card twc="col-span-1 lg:col-span-1 lg:row-span-1">
+        <NowSection />
+      </Card>
+    </div>
   </article>
 </Layout>

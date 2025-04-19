@@ -10,24 +10,15 @@ const project = (await getCollection("projects")).sort(
 
 <div class="space-y-3">
   <SectionHeader href="/projects/">Projects</SectionHeader>
-  <div>
-    <a href={`/projects/${project.id}/`} aria-label={`View project: ${project.data.title}`} class="group flex gap-3">
-      <div class="hidden lg:block lg:h-max lg:w-1/2 lg:overflow-hidden lg:rounded-xl lg:border lg:border-stone-700">
-        <Image
-          src={project.data.thumbnail}
-          alt={`Thumbnail for ${project.data.title}`}
-          class="h-full w-full scale-105 object-cover transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-80"
-        />
-      </div>
-      <div class="hidden w-1/2 space-y-3 lg:block">
-        <span
-          class="block font-medium text-stone-100 transition-colors duration-300 ease-in-out group-hover:text-orange-600">
-          {project.data.title}
-        </span>
-        <p class="text-sm text-stone-300 transition-colors duration-150 ease-in-out group-hover:text-stone-300/80">
-          {project.data.description}
-        </p>
-      </div>
-    </a>
-  </div>
+  <a
+    href={`/projects/${project.id}/`}
+    aria-label={`View project: ${project.data.title}`}
+    class="group hidden lg:block lg:overflow-hidden lg:rounded-xl lg:border lg:border-stone-700">
+    <Image
+      src={project.data.thumbnail}
+      alt={`Thumbnail for ${project.data.title}`}
+      title={`${project.data.title} project`}
+      class="h-full w-full scale-105 object-cover transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-80"
+    />
+  </a>
 </div>

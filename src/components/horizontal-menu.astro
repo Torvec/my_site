@@ -3,7 +3,7 @@ const { siteLinks, currentPage } = Astro.props;
 ---
 
 <nav class="w-full">
-  <ul class="hidden font-medium uppercase md:flex">
+  <ul class="hidden font-medium uppercase sm:flex">
     {
       siteLinks.map((link: { href: string; name: string }) => (
         <li class="flex-grow">

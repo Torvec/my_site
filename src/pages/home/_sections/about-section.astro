@@ -1,6 +1,5 @@
 ---
 import { getEntry, render } from "astro:content";
-import ProfilePic from "@/components/profile-pic.astro";
 import { socialLinks } from "@/global-consts";
 
 const about = await getEntry("home", "about")!;
@@ -10,9 +9,6 @@ const { Content } = await render(about);
 
 <div class="flex h-full flex-col justify-between">
   <div class="space-y-3">
-    <div class="hidden lg:block">
-      <ProfilePic />
-    </div>
     <div class="about">
       <Content />
     </div>

@@ -66,14 +66,6 @@ html {
 
 /* HOME PAGE SPECIFIC STYLES */
 
-.intro h1 {
-  @apply mb-3 text-center text-lg font-medium text-stone-100 md:text-2xl lg:text-left;
-}
-
-.intro p {
-  @apply text-center text-sm font-medium text-stone-300 md:text-xl lg:text-left lg:text-pretty;
-}
-
 .about h2 {
   @apply mb-3 font-medium text-stone-100;
 }
