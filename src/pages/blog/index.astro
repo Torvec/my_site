@@ -19,7 +19,7 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
         {
           posts.map((post) => (
             <li>
-              <a href={`/blog/${post.id}/`} class="group flex items-baseline gap-12">
+              <a href={`/blog/${post.id}/`} class="group flex flex-col items-baseline gap-1.5 sm:flex-row sm:gap-12">
                 <span class="transition-color block flex-shrink-0 text-stone-500 duration-300 ease-in-out group-hover:text-orange-600">
                   <FormattedDate date={post.data.pubDate} />
                 </span>
@@ -27,9 +27,9 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
                   <span class="transition-color font-medium text-pretty text-stone-300 duration-300 ease-in-out group-hover:text-orange-600">
                     {post.data.title}
                   </span>
-                  <span class="transition-color flex items-baseline gap-1.5 overflow-hidden text-stone-600 duration-300 ease-in-out group-hover:text-orange-600">
+                  <span class="transition-color flex items-baseline gap-1.5 overflow-hidden text-sm text-stone-600 duration-300 ease-in-out group-hover:text-orange-600 sm:text-base">
                     Read{" "}
-                    <span class="block translate-x-full overflow-hidden text-xl transition-transform duration-300 ease-in-out group-hover:-translate-x-0">
+                    <span class="block translate-x-full overflow-hidden transition-transform duration-300 ease-in-out group-hover:-translate-x-0 sm:text-xl">
                       &raquo;
                     </span>
                   </span>

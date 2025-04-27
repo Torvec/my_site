@@ -16,7 +16,7 @@
 /* STYLES FOR RENDERED BLOG POSTS */
 
 .prose {
-  @apply text-stone-300;
+  @apply min-w-full text-stone-300;
 }
 
 .prose a {
