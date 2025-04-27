@@ -9,7 +9,7 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
 ---
 
 <Layout title="Blog | Edward Vonschondorf" description="A place to share my work and the journey it took to get there.">
-  <article class="relative z-2 container mx-auto max-w-3xl space-y-1.5 px-1.5 font-medium lg:space-y-3">
+  <article class="relative z-2 container mx-auto max-w-3xl space-y-1.5 px-1.5 font-medium lg:space-y-3 lg:px-3 xl:px-0">
     <PageHeader header="The Blog">
       Welcome to the blog section of my site where I share my insights, experiences, and lessons from my ongoing journey
       as a developer.
@@ -18,17 +18,22 @@ const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueO
       <ul class="space-y-3">
         {
           posts.map((post) => (
-            <li class="flex items-baseline gap-6">
-              <span class="block min-w-20 flex-shrink-0 text-xs text-stone-500 uppercase">
-                <FormattedDate date={post.data.pubDate} />
-              </span>
-              <a href={`/blog/${post.id}/`} class="group flex w-full justify-between">
-                <span class="transition-color font-medium text-pretty text-stone-300 duration-300 ease-in-out group-hover:text-orange-600">
-                  {post.data.title}
+            <li>
+              <a href={`/blog/${post.id}/`} class="group flex items-baseline gap-12">
+                <span class="transition-color block flex-shrink-0 text-stone-500 duration-300 ease-in-out group-hover:text-orange-600">
+                  <FormattedDate date={post.data.pubDate} />
                 </span>
-                <span class="transition-color text-xs text-stone-500 duration-300 ease-in-out group-hover:text-orange-600">
-                  Read &gt;
-                </span>
+                <div class="flex w-full justify-between">
+                  <span class="transition-color font-medium text-pretty text-stone-300 duration-300 ease-in-out group-hover:text-orange-600">
+                    {post.data.title}
+                  </span>
+                  <span class="transition-color flex items-baseline gap-1.5 overflow-hidden text-stone-600 duration-300 ease-in-out group-hover:text-orange-600">
+                    Read{" "}
+                    <span class="block translate-x-full overflow-hidden text-xl transition-transform duration-300 ease-in-out group-hover:-translate-x-0">
+                      &raquo;
+                    </span>
+                  </span>
+                </div>
               </a>
             </li>
           ))
