@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
 import PageHeader from "@/components/page-header.astro";
 import Card from "@/components/card.astro";
+import DetailsLink from "@/components/details-link.astro";
 
 const games = (await getCollection("arcade")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -15,49 +16,45 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
 ---
 
 <Layout title="Arcade | Edward Vonschondorf" description="My game development projects that I've released.">
-  <article class="relative z-2 container mx-auto max-w-4xl space-y-1.5 px-1.5 font-medium lg:space-y-3">
+  <article class="relative z-2 container mx-auto max-w-4xl space-y-1.5 px-1.5 lg:space-y-3 lg:px-3 xl:px-0">
     <PageHeader header="Arcade">
       At the arcade you can play/download the latest games I have developed for fun. Feel free to check out the source
       code and make your own games too!
     </PageHeader>
     <!-- FEATURED GAME -->
     <Card twc="group space-y-3 md:flex md:gap-6 md:space-y-0">
-      <div class="h-max overflow-hidden rounded-xl border border-stone-700">
+      <div class="h-max flex-shrink-0 overflow-hidden rounded-xl border border-stone-700">
         <Image
           src={featuredGame.data.thumbnail}
           alt={`Thumbnail for ${featuredGame.data.title}`}
           class="h-full w-full scale-105 object-cover transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-80"
         />
       </div>
-      <div class="space-y-3 md:w-1/2">
-        <h2 class="text-stone-100">{featuredGame.data.title}</h2>
-        <p class="text-sm text-stone-300">{featuredGame.data.description}</p>
-        <a
-          href={`/arcade/${featuredGame.id}/`}
-          class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
-          More &gt;
-        </a>
+      <div class="flex flex-col justify-between gap-3 space-y-3">
+        <div class="space-y-3">
+          <h2 class="font-bold text-stone-100">{featuredGame.data.title}</h2>
+          <p class="text-stone-300">{featuredGame.data.description}</p>
+        </div>
+        <DetailsLink href={`/arcade/${featuredGame.id}`} />
       </div>
     </Card>
     <!-- ALL OTHER GAMES -->
     <section class="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3 lg:px-0">
       {
         filteredGames.map((game) => (
-          <Card twc="group space-y-3">
-            <div class="h-max overflow-hidden rounded-xl border border-stone-700">
-              <Image
-                src={game.data.thumbnail}
-                alt={`Thumbnail for ${game.data.title}`}
-                class="h-full w-full scale-105 object-cover transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-80"
-              />
+          <Card twc="group flex flex-col justify-between gap-3">
+            <div class="space-y-3">
+              <div class="h-max overflow-hidden rounded-xl border border-stone-700">
+                <Image
+                  src={game.data.thumbnail}
+                  alt={`Thumbnail for ${game.data.title}`}
+                  class="h-full w-full scale-105 object-cover transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-80"
+                />
+              </div>
+              <h3 class="font-bold text-stone-100">{game.data.title}</h3>
+              <p class="text-stone-300">{game.data.description}</p>
             </div>
-            <h3 class="text-stone-100">{game.data.title}</h3>
-            <p class="text-sm text-stone-300">{game.data.description}</p>
-            <a
-              href={`/arcade/${game.id}`}
-              class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
-              More &gt;
-            </a>
+            <DetailsLink href={`/arcade/${game.id}`} />
           </Card>
         ))
       }

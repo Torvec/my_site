@@ -4,23 +4,21 @@ import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
 import PageHeader from "@/components/page-header.astro";
 import Card from "@/components/card.astro";
+import DetailsLink from "@/components/details-link.astro";
 
 const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const evenProjects = projects.filter((_, index) => index % 2 === 0);
-const oddProjects = projects.filter((_, index) => index % 2 !== 0);
 ---
 
 <Layout title="Projects | Edward Vonschondorf" description="My web development projects.">
-  <article class="relative z-2 container mx-auto max-w-4xl space-y-1.5 px-1.5 lg:space-y-3">
+  <article class="relative z-2 container mx-auto max-w-4xl space-y-1.5 px-1.5 lg:space-y-3 lg:px-3 xl:px-0">
     <PageHeader header="Projects">
       All of my web development related projects are listed here. Feel free to try them out and look at the source code!
     </PageHeader>
     <!-- PROJECTS LIST -->
-    <section class="flex flex-col gap-1.5 sm:flex-row lg:gap-3">
-      <!-- Even Indexed Projects -->
-      <div class="space-y-1.5 md:w-1/2 lg:space-y-3">
-        {
-          evenProjects.map((project) => (
+    <section class="columns-1 gap-1.5 sm:columns-2 lg:gap-3">
+      {
+        projects.map((project) => (
+          <div class="mb-1.5 break-inside-avoid lg:mb-3">
             <Card twc="group space-y-3">
               <div class="h-max overflow-hidden rounded-xl border border-stone-700">
                 <Image
@@ -29,40 +27,13 @@ const oddProjects = projects.filter((_, index) => index % 2 !== 0);
                   class="h-full w-full scale-105 object-cover transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-80"
                 />
               </div>
-              <h2 class="font-medium text-stone-100">{project.data.title}</h2>
-              <p class="text-sm text-stone-300">{project.data.description}</p>
-              <a
-                href={`/projects/${project.id}/`}
-                class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
-                Details &gt;
-              </a>
+              <h2 class="font-bold text-stone-100">{project.data.title}</h2>
+              <p class="text-stone-300">{project.data.description}</p>
+              <DetailsLink href={`/projects/${project.id}/`} />
             </Card>
-          ))
-        }
-      </div>
-      <!-- Odd Indexed Projects -->
-      <div class="space-y-1.5 md:w-1/2 lg:space-y-3">
-        {
-          oddProjects.map((project) => (
-            <Card twc="group space-y-3">
-              <div class="h-max overflow-hidden rounded-xl border border-stone-700">
-                <Image
-                  src={project.data.thumbnail}
-                  alt={`Thumbnail for ${project.data.title}`}
-                  class="h-full w-full scale-105 object-cover transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-80"
-                />
-              </div>
-              <h2 class="font-medium text-stone-100">{project.data.title}</h2>
-              <p class="text-sm text-stone-300">{project.data.description}</p>
-              <a
-                href={`/projects/${project.id}/`}
-                class="text-sm text-stone-500 transition-colors duration-300 ease-in-out hover:text-orange-600">
-                Details &gt;
-              </a>
-            </Card>
-          ))
-        }
-      </div>
+          </div>
+        ))
+      }
     </section>
   </article>
 </Layout>
