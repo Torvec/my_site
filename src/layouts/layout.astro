@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import BaseHead from "@/components/base-head.astro";
+import profilePic from "@/assets/portrait_gray_transparent_bg.png";
 import HorizontalMenu from "@/components/horizontal-menu.astro";
 import DropdownMenu from "@/components/dropdown-menu.astro";
 import { socialLinks } from "@/global-consts";
@@ -32,7 +34,13 @@ const { title, description } = Astro.props;
     </div>
     <!-- Site Header -->
     <header
-      class="relative z-10 container mx-auto mt-3 mb-6 flex max-w-2xl items-center gap-3 rounded-xl p-3 sm:border sm:border-stone-800 sm:bg-stone-800/50 md:mt-6 md:mb-12">
+      class="relative z-10 container mx-auto mb-6 flex max-w-full items-center gap-3 p-1.5 sm:mt-6 sm:mb-12 sm:border sm:border-stone-800 sm:bg-stone-800/50 sm:p-3 md:max-w-2xl md:rounded-xl">
+      <div
+        class="max-w-16 place-content-center overflow-hidden rounded-full border border-stone-700 bg-stone-900/50 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 sm:hidden">
+        <a href="/">
+          <Image src={profilePic} alt="Profile Picture of Me, Edward Vonschondorf" class="size-full object-cover" />
+        </a>
+      </div>
       <HorizontalMenu siteLinks={siteLinks} currentPage={currentPage} />
       <DropdownMenu siteLinks={siteLinks} />
     </header>
