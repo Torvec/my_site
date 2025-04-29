@@ -14,24 +14,22 @@ const { Content } = await render(about);
   </Card>
   <Card twc="flex flex-wrap justify-between gap-1.5">
     {
-      socialLinks
-        .map(({ name, url, Component }) => (
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer external"
-            title={name}
-            class="group rounded-xl border border-stone-600 p-1.5 transition-colors duration-300 ease-in-out hover:border-stone-500 hover:bg-stone-800">
-            {Component && (
-              <Component
+      socialLinks.map(
+        ({ name, url, Icon }) =>
+          Icon && (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer external"
+              title={name}
+              class="group rounded-xl border border-stone-600 p-1.5 transition-colors duration-300 ease-in-out hover:border-stone-500 hover:bg-stone-800">
+              <Icon
                 class="size-6 transition-transform duration-300 ease-in-out group-hover:scale-120"
                 aria-label={name}
               />
-            )}
-          </a>
-        ))
-        // exclude the email and rss link
-        .slice(1, -1)
+            </a>
+          ),
+      )
     }
   </Card>
 </div>

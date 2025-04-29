@@ -12,52 +12,16 @@ import Tailwind from "@/assets/tailwind.svg";
 import Typescript from "@/assets/ts.svg";
 
 export const techList = [
-  {
-    name: "JavaScript",
-    Component: Javascript,
-  },
-  {
-    name: "TypeScript",
-    Component: Typescript,
-  },
-  {
-    name: "Python",
-    Component: Python,
-  },
-  {
-    name: "Golang",
-    Component: Golang,
-  },
-  {
-    name: "React",
-    Component: React,
-  },
-  {
-    name: "MySQL",
-    Component: Mysql,
-  },
-  {
-    name: "MongoDB",
-    Component: Mongodb,
-  },
-  {
-    name: "Figma",
-    Component: Figma,
-  },
-  {
-    name: "Next",
-    Component: Next,
-  },
-  {
-    name: "Astro",
-    Component: Astro,
-  },
-  {
-    name: "Node",
-    Component: Node,
-  },
-  {
-    name: "Tailwind",
-    Component: Tailwind,
-  },
+  { name: "JavaScript", Icon: Javascript },
+  { name: "TypeScript", Icon: Typescript },
+  { name: "Python", Icon: Python },
+  { name: "Golang", Icon: Golang },
+  { name: "React", Icon: React },
+  { name: "Node", Icon: Node },
+  { name: "Next", Icon: Next },
+  { name: "Astro", Icon: Astro },
+  { name: "MySQL", Icon: Mysql },
+  { name: "MongoDB", Icon: Mongodb },
+  { name: "Tailwind", Icon: Tailwind },
+  { name: "Figma", Icon: Figma },
 ];

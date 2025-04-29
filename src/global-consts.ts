@@ -4,41 +4,49 @@ import Bluesky from "@/assets/bluesky.svg";
 import Mastodon from "@/assets/mastodon.svg";
 import YouTube from "@/assets/youtube.svg";
 
+export const siteLinks = [
+  { name: "Home", href: "/" },
+  { name: "Projects", href: "/projects" },
+  { name: "Arcade", href: "/arcade" },
+  { name: "Blog", href: "/blog" },
+  { name: "Now", href: "/now" },
+];
+
 export const socialLinks = [
   {
     name: "Email",
     url: "mailto:me@edward-vonschondorf.dev",
-    Component: null,
+    Icon: null,
   },
   {
     name: "GitHub",
     url: "https://github.com/Torvec",
-    Component: GitHub,
+    Icon: GitHub,
   },
   {
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/edward-vonschondorf/",
-    Component: LinkedIn,
+    Icon: LinkedIn,
   },
   {
     name: "Bluesky",
     url: "https://bsky.app/profile/edward-vonschondorf.dev",
-    Component: Bluesky,
+    Icon: Bluesky,
   },
   {
     name: "Mastodon",
     url: "https://mastodon.social/@edvonschondorf",
-    Component: Mastodon,
+    Icon: Mastodon,
   },
   {
     name: "YouTube",
     url: "https://www.youtube.com/@edward-vonschondorf-dev",
-    Component: YouTube,
+    Icon: YouTube,
   },
   {
     name: "RSS",
     url: "/blog/rss.xml",
-    Component: null,
+    Icon: null,
   },
 ];
 
