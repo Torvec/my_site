@@ -18,7 +18,7 @@ const content = {
 };
 ---
 
-<section class="grid gap-1.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-3">
+<div class="grid gap-1.5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-3">
   <Card twc="flex h-full flex-col justify-between gap-3 md:gap-9 md:col-span-2 lg:col-span-3">
     <div>
       <h1 class="mb-3 text-lg font-bold text-stone-100 md:text-2xl">{content.headline}</h1>
@@ -41,8 +41,8 @@ const content = {
       </button>
     </div>
   </Card>
-  <div
+  <section
     class="mx-auto hidden place-content-center overflow-hidden rounded-xl border border-stone-700 bg-stone-900/50 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 sm:block md:col-start-3 md:rounded-3xl lg:col-start-4">
     <Image src={profilePic} alt="Profile Picture of Me, Edward Vonschondorf" class="size-full object-cover" />
-  </div>
-</section>
+  </section>
+</div>

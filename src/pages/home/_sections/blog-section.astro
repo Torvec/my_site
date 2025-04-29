@@ -10,17 +10,22 @@ const posts = (await getCollection("blog"))
 
 <div class="space-y-3">
   <SectionHeader href="/blog/">Blog</SectionHeader>
-  <ul class="hidden space-y-1.5 lg:block">
+  <ul class="hidden lg:block">
     {
       posts.map((post) => (
-        <li class="flex items-baseline gap-1.5 xl:gap-3">
-          <span class="block min-w-20 text-xs text-stone-400 uppercase">
-            <FormattedDate date={post.data.pubDate} />
-          </span>
+        <li>
           <a
             href={`/blog/${post.id}/`}
-            class="transition-color block w-full text-sm font-medium text-pretty text-stone-200 duration-300 ease-in-out hover:text-orange-600">
-            {post.data.title}
+            class="group transition-color flex w-full items-baseline gap-3 text-sm font-medium text-pretty text-stone-200 duration-300 ease-in-out hover:text-orange-600">
+            <span class="transition-color block flex-shrink-0 text-xs text-stone-400 uppercase duration-300 ease-in-out group-hover:text-orange-600">
+              <FormattedDate date={post.data.pubDate} />
+            </span>
+            <div class="flex w-full items-baseline justify-between overflow-hidden">
+              <span class="block">{post.data.title}</span>
+              <span class="block translate-x-full text-xl text-orange-600 transition-transform duration-300 ease-in-out group-hover:-translate-x-full">
+                &raquo;
+              </span>
+            </div>
           </a>
         </li>
       ))
