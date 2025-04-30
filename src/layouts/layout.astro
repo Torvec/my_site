@@ -1,10 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import BaseHead from "@/components/base-head.astro";
-import { siteLinks } from "@/global-consts";
-import profilePic from "@/assets/portrait_gray_transparent_bg.png";
-import HorizontalMenu from "@/components/horizontal-menu.astro";
-import DropdownMenu from "@/components/dropdown-menu.astro";
+import SiteNavigation from "@/components/site-navigation.astro";
 import { socialLinks } from "@/global-consts";
 
 const currentPage = Astro.url.pathname;
@@ -19,23 +15,15 @@ const { title, description } = Astro.props;
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body class="relative flex min-h-screen flex-col bg-stone-950 py-1.5 antialiased lg:py-0">
+  <body class="relative flex min-h-screen flex-col bg-stone-950 antialiased">
     <!-- Background Grid pattern and Gradient -->
     <div class="bg-grid-lines absolute inset-0 z-0 h-screen opacity-60"></div>
     <div
       class="absolute inset-0 z-1 h-screen bg-gradient-to-b from-stone-950/85 via-stone-950/0 to-stone-950 md:from-10% md:to-90%">
     </div>
     <!-- Site Header -->
-    <header
-      class="relative z-10 container mx-auto mb-6 flex max-w-full items-center gap-3 p-1.5 sm:mt-6 sm:mb-12 sm:border sm:border-stone-800 sm:bg-stone-800/50 sm:p-3 md:max-w-2xl md:rounded-xl">
-      <div
-        class="max-w-16 place-content-center overflow-hidden rounded-full border border-stone-700 bg-stone-900/50 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 sm:hidden">
-        <a href="/">
-          <Image src={profilePic} alt="Profile Picture of Me, Edward Vonschondorf" class="size-full object-cover" />
-        </a>
-      </div>
-      <HorizontalMenu siteLinks={siteLinks} currentPage={currentPage} />
-      <DropdownMenu siteLinks={siteLinks} />
+    <header class="relative z-5 mb-6 w-full md:mt-6 md:mb-12">
+      <SiteNavigation currentPage={currentPage} />
     </header>
     <!-- Site Content -->
     <main class="flex flex-grow flex-col items-center">

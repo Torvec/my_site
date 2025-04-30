@@ -22,21 +22,21 @@ const content = {
   <Card twc="flex h-full flex-col justify-between gap-3 md:gap-9 md:col-span-2 lg:col-span-3">
     <div>
       <h1 class="mb-3 text-lg font-bold text-stone-100 md:text-2xl">{content.headline}</h1>
-      <p class="text-sm font-medium text-stone-300 md:text-base">{content.introduction}</p>
+      <p class="text-sm text-stone-300 md:text-base md:font-medium">{content.introduction}</p>
     </div>
-    <div class="grid gap-1.5 text-center text-sm sm:gap-3 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-1.5 text-center text-sm md:grid-cols-2 md:gap-3 lg:grid-cols-3">
       <a
         href={content.btn.emailLink}
-        class="block w-full rounded-md border border-orange-600 bg-linear-to-b from-orange-600 to-orange-600/50 py-1.5 text-stone-200 transition duration-300 ease-in-out hover:border-orange-700 hover:from-orange-700 hover:to-orange-800 hover:text-white active:scale-90 lg:py-3">
+        class="block w-full rounded-md border border-orange-600 bg-linear-to-b from-orange-600 to-orange-600/50 py-1.5 text-stone-200 transition duration-300 ease-in-out hover:border-orange-700 hover:from-orange-700 hover:to-orange-800 hover:text-white active:scale-90 lg:py-3 lg:font-medium">
         {content.btn.contact}
       </a>
       <a
         href={content.btn.resumeLink}
-        class="block w-full rounded-md border border-stone-600 bg-linear-to-b from-stone-600 to-stone-600/50 py-1.5 text-stone-200 transition duration-300 ease-in-out hover:border-stone-700 hover:from-stone-700 hover:to-stone-800 hover:text-white active:scale-90 lg:py-3">
+        class="block w-full rounded-md border border-stone-600 bg-linear-to-b from-stone-600 to-stone-600/50 py-1.5 text-stone-200 transition duration-300 ease-in-out hover:border-stone-700 hover:from-stone-700 hover:to-stone-800 hover:text-white active:scale-90 lg:py-3 lg:font-medium">
         {content.btn.resume}
       </a>
       <button
-        class="w-full cursor-pointer rounded-md border border-stone-800 py-1.5 text-stone-300 transition-colors duration-300 ease-in-out hover:border-stone-700 hover:text-white sm:col-span-2 lg:col-span-1 lg:py-3">
+        class="w-full cursor-pointer rounded-md border border-stone-800 py-1.5 text-stone-300 transition-colors duration-300 ease-in-out hover:border-stone-700 hover:text-white md:col-span-2 lg:col-span-1 lg:py-3 lg:font-medium">
         {content.btn.availability} &#9661;
       </button>
     </div>

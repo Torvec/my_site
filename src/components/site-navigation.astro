@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import profilePic from "@/assets/portrait_gray_transparent_bg.png";
+import { siteLinks } from "@/global-consts";
+
+const { currentPage } = Astro.props;
+
+const isActive = (href: string) => {
+  return (href === "/" && currentPage === "/") || (href !== "/" && currentPage.startsWith(href));
+};
+---
+
+<nav
+  class="mx-auto flex max-w-full items-center justify-between gap-3 p-1.5 sm:border sm:border-stone-800 sm:bg-stone-800/50 sm:p-3 md:max-w-2xl md:rounded-xl">
+  <!-- PROFILE PIC : Visible until sm -->
+  <div
+    class="max-w-16 place-content-center overflow-hidden rounded-full border border-stone-700 bg-stone-900/50 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 sm:hidden">
+    <a href="/">
+      <Image src={profilePic} alt="Profile Picture of Me, Edward Vonschondorf" class="size-full object-cover" />
+    </a>
+  </div>
+  <!-- LINK LIST : Hidden below sm, but visible and vertical when button pressed, horizontal above sm breakpoint -->
+  <ul
+    id="menu"
+    class="absolute top-0 left-0 z-10 hidden w-full space-y-3 border-b border-stone-800 bg-stone-900 px-6 pt-16 pb-24 font-medium uppercase sm:static sm:flex sm:h-max sm:space-y-0 sm:border-0 sm:p-0">
+    {
+      siteLinks.map((link: { href: string; name: string }) => (
+        <li class="flex-grow">
+          <a href={link.href} class="group flex gap-0.75 rounded-md py-1.5 pl-3 text-lg hover:bg-stone-800 sm:text-sm">
+            <span
+              class={`block transition-all duration-300 ease-in-out group-hover:text-white ${
+                isActive(link.href) ? "text-white" : "text-stone-700"
+              }`}>
+              /
+            </span>
+            <span
+              class={`block transition-all duration-300 ease-in-out group-hover:translate-x-0.75 group-hover:text-orange-600 ${
+                isActive(link.href) ? "translate-x-0.75 text-orange-600" : "text-stone-300"
+              }`}>
+              {link.name}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <!-- DROP DOWN MENU BUTTON : Hidden after sm -->
+  <button id="menu-toggle" class="group z-20 cursor-pointer sm:hidden" aria-label="Toggle Menu">
+    <span
+      id="menu-open"
+      class="block rounded-md border border-stone-700 p-1.5 text-2xl text-white transition-colors duration-150 ease-in-out hover:border-stone-500 hover:bg-stone-900">
+      +
+    </span>
+    <span
+      id="menu-close"
+      class="hidden rounded-md border border-stone-900 p-1.5 text-2xl text-white transition-colors duration-150 ease-in-out hover:border-stone-500 hover:bg-stone-900">
+      X
+    </span>
+  </button>
+</nav>
+<!-- Handles the drop down menu visibility below sm breakpoint -->
+<script is:inline>
+  const menuToggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
+  const menuOpen = document.getElementById("menu-open");
+  const menuClose = document.getElementById("menu-close");
+
+  // Toggle menu visibility
+  menuToggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("block");
+    menuOpen.classList.toggle("hidden");
+    menuOpen.classList.toggle("block");
+    menuClose.classList.toggle("hidden");
+    menuClose.classList.toggle("block");
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", (event) => {
+    if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+      menu.classList.add("hidden");
+      menu.classList.remove("block");
+      menuOpen.classList.remove("hidden");
+      menuOpen.classList.add("block");
+      menuClose.classList.add("hidden");
+      menuClose.classList.remove("block");
+    }
+  });
+</script>
