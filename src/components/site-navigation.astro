@@ -60,31 +60,35 @@ const isActive = (href: string) => {
 </nav>
 <!-- Handles the drop down menu visibility below sm breakpoint -->
 <script is:inline>
-  const menuToggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("menu");
-  const menuOpen = document.getElementById("menu-open");
-  const menuClose = document.getElementById("menu-close");
+  // This line is so the script doesn't stop working after a link in the menu (or any link) is clicked due
+  // to Astro's view transitions implementation. See: https://docs.astro.build/en/guides/view-transitions/#script-re-execution
+  document.addEventListener("astro:page-load", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+    const menuOpen = document.getElementById("menu-open");
+    const menuClose = document.getElementById("menu-close");
 
-  // Toggle menu visibility
-  menuToggle.addEventListener("click", (event) => {
-    event.stopPropagation();
-    menu.classList.toggle("hidden");
-    menu.classList.toggle("block");
-    menuOpen.classList.toggle("hidden");
-    menuOpen.classList.toggle("block");
-    menuClose.classList.toggle("hidden");
-    menuClose.classList.toggle("block");
-  });
+    // Toggle menu visibility
+    menuToggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      menu.classList.toggle("hidden");
+      menu.classList.toggle("block");
+      menuOpen.classList.toggle("hidden");
+      menuOpen.classList.toggle("block");
+      menuClose.classList.toggle("hidden");
+      menuClose.classList.toggle("block");
+    });
 
-  // Close menu when clicking outside
-  document.addEventListener("click", (event) => {
-    if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
-      menu.classList.add("hidden");
-      menu.classList.remove("block");
-      menuOpen.classList.remove("hidden");
-      menuOpen.classList.add("block");
-      menuClose.classList.add("hidden");
-      menuClose.classList.remove("block");
-    }
+    // Close menu when clicking outside
+    document.addEventListener("click", (event) => {
+      if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+        menu.classList.add("hidden");
+        menu.classList.remove("block");
+        menuOpen.classList.remove("hidden");
+        menuOpen.classList.add("block");
+        menuClose.classList.add("hidden");
+        menuClose.classList.remove("block");
+      }
+    });
   });
 </script>
