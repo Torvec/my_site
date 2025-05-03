@@ -1,26 +1,20 @@
 ---
 import { getEntry } from "astro:content";
-import { Image } from "astro:assets";
 import SectionHeader from "@/components/section-header.astro";
+import Banner from "@/components/banner.astro";
 
 const featuredGame = await getEntry("arcade", "the-running-dog")!;
 ---
 
 <div class="space-y-3">
   <SectionHeader href="/arcade/">Arcade</SectionHeader>
-  <a
-    href={`/arcade/${featuredGame.id}/`}
-    aria-label={`View Featured Game: ${featuredGame.data.title}`}
-    class="group relative hidden transition-colors duration-300 ease-in-out lg:block lg:overflow-hidden lg:rounded-xl lg:border lg:border-stone-700 lg:hover:border-orange-900">
-    <Image
+  <div class="hidden lg:block">
+    <Banner
+      href={`/arcade/${featuredGame.id}/`}
+      ariaLabel={`View Featured Game: ${featuredGame.data.title}`}
       src={featuredGame.data.thumbnail}
-      alt={`Thumbnail for ${featuredGame.data.title}`}
-      title={`${featuredGame.data.title} game`}
-      class="scale-105 object-cover transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-70"
+      altText={`Thumbnail for ${featuredGame.data.title}`}
+      titleText={`${featuredGame.data.title} game`}
     />
-    <span
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-stone-400 bg-stone-900/90 px-3 py-1.5 text-sm font-medium text-stone-100 opacity-0 transition-opacity duration-300 ease-in group-hover:opacity-100">
-      Details &raquo;
-    </span>
-  </a>
+  </div>
 </div>

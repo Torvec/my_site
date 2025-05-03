@@ -1,10 +1,9 @@
 ---
 import { getCollection, getEntry } from "astro:content";
-import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
 import PageHeader from "@/components/page-header.astro";
 import Card from "@/components/card.astro";
-import DetailsLink from "@/components/details-link.astro";
+import Banner from "@/components/banner.astro";
 
 const games = (await getCollection("arcade")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -23,19 +22,24 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
     </PageHeader>
     <!-- FEATURED GAME -->
     <Card twc="group space-y-3 md:flex md:gap-6 md:space-y-0">
-      <div class="h-max flex-shrink-0 overflow-hidden rounded-xl border border-stone-700">
-        <Image
-          src={featuredGame.data.thumbnail}
-          alt={`Thumbnail for ${featuredGame.data.title}`}
-          class="h-full w-full scale-105 object-cover transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-80"
-        />
-      </div>
+      <Banner
+        href={`/arcade/${featuredGame.id}/`}
+        ariaLabel={`View Featured Game: ${featuredGame.data.title}`}
+        src={featuredGame.data.thumbnail}
+        altText={`Thumbnail for ${featuredGame.data.title}`}
+        titleText={`${featuredGame.data.title} game`}
+      />
       <div class="flex flex-col justify-between gap-3 space-y-3">
         <div class="space-y-3">
-          <h2 class="font-bold text-stone-100">{featuredGame.data.title}</h2>
+          <h2 class="font-bold text-stone-100">
+            <a
+              href={`/arcade/${featuredGame.id}`}
+              class="block transition-colors duration-300 ease-in-out hover:text-orange-600">
+              {featuredGame.data.title}
+            </a>
+          </h2>
           <p class="text-stone-300">{featuredGame.data.description}</p>
         </div>
-        <DetailsLink href={`/arcade/${featuredGame.id}`} />
       </div>
     </Card>
     <!-- ALL OTHER GAMES -->
@@ -44,17 +48,22 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
         filteredGames.map((game) => (
           <Card twc="group flex flex-col justify-between gap-3">
             <div class="space-y-3">
-              <div class="h-max overflow-hidden rounded-xl border border-stone-700">
-                <Image
-                  src={game.data.thumbnail}
-                  alt={`Thumbnail for ${game.data.title}`}
-                  class="h-full w-full scale-105 object-cover transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-80"
-                />
-              </div>
-              <h3 class="font-bold text-stone-100">{game.data.title}</h3>
+              <Banner
+                href={`/arcade/${game.id}/`}
+                ariaLabel={`View Game: ${game.data.title}`}
+                src={game.data.thumbnail}
+                altText={`Thumbnail for ${game.data.title}`}
+                titleText={`${game.data.title} game`}
+              />
+              <h3 class="font-bold text-stone-100">
+                <a
+                  href={`/arcade/${game.id}`}
+                  class="block transition-colors duration-300 ease-in-out hover:text-orange-600">
+                  {game.data.title}
+                </a>
+              </h3>
               <p class="text-stone-300">{game.data.description}</p>
             </div>
-            <DetailsLink href={`/arcade/${game.id}`} />
           </Card>
         ))
       }

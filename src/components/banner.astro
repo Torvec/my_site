@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+const { href, ariaLabel, src, altText, titleText } = Astro.props;
+---
+
+<a
+  href={`${href}`}
+  aria-label={`${ariaLabel}`}
+  class="group/banner relative block shrink-0 overflow-hidden rounded-xl border border-stone-700 transition-colors duration-300 ease-in-out hover:border-orange-900">
+  <Image
+    src={src}
+    alt={`${altText}`}
+    title={`${titleText}`}
+    class="size-full scale-105 object-cover transition-all duration-300 ease-in-out group-hover/banner:scale-100 group-hover/banner:opacity-70"
+  />
+  <span
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-stone-400 bg-stone-900/90 px-3 py-1.5 text-sm font-medium text-stone-100 opacity-0 transition-opacity duration-300 ease-in group-hover/banner:opacity-100">
+    Details &raquo;
+  </span>
+</a>
