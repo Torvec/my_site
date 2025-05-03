@@ -30,16 +30,16 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <!-- Site Footer -->
-    <footer class="relative z-2 container mx-auto space-y-3 px-1.5 pt-6 pb-6 text-center text-sm md:pt-12 lg:px-3">
-      <span class="block text-stone-500"
-        >&copy; {year} Made for fun, with <a
+    <footer class="relative z-2 container mx-auto space-y-3 px-1.5 pt-6 text-center text-sm md:pt-12 lg:px-3">
+      <p class="text-stone-500">
+        &copy; {year} Made for fun, with <a
           href="https://astro.build/"
           target="_blank"
           rel="noopener noreferrer external"
-          class="text-stone-300 hover:text-orange-600">Astro</a
-        >!
-      </span>
-      <ul class="flex flex-wrap justify-center gap-3 md:gap-6">
+          class="text-stone-300 transition-colors duration-300 ease-in-out hover:text-orange-600">Astro!</a
+        >
+      </p>
+      <ul class="flex flex-wrap justify-center">
         {
           socialLinks.map((link) => (
             <li>
@@ -47,8 +47,9 @@ const { title, description } = Astro.props;
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer external"
-                class="text-stone-300 hover:text-orange-600">
-                {link.name}
+                class="group relative block w-full overflow-hidden px-3 pt-1.5 pb-3 text-stone-300 transition-colors duration-300 ease-in-out hover:text-orange-600 md:px-6">
+                <span class="absolute inset-0 block translate-y-full bg-linear-to-b from-transparent to-orange-950/40 transition-transform duration-300 ease-in-out group-hover:-translate-y-0" />
+                <span class="relative">{link.name}</span>
               </a>
             </li>
           ))
