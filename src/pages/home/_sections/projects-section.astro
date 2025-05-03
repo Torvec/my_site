@@ -13,12 +13,16 @@ const project = (await getCollection("projects")).sort(
   <a
     href={`/projects/${project.id}/`}
     aria-label={`View project: ${project.data.title}`}
-    class="group hidden lg:block lg:overflow-hidden lg:rounded-xl lg:border lg:border-stone-700">
+    class="group relative hidden transition-colors duration-300 ease-in-out lg:block lg:overflow-hidden lg:rounded-xl lg:border lg:border-stone-700 lg:hover:border-orange-900">
     <Image
       src={project.data.thumbnail}
       alt={`Thumbnail for ${project.data.title}`}
       title={`${project.data.title} project`}
-      class="h-full w-full scale-105 object-cover transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-80"
+      class="scale-105 object-cover transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-70"
     />
+    <span
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-stone-400 bg-stone-900/90 px-3 py-1.5 text-sm font-medium text-stone-100 opacity-0 transition-opacity duration-300 ease-in group-hover:opacity-100">
+      Details &raquo;
+    </span>
   </a>
 </div>

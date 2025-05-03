@@ -41,8 +41,13 @@ const content = {
       </button>
     </div>
   </Card>
+  <!-- TODO: This section is a slightly modified card component, will have to integrate it later -->
   <section
     class="mx-auto hidden place-content-center overflow-hidden rounded-xl border border-stone-700 bg-stone-900/50 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 sm:block md:col-start-3 md:rounded-3xl lg:col-start-4">
-    <Image src={profilePic} alt="Profile Picture of Me, Edward Vonschondorf" class="size-full object-cover" />
+    <Image
+      src={profilePic}
+      alt="Profile Picture of Me, Edward Vonschondorf"
+      class="size-full scale-105 object-cover transition-transform duration-300 ease-in-out hover:scale-100"
+    />
   </section>
 </div>
