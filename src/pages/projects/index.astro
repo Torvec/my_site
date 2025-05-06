@@ -25,6 +25,7 @@ const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate
                 src={project.data.thumbnail}
                 altText={`Thumbnail for ${project.data.title}`}
                 titleText={`${project.data.title} project`}
+                displayText={"Details »"}
               />
               <h2 class="font-bold text-stone-100">
                 <a

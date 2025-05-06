@@ -28,6 +28,7 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
         src={featuredGame.data.thumbnail}
         altText={`Thumbnail for ${featuredGame.data.title}`}
         titleText={`${featuredGame.data.title} game`}
+        displayText={"Details »"}
       />
       <div class="flex flex-col justify-between gap-3 space-y-3">
         <div class="space-y-3">
@@ -54,6 +55,7 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
                 src={game.data.thumbnail}
                 altText={`Thumbnail for ${game.data.title}`}
                 titleText={`${game.data.title} game`}
+                displayText={"Details »"}
               />
               <h3 class="font-bold text-stone-100">
                 <a
