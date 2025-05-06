@@ -11,8 +11,8 @@ const content = {
   btn: {
     contact: "Contact Me",
     emailLink: socialLinks[0].url,
-    resume: "My Resume",
-    resumeLink: "PLACEHOLDER",
+    resume: "My Resume (pdf)",
+    resumeLink: "edward_vonschondorf_resume_06MAY2025.pdf",
     availability: "Availability",
   },
 };
@@ -32,6 +32,10 @@ const content = {
       </a>
       <a
         href={content.btn.resumeLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        type="application/pdf"
+        aria-label="Download my Resume (PDF)"
         class="block w-full rounded-md border border-stone-600 bg-linear-to-b from-stone-600 to-stone-600/50 py-1.5 text-stone-200 transition duration-300 ease-in-out hover:border-stone-700 hover:from-stone-700 hover:to-stone-800 hover:text-white active:scale-90 lg:py-3 lg:font-medium">
         {content.btn.resume}
       </a>
