@@ -10,6 +10,7 @@ export const siteLinks = [
   { name: "Arcade", href: "/arcade" },
   { name: "Blog", href: "/blog" },
   { name: "Now", href: "/now" },
+  { name: "Uses", href: "/uses" },
 ];
 
 export const socialLinks = [

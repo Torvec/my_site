@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/layout.astro";
+import PageHeader from "@/components/page-header.astro";
+import Card from "@/components/card.astro";
+import Uses from "./uses.md";
+---
+
+<Layout title="Uses | Edward Vonschondorf" description="Everything I use for development and gaming.">
+  <article class="relative z-2 container mx-auto max-w-3xl space-y-1.5 px-1.5 lg:space-y-3 lg:px-3 xl:px-0">
+    <PageHeader header="Uses">
+      Everything I use on a daily basis for web/game development and gaming. Inspired by <a
+        href="https://uses.tech/"
+        target="_blank"
+        rel="noopener noreferrer external"
+        class="font-medium text-stone-100 hover:text-orange-600">uses.tech</a
+      >.
+    </PageHeader>
+    <Card twc="prose"><Uses /></Card>
+  </article>
+</Layout>

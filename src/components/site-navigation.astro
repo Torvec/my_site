@@ -11,7 +11,7 @@ const isActive = (href: string) => {
 ---
 
 <nav
-  class="mx-auto flex max-w-full items-center justify-between gap-3 p-1.5 sm:border sm:border-stone-800 sm:bg-stone-800/50 sm:p-3 md:max-w-2xl md:rounded-xl">
+  class="mx-auto flex max-w-full items-center justify-between gap-3 p-1.5 sm:border sm:border-stone-800 sm:bg-stone-800/50 sm:p-3 md:max-w-3xl md:rounded-xl">
   <!-- PROFILE PIC : Visible until sm -->
   <div
     class="max-w-16 place-content-center overflow-hidden rounded-full border border-stone-700 bg-stone-900/50 backdrop-blur-[2px] transition-colors duration-300 ease-in-out hover:border-orange-800 sm:hidden">
@@ -60,8 +60,9 @@ const isActive = (href: string) => {
 </nav>
 <!-- Handles the drop down menu visibility below sm breakpoint -->
 <script is:inline>
-  // This line is so the script doesn't stop working after a link in the menu (or any link) is clicked due
-  // to Astro's view transitions implementation. See: https://docs.astro.build/en/guides/view-transitions/#script-re-execution
+  /*
+  This line is so the script doesn't stop working after a link in the menu (or any link) is clicked due to Astro's view transitions implementation. See: https://docs.astro.build/en/guides/view-transitions/#script-re-execution
+  */
   document.addEventListener("astro:page-load", () => {
     const menuToggle = document.getElementById("menu-toggle");
     const menu = document.getElementById("menu");

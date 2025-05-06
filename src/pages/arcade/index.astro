@@ -22,15 +22,17 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
     </PageHeader>
     <!-- FEATURED GAME -->
     <Card twc="group space-y-3 md:flex md:gap-6 md:space-y-0">
-      <Banner
-        href={`/arcade/${featuredGame.id}/`}
-        ariaLabel={`View Featured Game: ${featuredGame.data.title}`}
-        src={featuredGame.data.thumbnail}
-        altText={`Thumbnail for ${featuredGame.data.title}`}
-        titleText={`${featuredGame.data.title} game`}
-        displayText={"Details »"}
-      />
-      <div class="flex flex-col justify-between gap-3 space-y-3">
+      <div class="md:w-1/2">
+        <Banner
+          href={`/arcade/${featuredGame.id}/`}
+          ariaLabel={`View Featured Game: ${featuredGame.data.title}`}
+          src={featuredGame.data.thumbnail}
+          altText={`Thumbnail for ${featuredGame.data.title}`}
+          titleText={`${featuredGame.data.title} game`}
+          displayText={"Details »"}
+        />
+      </div>
+      <div class="flex flex-col justify-between gap-3 space-y-3 md:w-1/2">
         <div class="space-y-3">
           <h2 class="font-bold text-stone-100">
             <a
@@ -49,14 +51,16 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
         filteredGames.map((game) => (
           <Card twc="group flex flex-col justify-between gap-3">
             <div class="space-y-3">
-              <Banner
-                href={`/arcade/${game.id}/`}
-                ariaLabel={`View Game: ${game.data.title}`}
-                src={game.data.thumbnail}
-                altText={`Thumbnail for ${game.data.title}`}
-                titleText={`${game.data.title} game`}
-                displayText={"Details »"}
-              />
+              <div>
+                <Banner
+                  href={`/arcade/${game.id}/`}
+                  ariaLabel={`View Game: ${game.data.title}`}
+                  src={game.data.thumbnail}
+                  altText={`Thumbnail for ${game.data.title}`}
+                  titleText={`${game.data.title} game`}
+                  displayText={"Details »"}
+                />
+              </div>
               <h3 class="font-bold text-stone-100">
                 <a
                   href={`/arcade/${game.id}`}
