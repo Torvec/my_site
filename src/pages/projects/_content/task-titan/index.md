@@ -1,7 +1,6 @@
 ---
 title: "Task Titan"
 description: "A task completion and collaboration app for managing projects and crushing tasks! This was the second UC Berkeley group project where I worked on the front-end design and Handlebars templates and implemented the Materialize CSS library."
-development: "Development Story Here"
 thumbnail: "./task_titan_thumbnail.jpg"
 images: []
 repo_url: "https://github.com/Torvec/Task-Titan"
@@ -10,3 +9,11 @@ tech_stack:
   ["Handlebars", "Materialize CSS", "MySQL", "Node", "Express", "Sequelize"]
 pubDate: 2023-08-29
 ---
+
+### Description
+
+A task completion and collaboration app for managing projects and crushing tasks! This was the second UC Berkeley group project where I worked on the front-end design and Handlebars templates and implemented the Materialize CSS library.
+
+### Development
+
+Development story goes here

@@ -1,6 +1,7 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/layout.astro";
+import Card from "@/components/card.astro";
 import ActionButton from "@/components/action-button.astro";
 import ContentNavigator from "@/components/content-navigator.astro";
 
@@ -14,38 +15,47 @@ export async function getStaticPaths() {
 }
 
 const { project, index, projects } = Astro.props;
-const { title, description, development, images, deploy_url, repo_url, tech_stack } = project.data;
+const { title, description, images, deploy_url, repo_url, tech_stack } = project.data;
+
+const { Content } = await render(project);
 ---
 
 <Layout title={title + " | Edward Vonschondorf"} description={description}>
-  <article
-    class="relative z-2 container mx-auto my-auto max-w-4xl rounded-xl border border-stone-700 bg-stone-700/30 p-6 backdrop-blur-[2px] lg:rounded-3xl">
-    <h1 class="mb-3 text-xl font-bold text-stone-100">{title}</h1>
-    <div class="flex flex-col gap-6 md:flex-row">
-      <section class="space-y-3 md:w-1/2">
-        <span class="block h-64 w-full bg-stone-500"></span>
-        <span class="block h-64 w-full bg-stone-500"></span>
-      </section>
-      <section class="flex flex-col justify-between gap-6 md:w-1/2">
-        <div class="space-y-3">
-          <p class="font-medium text-stone-300">{description}</p>
-          <h2 class="font-bold text-stone-100">Development</h2>
-          <p class="font-medium text-stone-300">{development}</p>
-          <h2 class="font-bold text-stone-100">Tech Stack</h2>
-          <ul class="flex flex-wrap gap-3">
+  <article class="relative z-2 container mx-auto my-auto max-w-4xl px-1.5 lg:px-3 xl:px-0">
+    <Card>
+      <h1 class="mb-3 text-xl font-bold text-stone-100">{title}</h1>
+      <div class="flex flex-col gap-6 md:flex-row">
+        <section class="space-y-3 md:w-1/2">
+          <span class="hidden aspect-square bg-stone-600 md:block">Selected Image Placeholder</span>
+          <div class="grid grid-cols-2 gap-1.5 md:gap-3">
             {
-              tech_stack.map((tech) => (
-                <li class="rounded-xl border px-3 py-1 text-sm font-medium text-stone-500">{tech}</li>
-              ))
+              Array(4)
+                .fill(null)
+                .map((_, index) => <span class="block aspect-square bg-stone-600">{index + 1}</span>)
             }
-          </ul>
-        </div>
-        <div class="flex flex-col gap-3 md:flex-row">
-          <ActionButton href={deploy_url} external>Deployment</ActionButton>
-          <ActionButton href={repo_url} external>Repository</ActionButton>
-        </div>
-      </section>
-    </div>
+          </div>
+        </section>
+        <section class="flex flex-col justify-between gap-6 md:w-1/2">
+          <div class="space-y-3">
+            <div class="prose">
+              <Content />
+            </div>
+            <h2 class="font-bold text-stone-100">Tech Stack</h2>
+            <ul class="flex flex-wrap gap-3">
+              {
+                tech_stack.map((tech) => (
+                  <li class="rounded-xl border px-3 py-1 text-sm font-medium text-stone-500">{tech}</li>
+                ))
+              }
+            </ul>
+          </div>
+          <div class="flex flex-col gap-3 md:flex-row">
+            <ActionButton href={deploy_url} external>Deployment</ActionButton>
+            <ActionButton href={repo_url} external>Repository</ActionButton>
+          </div>
+        </section>
+      </div>
+    </Card>
   </article>
   <ContentNavigator items={projects} currentIndex={index} basePath="projects" contentType="Projects" />
 </Layout>
