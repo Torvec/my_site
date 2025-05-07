@@ -18,7 +18,7 @@ const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate
       {
         projects.map((project) => (
           <div class="mb-1.5 break-inside-avoid lg:mb-3">
-            <Card twc="group space-y-3">
+            <Card twc="space-y-3">
               <Banner
                 href={`/projects/${project.id}/`}
                 ariaLabel={`View project: ${project.data.title}`}
@@ -29,9 +29,16 @@ const projects = (await getCollection("projects")).sort((a, b) => b.data.pubDate
               />
               <h2 class="font-bold text-stone-100">
                 <a
-                  href={`/projects/${project.id}`}
-                  class="block transition-colors duration-300 ease-in-out hover:text-orange-600">
-                  {project.data.title}
+                  href={`/projects/${project.id}/`}
+                  class="group flex w-full flex-col items-baseline text-pretty sm:flex-row sm:gap-12">
+                  <div class="flex w-full items-baseline justify-between overflow-hidden">
+                    <span class="transition-color block text-pretty duration-300 ease-in-out group-hover:text-orange-600">
+                      {project.data.title}
+                    </span>
+                    <span class="block translate-x-full text-xl text-orange-600 transition-transform duration-300 ease-in-out group-hover:-translate-x-full">
+                      &raquo;
+                    </span>
+                  </div>
                 </a>
               </h2>
               <p class="text-stone-300">{project.data.description}</p>

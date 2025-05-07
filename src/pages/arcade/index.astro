@@ -21,7 +21,7 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
       code and make your own games too!
     </PageHeader>
     <!-- FEATURED GAME -->
-    <Card twc="group space-y-3 md:flex md:gap-6 md:space-y-0">
+    <Card twc="space-y-3 md:flex md:gap-6 md:space-y-0">
       <div class="md:w-1/2">
         <Banner
           href={`/arcade/${featuredGame.id}/`}
@@ -36,9 +36,17 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
         <div class="space-y-3">
           <h2 class="font-bold text-stone-100">
             <a
-              href={`/arcade/${featuredGame.id}`}
-              class="block transition-colors duration-300 ease-in-out hover:text-orange-600">
-              {featuredGame.data.title}
+              href={`/arcade/${featuredGame.id}/`}
+              class="group flex w-full flex-col items-baseline text-pretty sm:flex-row sm:gap-12">
+              <div class="flex w-full items-baseline justify-between overflow-hidden">
+                <span class="transition-color block text-pretty duration-300 ease-in-out group-hover:text-orange-600">
+                  {featuredGame.data.title}
+                </span>
+                <span
+                  class="block translate-x-full text-xl text-orange-600 transition-transform duration-300 ease-in-out group-hover:-translate-x-full">
+                  &raquo;
+                </span>
+              </div>
             </a>
           </h2>
           <p class="text-stone-300">{featuredGame.data.description}</p>
@@ -49,7 +57,7 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
     <section class="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3 lg:px-0">
       {
         filteredGames.map((game) => (
-          <Card twc="group flex flex-col justify-between gap-3">
+          <Card twc="flex flex-col justify-between gap-3">
             <div class="space-y-3">
               <div>
                 <Banner
@@ -63,9 +71,16 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
               </div>
               <h3 class="font-bold text-stone-100">
                 <a
-                  href={`/arcade/${game.id}`}
-                  class="block transition-colors duration-300 ease-in-out hover:text-orange-600">
-                  {game.data.title}
+                  href={`/arcade/${game.id}/`}
+                  class="group flex w-full flex-col items-baseline text-pretty sm:flex-row sm:gap-12">
+                  <div class="flex w-full items-baseline justify-between overflow-hidden">
+                    <span class="transition-color block text-pretty duration-300 ease-in-out group-hover:text-orange-600">
+                      {game.data.title}
+                    </span>
+                    <span class="block translate-x-full text-xl text-orange-600 transition-transform duration-300 ease-in-out group-hover:-translate-x-full">
+                      &raquo;
+                    </span>
+                  </div>
                 </a>
               </h3>
               <p class="text-stone-300">{game.data.description}</p>

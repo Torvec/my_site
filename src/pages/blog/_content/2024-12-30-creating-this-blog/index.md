@@ -1,7 +1,8 @@
 ---
 title: "Creating This Blog"
 slug: "creating-this-blog"
-description: "A complete build log of my minimalist, statically generated, Astro blog"
+readTime: 5
+summary: "A complete build log of my minimalist, statically generated, Astro blog."
 pubDate: 2024-12-30
 # updatedDate: ""
 # heroImage: ""

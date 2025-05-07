@@ -1,7 +1,8 @@
 ---
 title: "2024 Year in Review"
 slug: "2024-year-in-review"
-description: "An overview of my developer journey in 2024"
+readTime: 4
+summary: "An overview of my developer journey in 2024."
 pubDate: 2025-01-04
 # updatedDate: ""
 # heroImage: ""

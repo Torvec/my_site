@@ -1,7 +1,8 @@
 ---
-title: "...Test Post..."
+title: "This is a Test Post..."
 slug: "Testing-change-this"
-description: "Testing ***CHANGE THIS***"
+readTime: 0
+summary: "Testing ***CHANGE THIS***"
 pubDate: 2025-05-06
 # updatedDate: ""
 # heroImage: ""
