@@ -7,7 +7,8 @@ import ContentNavigator from "@/components/content-navigator.astro";
 import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
-  const games = await getCollection("arcade");
+  // Ascending order (oldest to newest), for the content navigation component
+  const games = (await getCollection("arcade")).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 
   return games.map((game, index) => ({
     params: { game: game.id },

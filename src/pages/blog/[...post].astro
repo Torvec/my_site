@@ -6,7 +6,8 @@ import FormattedDate from "@/components/formatted-date.astro";
 import ContentNavigator from "@/components/content-navigator.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  // Ascending order (oldest to newest), for the content navigation component
+  const posts = (await getCollection("blog")).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 
   return posts.map((post, index) => ({
     params: { post: post.id },

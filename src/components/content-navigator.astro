@@ -1,31 +1,55 @@
 ---
 const { items, currentIndex, basePath, contentType } = Astro.props;
 
-// Used to determine the previous and next items in the collection and have it wrap around to the first or last item if the end or beginning of the items array is reached
-const total = items.length;
-const prevItem = items[(currentIndex - 1 + total) % total];
-const nextItem = items[(currentIndex + 1) % total];
+const prevItem = currentIndex - 1 < 0 ? null : items[currentIndex - 1];
+const nextItem = currentIndex + 1 === items.length ? null : items[currentIndex + 1];
 ---
 
 <nav
   aria-label={`${contentType} navigation`}
-  class="relative z-2 container mx-auto flex max-w-4xl flex-col items-center justify-between gap-1.5 px-3 py-12 sm:flex-row sm:gap-3">
-  <a
-    href={`/${basePath}/${prevItem.id}/`}
-    aria-label={`Go to: ${prevItem.data.title}`}
-    class="block w-full rounded-md border border-stone-700 bg-stone-900/40 px-3 py-1.5 text-stone-300 transition-colors duration-300 ease-in-out hover:border-orange-600 hover:text-orange-600">
-    &lt; {prevItem.data.title}
-  </a>
+  class="relative z-2 container mx-auto grid max-w-4xl gap-1.5 px-1.5 py-12 md:grid-cols-8 xl:px-0">
+  {
+    prevItem ? (
+      <a
+        href={`/${basePath}/${prevItem.id}/`}
+        aria-label={`Go to: ${prevItem.data.title}`}
+        class="group block w-full rounded-md border border-stone-700 bg-stone-900/40 px-3 py-1.5 transition-colors duration-300 ease-in-out hover:border-orange-900 hover:bg-stone-800/40 md:col-span-3">
+        <span class="ml-3 block text-sm text-stone-400">Previous</span>
+        <span class="block font-medium text-stone-300 transition-colors duration-300 ease-in-out group-hover:text-stone-100">
+          &laquo; {prevItem.data.title}
+        </span>
+      </a>
+    ) : (
+      <span class="block w-full rounded-md border border-stone-800 bg-stone-950 px-3 py-1.5 text-sm text-stone-300 md:col-span-3">
+        Prev
+        <br />
+        N/A
+      </span>
+    )
+  }
   <a
     href={`/${basePath}/`}
     aria-label={`View all ${contentType}`}
-    class="block w-full rounded-md border border-stone-700 bg-stone-900/40 px-3 py-1.5 text-center text-stone-300 transition-colors duration-300 ease-in-out hover:border-orange-600 hover:text-orange-600">
-    All {contentType}
+    class="block w-full place-content-center rounded-md border border-stone-700 bg-stone-900/40 px-3 py-1.5 text-center font-medium text-stone-300 transition-colors duration-300 ease-in-out hover:border-orange-900 hover:bg-stone-800/40 hover:text-stone-100 md:col-span-2">
+    {contentType}
   </a>
-  <a
-    href={`/${basePath}/${nextItem.id}/`}
-    aria-label={`Go to: ${nextItem.data.title}`}
-    class="block w-full rounded-md border border-stone-700 bg-stone-900/40 px-3 py-1.5 text-right text-stone-300 transition-colors duration-300 ease-in-out hover:border-orange-600 hover:text-orange-600">
-    {nextItem.data.title} &gt;
-  </a>
+  {
+    nextItem ? (
+      <a
+        href={`/${basePath}/${nextItem.id}/`}
+        aria-label={`Go to: ${nextItem.data.title}`}
+        class="group block w-full rounded-md border border-stone-700 bg-stone-900/40 px-3 py-1.5 text-right transition-colors duration-300 ease-in-out hover:border-orange-900 hover:bg-stone-800/40 md:col-span-3">
+        <span class="mr-3 block text-sm text-stone-400">Next</span>
+        <span class="block font-medium text-stone-300 transition-colors duration-300 ease-in-out group-hover:text-stone-100">
+          {nextItem.data.title} &raquo;
+        </span>
+      </a>
+    ) : (
+      <span class="block w-full rounded-md border border-stone-800 bg-stone-950 px-3 py-1.5 text-right text-sm text-stone-300 md:col-span-3">
+        Next
+        <br />
+        N/A
+      </span>
+    )
+  }
 </nav>

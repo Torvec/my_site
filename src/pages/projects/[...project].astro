@@ -6,7 +6,10 @@ import ActionButton from "@/components/action-button.astro";
 import ContentNavigator from "@/components/content-navigator.astro";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
+  // Ascending order (oldest to newest), for the content navigation component
+  const projects = (await getCollection("projects")).sort(
+    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+  );
 
   return projects.map((project, index) => ({
     params: { project: project.id },
