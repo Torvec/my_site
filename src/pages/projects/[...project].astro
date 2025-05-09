@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
 import Card from "@/components/card.astro";
 import ActionButton from "@/components/action-button.astro";
@@ -29,12 +30,16 @@ const { Content } = await render(project);
       <h1 class="mb-3 text-xl font-bold text-stone-100">{title}</h1>
       <div class="flex flex-col gap-6 md:flex-row">
         <section class="space-y-3 md:w-1/2">
-          <span class="hidden aspect-square bg-stone-600 md:block">Selected Image Placeholder</span>
+          <span class="hidden md:block md:overflow-hidden md:rounded-xl md:bg-black md:py-12">
+            <Image src={images[0]} class="size-full object-contain" alt={`${title} screenshot`} />
+          </span>
           <div class="grid grid-cols-2 gap-1.5 md:gap-3">
             {
-              Array(4)
-                .fill(null)
-                .map((_, index) => <span class="block aspect-square bg-stone-600">{index + 1}</span>)
+              images.map((_, index) => (
+                <span class="block aspect-square overflow-hidden rounded-xl bg-black">
+                  <Image src={images[index]} class="size-full object-contain" alt={`${title} screenshot`} />
+                </span>
+              ))
             }
           </div>
         </section>

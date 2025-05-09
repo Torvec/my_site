@@ -1,10 +1,10 @@
 ---
 import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
 import Layout from "@/layouts/layout.astro";
 import Card from "@/components/card.astro";
 import ActionButton from "@/components/action-button.astro";
 import ContentNavigator from "@/components/content-navigator.astro";
-import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   // Ascending order (oldest to newest), for the content navigation component
