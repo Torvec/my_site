@@ -26,15 +26,19 @@ const { Content } = await render(game);
   <article class="relative z-2 container mx-auto my-auto max-w-4xl px-1.5 lg:px-3 xl:px-0">
     <Card twc="space-y-3">
       <h1 class="mb-3 text-xl font-bold text-stone-100">{title}</h1>
-      <section class="flex flex-col-reverse gap-3 md:flex-row">
+      <section class="flex flex-col-reverse gap-3 md:flex-row xl:gap-6">
         <div class="md:w-2/3">
           <div class="space-y-3">
-            <span class="hidden h-64 bg-stone-500 md:block">Selected Image</span>
+            <span class="hidden md:block md:overflow-hidden md:rounded-xl md:bg-black md:py-12">
+              <Image src={images[0]} class="size-full object-contain" alt={`${title} screenshot`} />
+            </span>
             <div class="grid grid-cols-2 gap-1.5 md:grid-cols-4 md:gap-3">
               {
-                Array(4)
-                  .fill(null)
-                  .map((_, index) => <span class="block aspect-square bg-stone-600">{index + 1}</span>)
+                images.map((_, index) => (
+                  <span class="block aspect-square overflow-hidden rounded-xl bg-black">
+                    <Image src={images[index]} class="size-full object-contain" alt={`${title} screenshot`} />
+                  </span>
+                ))
               }
             </div>
           </div>

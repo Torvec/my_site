@@ -2,7 +2,13 @@
 title: "The Running Dog"
 description: "Play as a super-powered dog in this browser-based action game built with vanilla JavaScript. Defeat enemies, survive timed levels, and climb the leaderboard."
 thumbnail: "./the_running_dog_thumbnail.jpg"
-images: []
+images:
+  [
+    "./the_running_dog_1.jpg",
+    "./the_running_dog_2.jpg",
+    "./the_running_dog_3.jpg",
+    "./the_running_dog_4.jpg",
+  ]
 repo_url: "https://github.com/Torvec/dog-runner-game"
 play_url: "https://dog-runner-game.pages.dev/"
 pubDate: 2024-09-29

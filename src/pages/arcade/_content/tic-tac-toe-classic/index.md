@@ -2,7 +2,7 @@
 title: "Tic Tac Toe Classic"
 description: "A classic 3x3 Tic Tac Toe game built with JavaScript. Take turns placing Xs and Os in a clean, responsive browser-based interface."
 thumbnail: "./tic_tac_toe_classic_thumbnail.jpg"
-images: []
+images: ["./tic_tac_toe_classic_1.jpg"]
 repo_url: "https://github.com/Torvec/tic-tac-toe-classic"
 play_url: "https://tic-tac-toe-classic.pages.dev/"
 pubDate: 2024-10-14

@@ -2,7 +2,7 @@
 title: "Asteroids"
 description: "A minimalist Asteroids-style shooter built with Python and Pygame. Rotate, thrust, and shoot to survive as long as possible—one hit ends the run."
 thumbnail: "./asteroids_thumbnail.jpg"
-images: []
+images: ["./asteroids_1.jpg"]
 repo_url: "https://github.com/Torvec/asteroids"
 play_url: "https://github.com/Torvec/asteroids"
 pubDate: 2025-01-08
