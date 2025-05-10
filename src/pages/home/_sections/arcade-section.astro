@@ -12,7 +12,7 @@ const featuredGame = await getEntry("arcade", "the-running-dog")!;
     <Banner
       href={`/arcade/${featuredGame.id}/`}
       ariaLabel={`View Featured Game: ${featuredGame.data.title}`}
-      src={featuredGame.data.thumbnail}
+      src={featuredGame.data.banner}
       altText={`Thumbnail for ${featuredGame.data.title}`}
       titleText={`${featuredGame.data.title} game`}
       displayText={"Details »"}

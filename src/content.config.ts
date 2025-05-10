@@ -21,7 +21,7 @@ const projects = defineCollection({
     z.object({
       title: z.string(),
       description: z.string(),
-      thumbnail: image(),
+      banner: image(),
       images: z.array(image()),
       repo_url: z.string(),
       deploy_url: z.string().optional(),
@@ -55,7 +55,7 @@ const arcade = defineCollection({
     z.object({
       title: z.string(),
       description: z.string(),
-      thumbnail: image(),
+      banner: image(),
       images: z.array(image()),
       play_url: z.string(),
       repo_url: z.string(),

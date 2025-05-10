@@ -20,6 +20,7 @@ export async function getStaticPaths() {
 
 const { project, index, projects } = Astro.props;
 const { title, description, images, deploy_url, repo_url, tech_stack } = project.data;
+const image_index = 0;
 
 const { Content } = await render(project);
 ---
@@ -29,20 +30,30 @@ const { Content } = await render(project);
     <Card>
       <h1 class="mb-3 text-xl font-bold text-stone-100">{title}</h1>
       <div class="flex flex-col gap-6 md:flex-row">
+        <!-- IMAGE GALLERY -->
         <section class="space-y-3 md:w-1/2">
-          <span class="hidden md:block md:overflow-hidden md:rounded-xl md:bg-black md:py-12">
-            <Image src={images[0]} class="size-full object-contain" alt={`${title} screenshot`} />
-          </span>
-          <div class="grid grid-cols-2 gap-1.5 md:gap-3">
+          <a href={`/projects/${project.id}/gallery/${image_index}`} class="block rounded-xl bg-black py-6 md:py-12">
+            <Image
+              src={images[0]}
+              class="size-full object-contain transition-transform duration-300 ease-in-out hover:scale-90"
+              alt={`${title} screenshot`}
+            />
+          </a>
+          <div class="grid grid-cols-4 gap-1.5 md:grid-cols-2 md:gap-3">
             {
               images.map((_, index) => (
-                <span class="block aspect-square overflow-hidden rounded-xl bg-black">
-                  <Image src={images[index]} class="size-full object-contain" alt={`${title} screenshot`} />
+                <span class="block aspect-square rounded-xl bg-black">
+                  <Image
+                    src={images[index]}
+                    class="size-full object-contain transition-transform duration-300 ease-in-out hover:scale-90"
+                    alt={`${title} screenshot`}
+                  />
                 </span>
               ))
             }
           </div>
         </section>
+        <!-- CONTENT -->
         <section class="flex flex-col justify-between gap-6 md:w-1/2">
           <div class="space-y-3">
             <div class="prose">

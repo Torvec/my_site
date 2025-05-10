@@ -14,7 +14,7 @@ const project = (await getCollection("projects")).sort(
     <Banner
       href={`/projects/${project.id}/`}
       ariaLabel={`View project: ${project.data.title}`}
-      src={project.data.thumbnail}
+      src={project.data.banner}
       altText={`Thumbnail for ${project.data.title}`}
       titleText={`${project.data.title} project`}
       displayText={"Details »"}

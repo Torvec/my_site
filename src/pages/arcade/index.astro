@@ -26,7 +26,7 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
         <Banner
           href={`/arcade/${featuredGame.id}/`}
           ariaLabel={`View Featured Game: ${featuredGame.data.title}`}
-          src={featuredGame.data.thumbnail}
+          src={featuredGame.data.banner}
           altText={`Thumbnail for ${featuredGame.data.title}`}
           titleText={`${featuredGame.data.title} game`}
           displayText={"Details »"}
@@ -63,7 +63,7 @@ const filteredGames = games.filter((game) => game.id !== featuredGameName);
                 <Banner
                   href={`/arcade/${game.id}/`}
                   ariaLabel={`View Game: ${game.data.title}`}
-                  src={game.data.thumbnail}
+                  src={game.data.banner}
                   altText={`Thumbnail for ${game.data.title}`}
                   titleText={`${game.data.title} game`}
                   displayText={"Details »"}

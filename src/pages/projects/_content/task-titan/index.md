@@ -1,7 +1,7 @@
 ---
 title: "Task Titan"
 description: "A task completion and collaboration app for managing projects and crushing tasks! This was the second UC Berkeley group project where I worked on the front-end design and Handlebars templates and implemented the Materialize CSS library."
-thumbnail: "./task_titan_banner.jpg"
+banner: "./task_titan_banner.jpg"
 images:
   [
     "./task_titan_1.jpg",
