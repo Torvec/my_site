@@ -1,3 +1,57 @@
 ---
-// A re-usable generic gallery component to be used in the [screenshot].astro files for projects and arcade collections
+import { Image } from "astro:assets";
+import Layout from "@/layouts/layout.astro";
+import Card from "./card.astro";
+
+const { title, collection, entry, images, imageIndex } = Astro.props;
+
+const currentIndex = images[imageIndex];
+const prevIndex = imageIndex > 0 ? imageIndex - 1 : null;
+const nextIndex = imageIndex < images.length - 1 ? imageIndex + 1 : null;
 ---
+
+<Layout title={title + " Screenshot Gallery | Edward Vonschondorf"} description={"Images"}>
+  <article class="relative z-2 container mx-auto my-auto max-w-4xl px-1.5 lg:px-3 xl:px-0">
+    <Card>
+      <div class="mb-3 flex items-baseline justify-between">
+        <h1 class="text-xl font-bold text-stone-100">{title}</h1>
+        <a
+          href={`/${collection}/${entry}`}
+          class="block rounded-md border border-stone-700 px-3 py-1.5 font-bold text-white">
+          X
+        </a>
+      </div>
+      <div class="relative">
+        {
+          prevIndex && (
+            <a
+              href={`/${collection}/${entry}/gallery/${prevIndex}`}
+              class="absolute top-1/2 left-3 text-2xl font-bold text-white">
+              &lt;
+            </a>
+          )
+        }
+        <Image src={currentIndex} alt={`${title} Screenshot`} class="mb-3 size-full" />
+        {
+          nextIndex && (
+            <a
+              href={`/${collection}/${entry}/gallery/${nextIndex}`}
+              class="absolute top-1/2 right-3 text-2xl font-bold text-white">
+              &gt;
+            </a>
+          )
+        }
+      </div>
+      <div class="grid gap-1.5 md:grid-cols-4 md:gap-3">
+        {
+          // @ts-expect-error
+          images.map((_, index) => (
+            <a href={`/${collection}/${entry}/gallery/${index}`}>
+              <Image src={images[index]} alt={`${title} Screenshot`} class="size-full" />
+            </a>
+          ))
+        }
+      </div>
+    </Card>
+  </article>
+</Layout>

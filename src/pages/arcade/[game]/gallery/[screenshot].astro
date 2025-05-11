@@ -1,11 +1,9 @@
 ---
 import { getCollection, getEntry } from "astro:content";
-import { Image } from "astro:assets";
-import Layout from "@/layouts/layout.astro";
-import Card from "@/components/card.astro";
+import Gallery from "@/components/gallery.astro";
 
 /* getStaticPaths() is setting up all the possible dynamic routes based on 
-all the projects in the projects collection and all of the images within each project */
+all the games in the arcade collection and all of the images within each game */
 export async function getStaticPaths() {
   const games = await getCollection("arcade");
 
@@ -20,58 +18,13 @@ export async function getStaticPaths() {
 }
 
 /* extracting the params from getStaticPaths so they can be used by getEntry 
-to get the specifc project and specific image so the correct elements can be rendered */
+to get the specifc game and specific image so the correct elements can be rendered */
 const { game, screenshot } = Astro.params;
 const imageIndex = Number(screenshot);
 
-/* getEntry gets the images and title from the data object within a project object in the projects collection */
+/* getEntry gets the images and title from the data object within a game object in the arcade collection */
 const { data } = await getEntry("arcade", game)!;
 const { images, title } = data;
-
-const currentIndex = images[imageIndex];
-const prevIndex = imageIndex > 0 ? imageIndex - 1 : null;
-const nextIndex = imageIndex < images.length - 1 ? imageIndex + 1 : null;
 ---
 
-<Layout title={title + " Screenshot Gallery | Edward Vonschondorf"} description={"Images"}>
-  <article class="relative z-2 container mx-auto my-auto max-w-4xl px-1.5 lg:px-3 xl:px-0">
-    <Card>
-      <div class="mb-3 flex items-baseline justify-between">
-        <h1 class="text-xl font-bold text-stone-100">{title}</h1>
-        <a href={`/arcade/${game}`} class="block rounded-md border border-stone-700 px-3 py-1.5 font-bold text-white"
-          >X</a
-        >
-      </div>
-      <div class="relative">
-        {
-          prevIndex && (
-            <a
-              href={`/arcade/${game}/gallery/${prevIndex}`}
-              class="absolute top-1/2 left-3 text-2xl font-bold text-white">
-              &lt;
-            </a>
-          )
-        }
-        <Image src={currentIndex} alt={`${title} Screenshot`} class="mb-3 size-full" />
-        {
-          nextIndex && (
-            <a
-              href={`/arcade/${game}/gallery/${nextIndex}`}
-              class="absolute top-1/2 right-3 text-2xl font-bold text-white">
-              &gt;
-            </a>
-          )
-        }
-      </div>
-      <div class="grid gap-1.5 md:grid-cols-4 md:gap-3">
-        {
-          images.map((_, index) => (
-            <a href={`/arcade/${game}/gallery/${index}`}>
-              <Image src={images[index]} alt={`${title} Screenshot`} class="size-full" />
-            </a>
-          ))
-        }
-      </div>
-    </Card>
-  </article>
-</Layout>
+<Gallery title={title} collection="arcade" entry={game} images={images} imageIndex={imageIndex} />
