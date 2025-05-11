@@ -6,23 +6,25 @@ import Card from "./card.astro";
 const { title, collection, entry, images, imageIndex } = Astro.props;
 
 const currentIndex = images[imageIndex];
-const prevIndex = imageIndex > 0 ? imageIndex - 1 : null;
-const nextIndex = imageIndex < images.length - 1 ? imageIndex + 1 : null;
+// const prevIndex = imageIndex > 0 ? imageIndex - 1 : null;
+// const nextIndex = imageIndex < images.length - 1 ? imageIndex + 1 : null;
 ---
 
 <Layout title={title + " Screenshot Gallery | Edward Vonschondorf"} description={"Images"}>
-  <article class="relative z-2 container mx-auto my-auto max-w-4xl px-1.5 lg:px-3 xl:px-0">
-    <Card>
-      <div class="mb-3 flex items-baseline justify-between">
+  <article class="relative z-2 container mx-auto my-auto max-w-5xl px-1.5 lg:px-3 xl:px-0">
+    <Card twc="space-y-3">
+      <div class="flex items-baseline justify-between">
         <h1 class="text-xl font-bold text-stone-100">{title}</h1>
         <a
           href={`/${collection}/${entry}`}
-          class="block rounded-md border border-stone-700 px-3 py-1.5 font-bold text-white">
+          aria-label={`Return to ${title} page`}
+          title={`Return to ${title} page`}
+          class="hover-border-stone-300 block rounded-md border border-stone-700 px-1.5 py-0.75 font-bold text-stone-300 transition-colors duration-300 ease-in-out hover:bg-stone-900 hover:text-stone-50">
           X
         </a>
       </div>
-      <div class="relative">
-        {
+      <div class="rounded-xl border border-stone-800 bg-black py-6 md:py-12">
+        <!-- {
           prevIndex && (
             <a
               href={`/${collection}/${entry}/gallery/${prevIndex}`}
@@ -30,9 +32,9 @@ const nextIndex = imageIndex < images.length - 1 ? imageIndex + 1 : null;
               &lt;
             </a>
           )
-        }
-        <Image src={currentIndex} alt={`${title} Screenshot`} class="mb-3 size-full" />
-        {
+        } -->
+        <Image src={currentIndex} alt={`${title} Screenshot`} />
+        <!-- {
           nextIndex && (
             <a
               href={`/${collection}/${entry}/gallery/${nextIndex}`}
@@ -40,14 +42,16 @@ const nextIndex = imageIndex < images.length - 1 ? imageIndex + 1 : null;
               &gt;
             </a>
           )
-        }
+        } -->
       </div>
       <div class="grid gap-1.5 md:grid-cols-4 md:gap-3">
         {
           // @ts-expect-error
           images.map((_, index) => (
-            <a href={`/${collection}/${entry}/gallery/${index}`}>
-              <Image src={images[index]} alt={`${title} Screenshot`} class="size-full" />
+            <a
+              href={`/${collection}/${entry}/gallery/${index}`}
+              class={`aspect-square rounded-xl bg-black py-3 transition-colors duration-300 ease-in-out ${index !== imageIndex ? "hover:border-stone-600" : null} ${index === imageIndex ? "border-2 border-white" : "border border-stone-800"}`}>
+              <Image src={images[index]} alt={`${title} Screenshot`} class="size-full object-cover" />
             </a>
           ))
         }
